@@ -20,12 +20,33 @@
                         <form method="POST" class="p-4" action="/pcconfigs">
                         @csrf
 
-                        <!-- TODO -->
-                            <div>
-                                <x-label for="cpu_id" :value="__('cpu_id')" />
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <x-label for="cpu" :value="__('CPU')" />
 
-                                <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" :value="old('cpu_id')" autofocus />
+                                    <x-input id="cpu" class="block mt-1 w-full" type="text" name="cpu" :value="old('cpu')" autofocus />
+                                </div>
+                                <div>
+                                    <x-label for="cpu_id" :value="__('cpu_id')" />
+
+                                    <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" :value="old('cpu_id')" autofocus />
+                                </div>
+                                <div>
+                                    <x-label for="cpu_id" :value="__('cpu_id')" />
+
+                                    <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" :value="old('cpu_id')" autofocus />
+                                </div>
+                                <div>
+                                    <x-label for="cpu_id" :value="__('cpu_id')" />
+
+                                    <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" :value="old('cpu_id')" autofocus />
+                                </div>
                             </div>
+
+
+
+
+
 
                             <div class="flex items-center justify-end mt-4">
                                 <x-button >
