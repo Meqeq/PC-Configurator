@@ -18,7 +18,7 @@ class CreateGpuTable extends Migration
             $table->string('name');
             $table->text('desc');
             $table->decimal('price', 8,2);
-            $table->integer('pcie_int');
+            $table->string('pcie_int');
             $table->timestamps();
         });
     }

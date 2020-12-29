@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\UserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,5 +14,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UserSeeder::class);
+
+        $this->call(CPUSeeder::class);
+        $this->call(GPUSeeder::class);
+        $this->call(MbSeeder::class);
+        $this->call(RAMSeeder::class);
+        $this->call(DriveSeeder::class);
+        $this->call(PSUSeeder::class);
+        $this->call(CoolingSeeder::class);
+        $this->call(CaseSeeder::class);
     }
 }
