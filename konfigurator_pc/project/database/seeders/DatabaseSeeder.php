@@ -8,7 +8,7 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
+     * php artisan migrate:refresh --seed
      * @return void
      */
     public function run()
@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PSUSeeder::class);
         $this->call(CoolingSeeder::class);
         $this->call(CaseSeeder::class);
+
+        $this->call(PCConfigSeeder::class);
     }
 }

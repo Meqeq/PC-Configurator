@@ -24,8 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('/pcconfigs', App\Http\Controllers\PCConfigController::class)->middleware(['auth']);
-Route::get('/pcconfigs', function () {
-    return view('pcconfig.show');
-})->withoutMiddleware(['auth']);
+
+Route::get('/pcconfigs', 'App\Http\Controllers\PCConfigController@index')->withoutMiddleware(['auth']);
 
 require __DIR__.'/auth.php';

@@ -15,7 +15,7 @@ class PCConfigController extends Controller
     public function index()
     {
         $pcconfigs = PCConfig::all();
-        return view('pcconfig.index')->withPCConfigs($pcconfigs);
+        return view('pcconfig.index')->withPcConfigs($pcconfigs);
     }
 
     /**
