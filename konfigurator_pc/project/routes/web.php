@@ -27,4 +27,6 @@ Route::resource('/pcconfigs', App\Http\Controllers\PCConfigController::class)->m
 
 Route::get('/pcconfigs', 'App\Http\Controllers\PCConfigController@index')->withoutMiddleware(['auth']);
 
+Route::get('/select', [App\Http\Controllers\Test::class, 'select']);
+
 require __DIR__.'/auth.php';

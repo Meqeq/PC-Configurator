@@ -23,6 +23,8 @@ Odblokowany mnożnik: Nie
 Typ gniazda: Socket 1200
 Załączone chłodzenie: Tak
 ',
+            'frequency' => 2900,
+            'cores' => 4,
             'price' => 699,
             'socket' => '1200',
         ]);
@@ -31,6 +33,8 @@ Załączone chłodzenie: Tak
             'cpu_id' => '2',
             'name' => 'AMD Ryzen 5 3600',
             'desc' => '...',
+            'frequency' => 3400,
+            'cores' => 6,
             'price' => 1099,
             'socket' => 'AM4',
         ]);
@@ -39,6 +43,8 @@ Załączone chłodzenie: Tak
             'cpu_id' => '3',
             'name' => 'Intel Core i5-9400',
             'desc' => '...',
+            'frequency' => 1000,
+            'cores' => 4,
             'price' => 729,
             'socket' => '1151',
         ]);
