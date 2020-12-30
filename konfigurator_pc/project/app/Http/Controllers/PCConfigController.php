@@ -7,116 +7,57 @@ use Illuminate\Http\Request;
 
 class PCConfigController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $pcconfigs = PCConfig::all();
-        return view('pcconfig.index')->withPCConfigs($pcconfigs);
+        return view('pcconfig.index', ['pcconfigs' => PCConfig::all()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('pcconfig.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(PCConfig $config)
     {
-        // TODO: lepsza walidacja?
-        $request->validate([
+        $pcconfigs = PCConfig::create(request()->validate([
             'cpu_id' => 'required',
             'gpu_id' => 'required',
             'mb_id' => 'required',
             'ram_id' => 'required'
-        ]);
-
-        // TODO: uzupelnic pozostale wartosci
-        $pcconfigs = new PCConfig();
-        $pcconfigs->cpu_id = $request->cpu_id;
-        $pcconfigs->gpu_id = $request->gpu_id;
-        $pcconfigs->mb_id = $request->mb_id;
-        $pcconfigs->ram_id = $request->ram_id;
-        $pcconfigs->save();
+        ]));
 
         return redirect("pcconfig/".$pcconfigs->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(PCConfig $config)
     {
-        $pcconfig = PCConfig::findOrFail($id);
-        return view("pcconfig.show", )->withPCConfig($pcconfig);
+        return view("pcconfig.show", ['pcconfig' => $config]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(PCConfig $config)
     {
-        $pcconfig = PCConfig::find($id);
-        return view("pcconfig.edit")->withPCConfig($pcconfig);
+        return view("pcconfig.edit", ['pcconfig' => $config]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(PCConfig $config)
     {
-        $pcconfig = PCConfig::findOrFail($id);
-
-        // TODO: lepsza walidacja?
-        $request->validate([
+        //TODO: lepsza walidacja
+        $config->update(request()->validate([
             'cpu_id' => 'required',
             'gpu_id' => 'required',
             'mb_id' => 'required',
             'ram_id' => 'required'
-        ]);
+        ]));
 
-        $input = $request->all();
-
-        $pcconfig->fill($input)->save();
-
-        return redirect("pcconfig/".$pcconfig->id);
+        return redirect("pcconfig/".$config->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(PCConfig $config)
     {
         // TODO check if user has permission to delete
 
-        $pcconfig = PCConfig::findOrFail($id);
-        $pcconfig->delete();
+        $config->delete();
         return redirect()->route('pcconfig.index');
     }
 }
