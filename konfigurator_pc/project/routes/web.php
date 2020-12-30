@@ -28,4 +28,6 @@ Route::get('/pcconfigs', function () {
     return view('pcconfig.show');
 })->withoutMiddleware(['auth']);
 
+Route::get('/select', [App\Http\Controllers\Test::class, 'select']);
+
 require __DIR__.'/auth.php';

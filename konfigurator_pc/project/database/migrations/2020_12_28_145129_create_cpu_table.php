@@ -18,6 +18,8 @@ class CreateCpuTable extends Migration
             $table->string('name');
             $table->text('desc');
             $table->decimal('price', 8, 2);
+            $table->integer('cores');
+            $table->integer('frequency');
             $table->string('socket');
             $table->timestamps();
         });
