@@ -7,8 +7,8 @@ $I->amOnPage('/dashboard');
 
 $I->seeCurrentUrlEquals('/login');
 
-$I->fillField('email', 'test@gmail.com');
-$I->fillField('password', 'test1234');
+$I->fillField('email', 'john.doe@gmail.com');
+$I->fillField('password', 'secret');
 
 $I->click('Login');
 
