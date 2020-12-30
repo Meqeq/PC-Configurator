@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PCConfig extends Model
 {
+    protected $fillable =  ['cpu_id', 'gpu_id', 'mb_id','ram_id'];
     use HasFactory;
 
     protected $table = 'pc_configs';
