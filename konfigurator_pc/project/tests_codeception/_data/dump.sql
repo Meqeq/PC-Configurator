@@ -99,7 +99,7 @@ CREATE TABLE `cpu` (
 
 LOCK TABLES `cpu` WRITE;
 /*!40000 ALTER TABLE `cpu` DISABLE KEYS */;
-INSERT INTO `cpu` VALUES (1,'Intel Core i5-10400F','Częstotliwość taktowania procesora [GHz]: 2.9\nLiczba rdzeni: 6\nOdblokowany mnożnik: Nie\nTyp gniazda: Socket 1200\nZałączone chłodzenie: Tak\n',699.00,4,2900,'1200',NULL,NULL),(2,'AMD Ryzen 5 3600','...',1099.00,6,3400,'AM4',NULL,NULL),(3,'Intel Core i5-9400','...',729.00,4,1000,'1151',NULL,NULL);
+INSERT INTO `cpu` VALUES (1,'Intel Core i5-10400F','Częstotliwość taktowania procesora [GHz]: 2.9\nLiczba rdzeni: 6\nOdblokowany mnożnik: Nie\nTyp gniazda: Socket 1200\nZałączone chłodzenie: Tak\n',699.00,4,2900,'1200',NULL,NULL),(2,'AMD Ryzen 5 3600','...',1099.00,6,3600,'AM4',NULL,NULL),(3,'Intel Core i5-9400','...',729.00,4,2900,'1151',NULL,NULL);
 /*!40000 ALTER TABLE `cpu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,7 +395,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$upO0Ixy8/bL1OYrfku/HC.HVgsCXEaP1n6eGjIaXHpA7sS43jtsvy',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$c5fSszULwHQlohUzLfmrxujhcibXG/42nY5YS/fCR./4VoWyerEp6',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -408,4 +408,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-01 17:28:01
+-- Dump completed on 2021-01-01 18:11:01

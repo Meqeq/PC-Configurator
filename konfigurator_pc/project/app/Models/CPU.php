@@ -13,7 +13,7 @@ class CPU extends Component {
             "display" => "Socket",
             "type" => "checkbox",
             "values" => [
-                "AM4", "AM3", "LGA1155", "LGA1151"
+                "AM4", "AM3", "1200", "1151"
             ]
         ],
         [

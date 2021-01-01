@@ -35,7 +35,10 @@
     </form>
     <div class="m-2 bg-white text-center shadow">
         @forelse($data as $component) 
-            <p>{{$component['name']}} {{$component['cores']}} {{$component['frequency']}} {{$component['socket']}}</p>
+            <p class="name">{{$component['name']}}</p>
+            <p class="socket">{{$component['socket']}}</p>
+            <p class="frequency">{{$component['frequency']}}</p>
+            <p class="cores">{{$component['cores']}}</p>
         @empty
             No components
         @endforelse
