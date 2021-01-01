@@ -31,6 +31,14 @@ class CPU extends Component {
             "values" => [
                 1,2,4,6,8,10,12
             ]
+        ],
+        [
+            "name" => "price",
+            "display" => "Price",
+            "type" => "range",
+            "step" => 50,
+            "min" => 0,
+            "max" => 10000
         ]
     ];
 
