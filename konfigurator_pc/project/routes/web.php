@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComponentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::resource('/pcconfigs', App\Http\Controllers\PCConfigController::class)->m
 
 Route::get('/pcconfigs', 'App\Http\Controllers\PCConfigController@index')->withoutMiddleware(['auth']);
 
-Route::get('/select', [App\Http\Controllers\Test::class, 'select']);
+// Route::get('/select', [App\Http\Controllers\Test::class, 'select']);
+
+Route::get('/components/{comp}/select', [ComponentsController::class, 'select'])->name("componentSelection");
 
 require __DIR__.'/auth.php';
