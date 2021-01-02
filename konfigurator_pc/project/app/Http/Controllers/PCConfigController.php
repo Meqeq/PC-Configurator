@@ -32,6 +32,9 @@ class PCConfigController extends Controller
 
     public function show(PCConfig $config)
     {
+        echo "<pre>";
+        print_r($config);
+        echo "</pre>";
         return view("pcconfig.show", ['pcConfig' => $config]);
     }
 
