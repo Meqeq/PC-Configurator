@@ -12,7 +12,7 @@ class Test extends Controller
 
         $elements = CPU::filter($request);
 
-        return view("pcconfig.select", [
+        return view("config.select", [
             "configOptions" => CPU::$filters,
             "data" => $elements->get()
         ]);

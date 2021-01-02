@@ -17,7 +17,7 @@
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                        <form method="POST" class="p-4" action="/pcconfigs">
+                        <form method="POST" class="p-4" action="/config">
                         @csrf
 
                             <div class="grid grid-cols-2 gap-4">

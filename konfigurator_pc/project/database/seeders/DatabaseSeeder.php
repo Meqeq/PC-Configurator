@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CoolingSeeder::class);
         $this->call(CaseSeeder::class);
 
-        $this->call(PCConfigSeeder::class);
+        $this->call(ConfigSeeder::class);
     }
 }

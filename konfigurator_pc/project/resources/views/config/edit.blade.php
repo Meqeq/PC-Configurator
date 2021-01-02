@@ -17,7 +17,7 @@
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                        <form method="POST" class="p-4" action="/pcconfigs/{{$pcconfig->id}}">
+                        <form method="POST" class="p-4" action="/config/{{$config->id}}">
                         @csrf
                         @method("PATCH")
 
@@ -25,7 +25,7 @@
                             <div>
                                 <x-label for="cpu_id" :value="__('cpu_id')" />
 
-                                <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" value="{{$pcconfig->cpu_id}}" required autofocus />
+                                <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" value="{{$config->cpu_id}}" required autofocus />
                             </div>
 
 

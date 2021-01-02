@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePcConfigsTable extends Migration
+class CreateConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePcConfigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pc_configs', function (Blueprint $table) {
+        Schema::create('configs', function (Blueprint $table) {
             $table->id();
             $table->integer('cpu_id');
             $table->integer('gpu_id');
@@ -40,6 +40,6 @@ class CreatePcConfigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pc_configs');
+        Schema::dropIfExists('configs');
     }
 }

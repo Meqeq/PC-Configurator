@@ -34,7 +34,7 @@
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
                     @endauth
-                        <a href="{{ url('/pcconfig') }}" class="ml-4 text-sm text-gray-700 underline">Browse</a>
+                        <a href="{{ url('/config') }}" class="ml-4 text-sm text-gray-700 underline">Browse</a>
                 </div>
             @endif
 
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <a href="{{ url('/pcconfig/create') }}" class="absolute bottom-0 right-0 m-20">
+            <a href="{{ url('/config/create') }}" class="absolute bottom-0 right-0 m-20">
                 <button
                     class="p-0 w-16 h-16 bg-indigo-600 rounded-full hover:bg-indigo-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
                     <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-6 inline-block">
