@@ -16,10 +16,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="url('/pcconfigs')" :active="request()->routeIs('browse')">
+                    <x-nav-link :href="url('/config')" :active="request()->routeIs('browse')">
                         {{ __('Browse') }}
                     </x-nav-link>
-                    <x-nav-link :href="url('/pcconfigs/create')" :active="request()->routeIs('create')">
+                    <x-nav-link :href="url('/config/create')" :active="request()->routeIs('create')">
                         {{ __('Create') }}
                     </x-nav-link>
                 </div>
