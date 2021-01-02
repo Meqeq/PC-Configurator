@@ -10,7 +10,7 @@ class Test extends Controller
     public function select(Request $request) {
         $request->flash();
 
-        $elements = CPU::filter($request);        
+        $elements = CPU::filter($request);
 
         return view("pcconfig.select", [
             "configOptions" => CPU::$filters,

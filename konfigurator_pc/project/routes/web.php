@@ -23,9 +23,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('/pcconfigs', App\Http\Controllers\PCConfigController::class)->middleware(['auth']);
+Route::resource('/pcconfig', App\Http\Controllers\PCConfigController::class)->middleware(['auth']);
 
-Route::get('/pcconfigs', 'App\Http\Controllers\PCConfigController@index')->withoutMiddleware(['auth']);
+Route::get('/pcconfig', 'App\Http\Controllers\PCConfigController@index')->withoutMiddleware(['auth']);
 
 // Route::get('/select', [App\Http\Controllers\Test::class, 'select']);
 
