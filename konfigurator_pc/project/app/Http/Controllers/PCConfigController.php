@@ -10,7 +10,7 @@ class PCConfigController extends Controller
 
     public function index()
     {
-        return view('pcconfig.index', ['pcconfigs' => PCConfig::all()]);
+        return view('pcconfig.index', ['pcConfigs' => PCConfig::all()]);
     }
 
     public function create()
@@ -20,24 +20,24 @@ class PCConfigController extends Controller
 
     public function store()
     {
-        $pcconfigs = PCConfig::create(request()->validate([
+        $pcConfigs = PCConfig::create(request()->validate([
             'cpu_id' => 'required',
             'gpu_id' => 'required',
             'mb_id' => 'required',
             'ram_id' => 'required'
         ]));
 
-        return redirect("pcconfig/".$pcconfigs->id);
+        return redirect("pcconfig/".$pcConfigs->id);
     }
 
     public function show(PCConfig $config)
     {
-        return view("pcconfig.show", ['pcconfig' => $config]);
+        return view("pcconfig.show", ['pcConfig' => $config]);
     }
 
     public function edit(PCConfig $config)
     {
-        return view("pcconfig.edit", ['pcconfig' => $config]);
+        return view("pcconfig.edit", ['pcConfig' => $config]);
     }
 
     public function update(PCConfig $config)
