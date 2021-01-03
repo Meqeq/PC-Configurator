@@ -24,5 +24,8 @@ class Config extends Model
         'benchmark',
         'price',
         'user_id',
+        'public'
     ];
+
+
 }

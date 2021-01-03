@@ -28,6 +28,7 @@ class CreateConfigsTable extends Migration
             $table->decimal('price', 8, 2);
             $table->boolean('is_verified');
             $table->integer('user_id');
+            $table->boolean('public');
             $table->string('share_url');
             $table->timestamps();
         });

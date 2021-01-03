@@ -28,6 +28,7 @@ class ConfigSeeder extends Seeder
             'price' => 987,
             'is_verified' => false,
             'user_id' => 1,
+            'public' => false,
             'share_url' => "",
         ]);
         DB::table('configs')->insert([
@@ -44,6 +45,7 @@ class ConfigSeeder extends Seeder
             'price' => 600,
             'is_verified' => false,
             'user_id' => 1,
+            'public' => true,
             'share_url' => "",
         ]);
         DB::table('configs')->insert([
@@ -60,6 +62,7 @@ class ConfigSeeder extends Seeder
             'price' => 1234,
             'is_verified' => false,
             'user_id' => 1,
+            'public' => true,
             'share_url' => "",
         ]);
     }

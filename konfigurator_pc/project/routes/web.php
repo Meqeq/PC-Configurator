@@ -18,9 +18,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth'])->name('dashboard');
+
+Route::resource('/user', App\Http\Controllers\UserController::class)->only([
+    'show', 'edit', 'destroy'
+])->middleware(['auth']);
 
 Route::resource('/config', App\Http\Controllers\ConfigController::class)->middleware(['auth']);
 
