@@ -9,7 +9,7 @@ class Config extends Model
 {
     use HasFactory;
 
-    protected $table = 'pc_configs';
+    protected $table = 'configs';
 
     protected $fillable = [
         'cpu_id',
