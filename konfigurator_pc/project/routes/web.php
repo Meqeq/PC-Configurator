@@ -23,9 +23,16 @@ Route::get('/', function () {
 //    return view('dashboard');
 //})->middleware(['auth'])->name('dashboard');
 
+
+Route::get('/user/edit_password', 'App\Http\Controllers\UserController@editPassword')->middleware(['auth'])->name("editPassword");
+Route::get('/user/edit_email', 'App\Http\Controllers\UserController@editEmail')->middleware(['auth'])->name("editEmail");
+Route::patch('/user/{type}','App\Http\Controllers\UserController@update')->middleware(['auth'])->name("update");
+
+
 Route::resource('/user', App\Http\Controllers\UserController::class)->only([
     'show', 'edit', 'destroy'
 ])->middleware(['auth']);
+
 
 Route::resource('/config', App\Http\Controllers\ConfigController::class)->middleware(['auth']);
 
