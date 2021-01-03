@@ -11,6 +11,7 @@ use App\Models\Config;
 class UserController extends Controller
 {
 
+
     public function show(User $user)
     {
         $id = Auth::id();
@@ -39,25 +40,20 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-        //
+
+        $user->update(request()->validate([
+            'name' => 'required',
+            'gpu_id' => 'required',
+            'mb_id' => 'required',
+            'ram_id' => 'required'
+        ]));
+
+        return redirect("user/".$user->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
     }

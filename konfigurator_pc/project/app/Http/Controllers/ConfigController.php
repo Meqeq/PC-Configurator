@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Config;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ConfigController extends Controller
 {
@@ -32,15 +33,19 @@ class ConfigController extends Controller
 
     public function show(Config $config)
     {
-//        echo "<pre>";
-//        print_r($config);
-//        echo "</pre>";
         return view("config.show", ['config' => $config]);
     }
 
     public function edit(Config $config)
     {
-        return view("config.edit", ['config' => $config]);
+        $id = Auth::id();
+        if ($config->user_id == $id) {
+            return view("user.edit", ['config' => $config]);
+        }
+        else {
+            return abort('403');
+        }
+
     }
 
     public function update(Config $config)
@@ -58,9 +63,13 @@ class ConfigController extends Controller
 
     public function destroy(Config $config)
     {
-        // TODO check if user has permission to delete
-
-        $config->delete();
-        return redirect('/config');
+        $id = Auth::id();
+        if ($config->user_id == $id) {
+            $config->delete();
+            return redirect('/user/'.$id);
+        }
+        else {
+            return abort('403');
+        }
     }
 }
