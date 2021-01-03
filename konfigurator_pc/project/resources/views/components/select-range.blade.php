@@ -12,34 +12,34 @@
 </div>
 
 <script>
-    let min = document.getElementById("{{$name}}_min");
-    let max = document.getElementById("{{$name}}_max");
-    let minV = document.getElementById("{{$name}}.minValue");
-    let maxV = document.getElementById("{{$name}}.maxValue");
+    let min{{$name}} = document.getElementById("{{$name}}_min");
+    let max{{$name}} = document.getElementById("{{$name}}_max");
+    let minV{{$name}} = document.getElementById("{{$name}}.minValue");
+    let maxV{{$name}} = document.getElementById("{{$name}}.maxValue");
 
-    minV.innerText = min.value = '{{old($name.'_min')}}' || '{{$min}}';
-    maxV.innerText = max.value = '{{old($name.'_max')}}' || '{{$max}}';
+    minV{{$name}}.innerText = min{{$name}}.value = '{{old($name.'_min')}}' || '{{$min}}';
+    maxV{{$name}}.innerText = max{{$name}}.value = '{{old($name.'_max')}}' || '{{$max}}';
 
-    min.addEventListener("change", event => {
+    min{{$name}}.addEventListener("change", event => {
         let newValue = parseFloat(event.target.value);
-        let maxValue = parseFloat(max.value);
+        let maxValue = parseFloat(max{{$name}}.value);
 
         if(newValue > maxValue - {{$step}}) {
             event.target.value = maxValue - {{$step}};
         }
 
-        minV.innerText = event.target.value;
+        minV{{$name}}.innerText = event.target.value;
     }); 
 
-    max.addEventListener("change", event => {
+    max{{$name}}.addEventListener("change", event => {
         let newValue = parseFloat(event.target.value);
-        let minValue = parseFloat(min.value);
+        let minValue = parseFloat(min{{$name}}.value);
 
         if(newValue < minValue + {{$step}}) {
             event.target.value = minValue + {{$step}};
         }
 
-        maxV.innerText = event.target.value;
+        maxV{{$name}}.innerText = event.target.value;
     });
 
 </script>

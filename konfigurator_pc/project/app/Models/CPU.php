@@ -13,7 +13,7 @@ class CPU extends Component {
             "display" => "Socket",
             "type" => "checkbox",
             "values" => [
-                "AM4", "AM3", "LGA1155", "LGA1151"
+                "AM4", "AM3", "1200", "1151"
             ]
         ],
         [
@@ -31,6 +31,14 @@ class CPU extends Component {
             "values" => [
                 1,2,4,6,8,10,12
             ]
+        ],
+        [
+            "name" => "price",
+            "display" => "Price",
+            "type" => "range",
+            "step" => 50,
+            "min" => 0,
+            "max" => 10000
         ]
     ];
 

@@ -16,29 +16,121 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `comments`
+-- Table structure for table `case`
 --
 
-DROP TABLE IF EXISTS `comments`;
+DROP TABLE IF EXISTS `case`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comments` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `case` (
+  `case_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`case_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comments`
+-- Dumping data for table `case`
 --
 
-LOCK TABLES `comments` WRITE;
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+LOCK TABLES `case` WRITE;
+/*!40000 ALTER TABLE `case` DISABLE KEYS */;
+INSERT INTO `case` VALUES (1,'SilentiumPC Signum SG7V Evo TG ARGB','...',399.00,'ATX',NULL,NULL),(2,'Fractal Design Meshify C TG','...',429.00,'ATX',NULL,NULL),(3,'MSI MAG Forge 100M','...',219.00,'ATX',NULL,NULL);
+/*!40000 ALTER TABLE `case` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cooling`
+--
+
+DROP TABLE IF EXISTS `cooling`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cooling` (
+  `cooling_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`cooling_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cooling`
+--
+
+LOCK TABLES `cooling` WRITE;
+/*!40000 ALTER TABLE `cooling` DISABLE KEYS */;
+INSERT INTO `cooling` VALUES (1,'Nzxt Kraken X53 Liquid Cooling','...',579.00,NULL,NULL),(2,'Nzxt Kraken Z63 Liquid Cooling','...',1099.00,NULL,NULL),(3,'ALSEYE ALSEYE H120 120mm','...',260.00,NULL,NULL);
+/*!40000 ALTER TABLE `cooling` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cpu`
+--
+
+DROP TABLE IF EXISTS `cpu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cpu` (
+  `cpu_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `cores` int NOT NULL,
+  `frequency` int NOT NULL,
+  `socket` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`cpu_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cpu`
+--
+
+LOCK TABLES `cpu` WRITE;
+/*!40000 ALTER TABLE `cpu` DISABLE KEYS */;
+INSERT INTO `cpu` VALUES (1,'Intel Core i5-10400F','Częstotliwość taktowania procesora [GHz]: 2.9\nLiczba rdzeni: 6\nOdblokowany mnożnik: Nie\nTyp gniazda: Socket 1200\nZałączone chłodzenie: Tak\n',699.00,4,2900,'1200',NULL,NULL),(2,'AMD Ryzen 5 3600','...',1099.00,6,3600,'AM4',NULL,NULL),(3,'Intel Core i5-9400','...',729.00,4,2900,'1151',NULL,NULL);
+/*!40000 ALTER TABLE `cpu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `drive`
+--
+
+DROP TABLE IF EXISTS `drive`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `drive` (
+  `drive_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `size` int NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`drive_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drive`
+--
+
+LOCK TABLES `drive` WRITE;
+/*!40000 ALTER TABLE `drive` DISABLE KEYS */;
+INSERT INTO `drive` VALUES (1,'SSD Lexar NM610 500 GB M.2','...',249.00,500,'NVMe',NULL,NULL),(2,'SSD Western Digital Blue 500 GB 2.5\" SATA III','...',269.00,500,'SATA III',NULL,NULL),(3,'Crucial MX500 500 GB 2.5\" SATA III','...',265.00,500,'SATA III',NULL,NULL);
+/*!40000 ALTER TABLE `drive` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -71,6 +163,64 @@ LOCK TABLES `failed_jobs` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gpu`
+--
+
+DROP TABLE IF EXISTS `gpu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gpu` (
+  `gpu_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `pcie_int` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`gpu_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gpu`
+--
+
+LOCK TABLES `gpu` WRITE;
+/*!40000 ALTER TABLE `gpu` DISABLE KEYS */;
+INSERT INTO `gpu` VALUES (1,'Gigabyte GeForce RTX 2060 Windforce','...',2089.00,'PCI Express 3.0 x16',NULL,NULL),(2,'MSI GeForce RTX 2080 Sea Hawk','...',3644.00,'PCI Express 3.0 x16',NULL,NULL),(3,'Asus ROG Strix Radeon RX 5600 XT','...',2081.00,'PCI Express 3.0 x16',NULL,NULL);
+/*!40000 ALTER TABLE `gpu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mb`
+--
+
+DROP TABLE IF EXISTS `mb`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mb` (
+  `mb_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `compatibility` json NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`mb_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mb`
+--
+
+LOCK TABLES `mb` WRITE;
+/*!40000 ALTER TABLE `mb` DISABLE KEYS */;
+INSERT INTO `mb` VALUES (1,'Gigabyte B450 AORUS ELITE','...','{}',399.00,NULL,NULL),(2,'Gigabyte X570 GAMING X','...','{}',769.00,NULL,NULL),(3,'MSI B450 TOMAHAWK MAX','...','{}',449.00,NULL,NULL);
+/*!40000 ALTER TABLE `mb` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -82,7 +232,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +241,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_15_145710_create_comments_table',1);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_28_145042_create_pc_configs_table',1),(5,'2020_12_28_145129_create_cpu_table',1),(6,'2020_12_28_145144_create_gpu_table',1),(7,'2020_12_28_145153_create_mb_table',1),(8,'2020_12_28_145202_create_ram_table',1),(9,'2020_12_28_145210_create_drive_table',1),(10,'2020_12_28_145220_create_cooling_table',1),(11,'2020_12_28_145229_create_psu_table',1),(12,'2020_12_28_145237_create_case_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,6 +267,105 @@ CREATE TABLE `password_resets` (
 LOCK TABLES `password_resets` WRITE;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pc_configs`
+--
+
+DROP TABLE IF EXISTS `pc_configs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pc_configs` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `cpu_id` int NOT NULL,
+  `gpu_id` int NOT NULL,
+  `mb_id` int NOT NULL,
+  `ram_id` int NOT NULL,
+  `drive_id` int NOT NULL,
+  `case_id` int NOT NULL,
+  `psu_id` int NOT NULL,
+  `cooling_id` int NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `benchmark` double NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `is_verified` tinyint(1) NOT NULL,
+  `user_id` int NOT NULL,
+  `share_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pc_configs`
+--
+
+LOCK TABLES `pc_configs` WRITE;
+/*!40000 ALTER TABLE `pc_configs` DISABLE KEYS */;
+INSERT INTO `pc_configs` VALUES (1,1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,'',NULL,NULL),(2,1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,'',NULL,NULL),(3,3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,'',NULL,NULL);
+/*!40000 ALTER TABLE `pc_configs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `psu`
+--
+
+DROP TABLE IF EXISTS `psu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `psu` (
+  `psu_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `power` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`psu_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `psu`
+--
+
+LOCK TABLES `psu` WRITE;
+/*!40000 ALTER TABLE `psu` DISABLE KEYS */;
+INSERT INTO `psu` VALUES (1,'SilentiumPC Vero L3 500W','...',207.00,500,NULL,NULL),(2,'be quiet! SYSTEM POWER 9 500W','...',249.00,500,NULL,NULL),(3,'SilentiumPC Vero M3 600W','...',266.00,600,NULL,NULL);
+/*!40000 ALTER TABLE `psu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ram`
+--
+
+DROP TABLE IF EXISTS `ram`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ram` (
+  `ram_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `capacity` int NOT NULL,
+  `speed` int NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`ram_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ram`
+--
+
+LOCK TABLES `ram` WRITE;
+/*!40000 ALTER TABLE `ram` DISABLE KEYS */;
+INSERT INTO `ram` VALUES (1,'HyperX Fury RGB, DDR4, 16 GB','...',369.00,16,3200,'DDR4',NULL,NULL),(2,'Corsair Vengeance RGB PRO, DDR4, 16 GB','...',437.00,16,3200,'DDR4',NULL,NULL),(3,'Crucial Ballistix Black at DDR4 3200 DRAM Desktop Gaming Memory Kit 16GB','...',319.00,16,3200,'DDR4',NULL,NULL);
+/*!40000 ALTER TABLE `ram` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -146,7 +395,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$sZJy/y6KZs0BF4mdMniaT.HQirxPFceh54O4j85dprJRyLzrAVMHa',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$c5fSszULwHQlohUzLfmrxujhcibXG/42nY5YS/fCR./4VoWyerEp6',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -159,4 +408,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-21 12:25:46
+-- Dump completed on 2021-01-01 18:11:01
