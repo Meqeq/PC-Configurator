@@ -29,6 +29,8 @@ Route::get('/pcconfig', 'App\Http\Controllers\PCConfigController@index')->withou
 
 // Route::get('/select', [App\Http\Controllers\Test::class, 'select']);
 
-Route::get('/components/{comp}/select', [ComponentsController::class, 'select'])->name("componentSelection");
+Route::get('/components/', [ComponentsController::class, 'index'])->name("componentsIndex");
+Route::get('/components/{comp}/{type}', [ComponentsController::class, 'list'])->name("componentList");
+Route::get('/components/{comp}/{type}/{id}', [ComponentsController::class, 'details'])->name("componentDetails");
 
 require __DIR__.'/auth.php';
