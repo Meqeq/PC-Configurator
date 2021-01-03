@@ -20,14 +20,14 @@ class ConfigController extends Controller
 
     public function store()
     {
-        $pcConfigs = Config::create(request()->validate([
+        $configs = Config::create(request()->validate([
             'cpu_id' => 'required',
             'gpu_id' => 'required',
             'mb_id' => 'required',
             'ram_id' => 'required'
         ]));
 
-        return redirect("config/".$pcConfigs->id);
+        return redirect("config/".$configs->id);
     }
 
     public function show(Config $config)

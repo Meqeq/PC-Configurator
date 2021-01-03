@@ -14,7 +14,7 @@ class ConfigSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pc_configs')->insert([
+        DB::table('configs')->insert([
             'cpu_id' => 1,
             'gpu_id' => 1,
             'mb_id' => 1,
@@ -30,7 +30,7 @@ class ConfigSeeder extends Seeder
             'user_id' => 1,
             'share_url' => "",
         ]);
-        DB::table('pc_configs')->insert([
+        DB::table('configs')->insert([
             'cpu_id' => 1,
             'gpu_id' => 2,
             'mb_id' => 1,
@@ -46,7 +46,7 @@ class ConfigSeeder extends Seeder
             'user_id' => 1,
             'share_url' => "",
         ]);
-        DB::table('pc_configs')->insert([
+        DB::table('configs')->insert([
             'cpu_id' => 3,
             'gpu_id' => 3,
             'mb_id' => 3,
