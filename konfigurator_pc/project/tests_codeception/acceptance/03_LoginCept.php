@@ -3,7 +3,7 @@
 $I = new AcceptanceTester($scenario);
 $I->wantTo('login with existing user');
 
-$I->amOnPage('/dashboard');
+$I->amOnPage('/user/1');
 
 $I->seeCurrentUrlEquals('/login');
 
@@ -12,7 +12,7 @@ $I->fillField('password', 'secret');
 
 $I->click('Login');
 
-$I->seeCurrentUrlEquals('/dashboard');
+$I->seeCurrentUrlEquals('/user/1');
 
 $I->see('John Doe');
 $I->see("You're logged in!");
