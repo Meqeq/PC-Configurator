@@ -42,6 +42,17 @@ class ComponentsController extends Controller
     }
 
     public function details(Request $request, string $component, string $type, $id) {
-        return redirect("/");
+           switch($component) {
+            case 'cpu':
+                $elements = CPU::find($id);       
+
+                return view("comp.details", [
+                    "data" => $elements,
+                    "type" => $type,
+                    "comp" => $component
+                ]);
+            default:
+                return redirect("/");
+        }
     }
 }

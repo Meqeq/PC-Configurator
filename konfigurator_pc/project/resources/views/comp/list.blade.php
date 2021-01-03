@@ -44,13 +44,13 @@
                     </div>
                     <div class="w-20">
                         <a 
-                            href="{{ route('componentDetails', [ 'comp' => $comp, 'type' => $type, 'id' => $component[$comp.'_id'] ]) }}"
+                            href="{{ route('componentDetails', [ 'comp' => $comp, 'type' => $type, 'id' => $component->id ]) }}"
                         >
                             Details
                         </a>
                         @if($type == 'select')
                             <a 
-                                href="{{ route('componentDetails', [ 'comp' => $comp, 'type' => $type, 'id' => $component[$comp.'_id'] ]) }}"
+                                href="{{ route('componentDetails', [ 'comp' => $comp, 'type' => $type, 'id' => $component->id ]) }}"
                             >Pick</a>
                         @endif
                     </div>
