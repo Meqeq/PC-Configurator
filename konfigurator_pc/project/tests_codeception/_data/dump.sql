@@ -45,6 +45,46 @@ INSERT INTO `case` VALUES (1,'SilentiumPC Signum SG7V Evo TG ARGB','...',399.00,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `configs`
+--
+
+DROP TABLE IF EXISTS `configs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `configs` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `cpu_id` int NOT NULL,
+  `gpu_id` int NOT NULL,
+  `mb_id` int NOT NULL,
+  `ram_id` int NOT NULL,
+  `drive_id` int NOT NULL,
+  `case_id` int NOT NULL,
+  `psu_id` int NOT NULL,
+  `cooling_id` int NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `benchmark` double NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `is_verified` tinyint(1) NOT NULL,
+  `user_id` int NOT NULL,
+  `public` tinyint(1) NOT NULL,
+  `share_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `configs`
+--
+
+LOCK TABLES `configs` WRITE;
+/*!40000 ALTER TABLE `configs` DISABLE KEYS */;
+INSERT INTO `configs` VALUES (1,1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,0,'',NULL,NULL),(2,1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,1,'',NULL,NULL),(3,3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,1,'',NULL,NULL);
+/*!40000 ALTER TABLE `configs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cooling`
 --
 
@@ -80,7 +120,7 @@ DROP TABLE IF EXISTS `cpu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cpu` (
-  `cpu_id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
@@ -89,7 +129,7 @@ CREATE TABLE `cpu` (
   `socket` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`cpu_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -241,7 +281,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_28_145042_create_pc_configs_table',1),(5,'2020_12_28_145129_create_cpu_table',1),(6,'2020_12_28_145144_create_gpu_table',1),(7,'2020_12_28_145153_create_mb_table',1),(8,'2020_12_28_145202_create_ram_table',1),(9,'2020_12_28_145210_create_drive_table',1),(10,'2020_12_28_145220_create_cooling_table',1),(11,'2020_12_28_145229_create_psu_table',1),(12,'2020_12_28_145237_create_case_table',1);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_28_145042_create_configs_table',1),(5,'2020_12_28_145129_create_cpu_table',1),(6,'2020_12_28_145144_create_gpu_table',1),(7,'2020_12_28_145153_create_mb_table',1),(8,'2020_12_28_145202_create_ram_table',1),(9,'2020_12_28_145210_create_drive_table',1),(10,'2020_12_28_145220_create_cooling_table',1),(11,'2020_12_28_145229_create_psu_table',1),(12,'2020_12_28_145237_create_case_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,45 +307,6 @@ CREATE TABLE `password_resets` (
 LOCK TABLES `password_resets` WRITE;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pc_configs`
---
-
-DROP TABLE IF EXISTS `pc_configs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pc_configs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `cpu_id` int NOT NULL,
-  `gpu_id` int NOT NULL,
-  `mb_id` int NOT NULL,
-  `ram_id` int NOT NULL,
-  `drive_id` int NOT NULL,
-  `case_id` int NOT NULL,
-  `psu_id` int NOT NULL,
-  `cooling_id` int NOT NULL,
-  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `benchmark` double NOT NULL,
-  `price` decimal(8,2) NOT NULL,
-  `is_verified` tinyint(1) NOT NULL,
-  `user_id` int NOT NULL,
-  `share_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pc_configs`
---
-
-LOCK TABLES `pc_configs` WRITE;
-/*!40000 ALTER TABLE `pc_configs` DISABLE KEYS */;
-INSERT INTO `pc_configs` VALUES (1,1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,'',NULL,NULL),(2,1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,'',NULL,NULL),(3,3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,'',NULL,NULL);
-/*!40000 ALTER TABLE `pc_configs` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -386,7 +387,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +396,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$c5fSszULwHQlohUzLfmrxujhcibXG/42nY5YS/fCR./4VoWyerEp6',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$MI5F3x0c.10gITSkA18am.yD2ASsQwndLbItel8G2N1t.uM04hxbm',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com',NULL,'$2y$10$g7/EVYJCQ8SGFzWA4GFtU.37Usf1wOo.ezD4EIckEE/EZZBkK/tQS',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -408,4 +409,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-01 18:11:01
+-- Dump completed on 2021-01-03 17:36:11
