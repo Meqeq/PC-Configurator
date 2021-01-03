@@ -1,14 +1,18 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            @if($type == 'select')
-                Pick component for your config
-            @else 
-                List of components
-            @endif
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
+@section('header')
+
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        @if($type == 'select')
+            Pick component for your config
+        @else 
+            List of components
+        @endif
+    </h2>
+
+@endsection
+
+@section('body')
     <div class="flex">
         <div class="w-3/12 bg-white m-2 p-2 shadow">
             <form>
@@ -60,4 +64,4 @@
             @endforelse
         </div>
     </div>
-</x-app-layout>
+@endsection
