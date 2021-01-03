@@ -1,10 +1,13 @@
-{{--TODO przeniesc kod do poszczegolnych fragmentow (optymalizacja kodu)--}}
-<x-app-layout>
-    <x-slot name="header">
+@extends('layouts.app')
+
+@section('header')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Viewing a PC configuration
         </h2>
-    </x-slot>
+@endsection
+
+
+@section('body')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -17,7 +20,7 @@
                     @empty ($config)
                         <p>Error.</p>
                     @else
-{{--                        TODO--}}
+                        {{--                        TODO--}}
                         <div class='py-10'>
                             <div class="max-w-md mx-auto xl:max-w-5xl lg:max-w-5xl md:max-w-2xl bg-gray-700 max-h-screen shadow-2xl flex-row rounded relative">
                                 <div class="p-2 bg-gray-600 text-blue-900 rounded-t">
@@ -47,4 +50,5 @@
                 </div></div>
         </div>
     </div>
-</x-app-layout>
+@endsection
+

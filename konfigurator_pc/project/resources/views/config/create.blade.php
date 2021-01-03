@@ -1,11 +1,12 @@
-{{--TODO przeniesc kod do poszczegolnych fragmentow (optymalizacja kodu)--}}
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            New PC Configuration
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
+@section('header')
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        New PC Configuration
+    </h2>
+@endsection
+
+@section('body')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -18,7 +19,7 @@
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
                         <form method="POST" class="p-4" action="/config">
-                        @csrf
+                            @csrf
 
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
@@ -43,11 +44,6 @@
                                 </div>
                             </div>
 
-
-
-
-
-
                             <div class="flex items-center justify-end mt-4">
                                 <x-button >
                                     {{ __('Create') }}
@@ -60,4 +56,5 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
+

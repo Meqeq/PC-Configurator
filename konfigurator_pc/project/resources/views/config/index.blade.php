@@ -1,10 +1,12 @@
-{{--TODO przeniesc kod do poszczegolnych fragmentow (optymalizacja kodu)--}}
-<x-app-layout>
-    <x-slot name="header">
+@extends('layouts.app')
+
+@section('header')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             List of PC configurations
         </h2>
-    </x-slot>
+@endsection
+
+@section('body')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -24,7 +26,7 @@
                             </thead>
                             <tbody class="bg-white">
                             @foreach($configs as $config)
-{{--TODO--}}
+                                {{--TODO--}}
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                                         <div class="flex items-center">
@@ -52,4 +54,6 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+
+@endsection
+
