@@ -6,55 +6,35 @@
     </h2>
 @endsection
 
-@section('body')
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="box">
-                    <div class="col-lg-12">
-                        <!-- Session Status -->
-                        <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                        <!-- Validation Errors -->
-                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-                        <form method="POST" class="p-4" action="/config">
-                            @csrf
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <x-label for="cpu" :value="__('CPU')" />
-
-                                    <x-input id="cpu" class="block mt-1 w-full" type="text" name="cpu" :value="old('cpu')" autofocus />
-                                </div>
-                                <div>
-                                    <x-label for="cpu_id" :value="__('cpu_id')" />
-
-                                    <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" :value="old('cpu_id')" autofocus />
-                                </div>
-                                <div>
-                                    <x-label for="cpu_id" :value="__('cpu_id')" />
-
-                                    <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" :value="old('cpu_id')" autofocus />
-                                </div>
-                                <div>
-                                    <x-label for="cpu_id" :value="__('cpu_id')" />
-
-                                    <x-input id="cpu_id" class="block mt-1 w-full" type="text" name="cpu_id" :value="old('cpu_id')" autofocus />
-                                </div>
+    @section('body')
+        <div class="bg-white flex-col justify-center m-2 p-2 shadow">
+            <div class="flex justify-center">
+                @foreach([
+    'cpu' => 'CPU', 'mb' => 'Motherboard', 'gpu' => 'GPU',
+    'psu' => 'Power supply', 'drive' => 'Storage',
+    'case' => 'Case'
+] as $key => $value)
+                    <a href="{{ route('componentList', [ 'comp' => $key, 'type' => 'select' ]) }}">
+                        <div class="w-52 h-52 p-2 hover:shadow">
+                            <div class="bg-gray-400 w-full h-40">
+                                @if(session()->has($key))
+                                    <div class="text-center h-8 leading-10 bg-gray-100">
+                                        {{session()->get($key)->name}}
+                                    </div>
+                                @endif
                             </div>
-
-                            <div class="flex items-center justify-end mt-4">
-                                <x-button >
-                                    {{ __('Create') }}
-                                </x-button>
+                            <div class="text-center h-8 leading-10 bg-gray-100">
+                                {{$value}}
                             </div>
-                        </form>
-
-                    </div>
-                </div>
+                            <?php xdebug_break(); ?>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+            <div class="flex justify-center">
+                <button disabled class="m-6 w-1/2 h-14 px-6 text-indigo-100 transition-colors duration-150 bg-gray-400 rounded-lg focus:shadow-outline">{{ __('Create') }}</button>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection
 

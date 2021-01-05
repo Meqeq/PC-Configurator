@@ -44,4 +44,6 @@ Route::get('/components/', [ComponentsController::class, 'index'])->name("compon
 Route::get('/components/{comp}/{type}', [ComponentsController::class, 'list'])->name("componentList");
 Route::get('/components/{comp}/{type}/{id}', [ComponentsController::class, 'details'])->name("componentDetails");
 
+Route::post('/components/{comp}/{type}/{id}', [ComponentsController::class, 'pick'])->name("componentDetails");
+
 require __DIR__.'/auth.php';

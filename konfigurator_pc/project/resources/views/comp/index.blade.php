@@ -9,7 +9,7 @@
 @section('body')
     <div class="m-2 p-2 bg-white shadow flex justify-center">
         @foreach([
-            'cpu' => 'CPU', 'mb' => 'Motherboard', 'gpu' => 'GPU', 
+            'cpu' => 'CPU', 'mb' => 'Motherboard', 'gpu' => 'GPU',
             'psu' => 'Power supply', 'drive' => 'Storage',
             'case' => 'Case'
         ] as $key => $value)
@@ -21,8 +21,9 @@
                     <div class="text-center h-8 leading-10 bg-gray-100">
                         {{$value}}
                     </div>
-                </div>    
+                </div>
             </a>
+            {{ Session::get($value)[0]}}
         @endforeach
     </div>
 @endsection
