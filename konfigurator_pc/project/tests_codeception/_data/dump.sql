@@ -53,6 +53,7 @@ DROP TABLE IF EXISTS `configs`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `configs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cpu_id` int NOT NULL,
   `gpu_id` int NOT NULL,
   `mb_id` int NOT NULL,
@@ -61,13 +62,13 @@ CREATE TABLE `configs` (
   `case_id` int NOT NULL,
   `psu_id` int NOT NULL,
   `cooling_id` int NOT NULL,
-  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `benchmark` double NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci,
+  `benchmark` double DEFAULT NULL,
   `price` decimal(8,2) NOT NULL,
   `is_verified` tinyint(1) NOT NULL,
-  `user_id` int NOT NULL,
-  `public` tinyint(1) NOT NULL,
-  `share_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `public` tinyint(1) DEFAULT NULL,
+  `share_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -80,7 +81,7 @@ CREATE TABLE `configs` (
 
 LOCK TABLES `configs` WRITE;
 /*!40000 ALTER TABLE `configs` DISABLE KEYS */;
-INSERT INTO `configs` VALUES (1,1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,0,'',NULL,NULL),(2,1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,1,'',NULL,NULL),(3,3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,1,'',NULL,NULL);
+INSERT INTO `configs` VALUES (1,'PREMIUM XXX',1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,0,'',NULL,NULL),(2,'Ol\' an\' good',1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,1,'',NULL,NULL),(3,'Pretty one',3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,1,'',NULL,NULL);
 /*!40000 ALTER TABLE `configs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,7 +397,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$4WUn4COTK.avEOyrfzMMweVmztWrOxBlvZGTdOYg3poq2i13.5B2C',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com',NULL,'$2y$10$xYqZ/WC4PDnjFA59ooaot.Wudeu.Rw0Ez6vx3c5CrX2QIhdtZRpd6',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$6IKMz8SuK77QsBxg6xGFHOAJ67ly0ztHa.L3t.WBVQisIbKNNhixa',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com',NULL,'$2y$10$DLaUQnK09r0hPQaWs5y6pO7oclepc9DiHCejAfZNjKq70CyYH/ZxS',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -409,4 +410,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-06  0:01:28
+-- Dump completed on 2021-01-06 13:06:16

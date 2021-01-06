@@ -15,6 +15,7 @@ class CreateConfigsTable extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->integer('cpu_id');
             $table->integer('gpu_id');
             $table->integer('mb_id');
@@ -23,13 +24,13 @@ class CreateConfigsTable extends Migration
             $table->integer('case_id');
             $table->integer('psu_id');
             $table->integer('cooling_id');
-            $table->text('desc');
-            $table->double('benchmark');
+            $table->text('desc')->nullable();
+            $table->double('benchmark')->nullable();
             $table->decimal('price', 8, 2);
             $table->boolean('is_verified');
-            $table->integer('user_id');
-            $table->boolean('public');
-            $table->string('share_url');
+            $table->integer('user_id')->nullable();
+            $table->boolean('public')->nullable();
+            $table->string('share_url')->nullable();
             $table->timestamps();
         });
     }

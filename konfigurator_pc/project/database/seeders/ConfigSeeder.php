@@ -15,6 +15,7 @@ class ConfigSeeder extends Seeder
     public function run()
     {
         DB::table('configs')->insert([
+            'title' => "PREMIUM XXX",
             'cpu_id' => 1,
             'gpu_id' => 1,
             'mb_id' => 1,
@@ -32,6 +33,7 @@ class ConfigSeeder extends Seeder
             'share_url' => "",
         ]);
         DB::table('configs')->insert([
+            'title' => "Ol' an' good",
             'cpu_id' => 1,
             'gpu_id' => 2,
             'mb_id' => 1,
@@ -49,6 +51,7 @@ class ConfigSeeder extends Seeder
             'share_url' => "",
         ]);
         DB::table('configs')->insert([
+            'title' => "Pretty one",
             'cpu_id' => 3,
             'gpu_id' => 3,
             'mb_id' => 3,

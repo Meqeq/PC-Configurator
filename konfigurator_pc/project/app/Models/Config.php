@@ -12,6 +12,7 @@ class Config extends Model
     protected $table = 'configs';
 
     protected $fillable = [
+        'name',
         'cpu_id',
         'gpu_id',
         'mb_id',

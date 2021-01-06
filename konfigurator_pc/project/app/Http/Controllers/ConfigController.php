@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Component;
 use App\Models\Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,16 +20,33 @@ class ConfigController extends Controller
         return view('config.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $configs = Config::create(request()->validate([
-            'cpu_id' => 'required',
-            'gpu_id' => 'required',
-            'mb_id' => 'required',
-            'ram_id' => 'required'
-        ]));
+//        $this->validate($request, [ // TODO better validation ?
+//            'cpu_id' => 'required',
+//            'gpu_id' => 'required',
+//            'mb_id' => 'required',
+//            'ram_id' => 'required'
+//        ]);
 
-        return redirect("config/".$configs->id);
+        $pcconfig = new Config();
+        $pcconfig->title = $request->input("title");
+        $pcconfig->desc = $request->input("desc");
+        $pcconfig->cpu_id = session('cpu')->id;
+        $pcconfig->gpu_id = session('gpu')->id;
+        $pcconfig->mb_id = (session('mb'))->id;
+        $pcconfig->case_id = session('case')->id;
+        $pcconfig->drive_id = session('drive')->id;
+        $pcconfig->psu_id = session('psu')->id;
+        $pcconfig->ram_id = 1;
+        $pcconfig->cooling_id = 1;
+        $pcconfig->is_verified = false;
+        $pcconfig->price = 0;
+        // TODO clean session
+        // TODO calculate price and add additional components
+        $pcconfig->save();
+
+        return redirect("config/".$pcconfig->id);
     }
 
     public function show(Config $config)
