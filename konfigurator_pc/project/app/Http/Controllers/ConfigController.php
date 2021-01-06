@@ -33,7 +33,8 @@ class ConfigController extends Controller
 
     public function show(Config $config)
     {
-        return view("config.show", ['config' => $config]);
+        $user = Auth::user();
+        return view("config.show", ['config' => $config, 'user' => $user]);
     }
 
     public function edit(Config $config)
@@ -71,5 +72,27 @@ class ConfigController extends Controller
         else {
             return abort('403');
         }
+    }
+
+    public function verify(Config $config)
+    {
+        $user = Auth::user();
+        if ($user->user_type == 'admin') {
+            if ($config->is_verified == true) {
+                $config->is_verified = false;
+                $config->save();
+            }
+            else {
+                $config->is_verified = true;
+                $config->save();
+            }
+
+
+            return redirect()->route('config.show', $config);
+        }
+        else {
+            return abort('403');
+        }
+
     }
 }
