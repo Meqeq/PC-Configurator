@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class asdf extends Component {
+class PC_CASE extends Component {
     use HasFactory;
 
     public static $filters = [
