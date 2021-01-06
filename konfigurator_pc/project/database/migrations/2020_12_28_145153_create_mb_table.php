@@ -14,7 +14,7 @@ class CreateMbTable extends Migration
     public function up()
     {
         Schema::create('mb', function (Blueprint $table) {
-            $table->id('mb_id');
+            $table->id();
             $table->string('name');
             $table->text('desc');
             $table->json('compatibility');

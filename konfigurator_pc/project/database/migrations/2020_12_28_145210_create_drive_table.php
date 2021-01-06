@@ -14,7 +14,7 @@ class CreateDriveTable extends Migration
     public function up()
     {
         Schema::create('drive', function (Blueprint $table) {
-            $table->id('drive_id');
+            $table->id();
             $table->string('name');
             $table->text('desc');
             $table->decimal('price', 8, 2);

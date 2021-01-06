@@ -15,7 +15,6 @@ class RAMSeeder extends Seeder
     public function run()
     {
         DB::table('ram')->insert([
-            'ram_id' => '1',
             'name' => 'HyperX Fury RGB, DDR4, 16 GB',
             'desc' => '...',
             'price' => 369,
@@ -24,7 +23,6 @@ class RAMSeeder extends Seeder
             'type' => 'DDR4'
         ]);
         DB::table('ram')->insert([
-            'ram_id' => '2',
             'name' => 'Corsair Vengeance RGB PRO, DDR4, 16 GB',
             'desc' => '...',
             'price' => 437,
@@ -33,7 +31,6 @@ class RAMSeeder extends Seeder
             'type' => 'DDR4'
         ]);
         DB::table('ram')->insert([
-            'ram_id' => '3',
             'name' => 'Crucial Ballistix Black at DDR4 3200 DRAM Desktop Gaming Memory Kit 16GB',
             'desc' => '...',
             'price' => 319,

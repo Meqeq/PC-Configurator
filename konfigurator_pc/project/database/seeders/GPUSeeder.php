@@ -15,7 +15,6 @@ class GPUSeeder extends Seeder
     public function run()
     {
         DB::table('gpu')->insert([
-            'gpu_id' => '1',
             'name' => 'Gigabyte GeForce RTX 2060 Windforce',
             'desc' => '...',
             'price' => 2089,
@@ -24,7 +23,6 @@ class GPUSeeder extends Seeder
 
 
         DB::table('gpu')->insert([
-            'gpu_id' => '2',
             'name' => 'MSI GeForce RTX 2080 Sea Hawk',
             'desc' => '...',
             'price' => 3644,
@@ -32,7 +30,6 @@ class GPUSeeder extends Seeder
         ]);
 
         DB::table('gpu')->insert([
-            'gpu_id' => '3',
             'name' => 'Asus ROG Strix Radeon RX 5600 XT',
             'desc' => '...',
             'price' => 2081,

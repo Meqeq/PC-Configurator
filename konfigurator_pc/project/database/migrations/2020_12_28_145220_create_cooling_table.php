@@ -14,7 +14,7 @@ class CreateCoolingTable extends Migration
     public function up()
     {
         Schema::create('cooling', function (Blueprint $table) {
-            $table->id('cooling_id');
+            $table->id();
             $table->string('name');
             $table->text('desc');
             $table->decimal('price', 8, 2);

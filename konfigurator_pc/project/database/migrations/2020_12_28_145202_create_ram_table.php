@@ -14,7 +14,7 @@ class CreateRamTable extends Migration
     public function up()
     {
         Schema::create('ram', function (Blueprint $table) {
-            $table->id('ram_id');
+            $table->id();
             $table->string('name');
             $table->text('desc');
             $table->decimal('price', 8,2);
