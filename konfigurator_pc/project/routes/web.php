@@ -33,7 +33,7 @@ Route::resource('/user', App\Http\Controllers\UserController::class)->only([
     'show', 'edit', 'destroy'
 ])->middleware(['auth']);
 
-
+Route::get('/config/{config}/verify', 'App\Http\Controllers\ConfigController@verify')->middleware(['auth'])->name("configVerify");
 Route::resource('/config', App\Http\Controllers\ConfigController::class)->middleware(['auth']);
 
 Route::get('/config', 'App\Http\Controllers\ConfigController@index')->withoutMiddleware(['auth']);
