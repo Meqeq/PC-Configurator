@@ -20,5 +20,4 @@ class MBD extends Component {
     ];
 
     protected $table = 'mb';
-    protected $primaryKey = 'mb_id';
 }

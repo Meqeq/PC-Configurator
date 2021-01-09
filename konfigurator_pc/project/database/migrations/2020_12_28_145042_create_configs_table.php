@@ -27,7 +27,7 @@ class CreateConfigsTable extends Migration
             $table->text('desc')->nullable();
             $table->double('benchmark')->nullable();
             $table->decimal('price', 8, 2);
-            $table->boolean('is_verified');
+            $table->boolean('is_verified')->default(false);
             $table->integer('user_id')->nullable();
             $table->boolean('public')->nullable();
             $table->string('share_url')->nullable();
