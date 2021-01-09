@@ -9,6 +9,14 @@ class CPU extends Component {
 
     public static $filters = [
         [
+            "name" => "producer",
+            "display" => "Producer",
+            "type" => "checkbox",
+            "values" => [
+                "AMD", "Intel"
+            ]
+        ],
+        [
             "name" => "socket",
             "display" => "Socket",
             "type" => "checkbox",

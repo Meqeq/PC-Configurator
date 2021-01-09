@@ -18,22 +18,28 @@ class DriveSeeder extends Seeder
             'name' => 'SSD Lexar NM610 500 GB M.2',
             'desc' => '...',
             'price' => 249,
-            'size' => 500,
-            'type' => 'NVMe'
+            'capacity' => 500,
+            'type' => 'SSD',
+            'producer' => 'Lexar',
+            'interface' => 'SATA'
         ]);
         DB::table('drive')->insert([
             'name' => 'SSD Western Digital Blue 500 GB 2.5" SATA III',
             'desc' => '...',
             'price' => 269,
-            'size' => 500,
-            'type' => 'SATA III'
+            'capacity' => 500,
+            'type' => 'SSD',
+            'producer' => 'Western Digital',
+            'interface' => 'SATA'
         ]);
         DB::table('drive')->insert([
             'name' => 'Crucial MX500 500 GB 2.5" SATA III',
             'desc' => '...',
             'price' => 265,
-            'size' => 500,
-            'type' => 'SATA III'
+            'capacity' => 500,
+            'type' => 'HDD',
+            'producer' => 'CRUCIAL',
+            'interface' => 'SATA'
         ]);
     }
 }

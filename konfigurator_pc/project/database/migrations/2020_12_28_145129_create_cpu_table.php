@@ -21,6 +21,7 @@ class CreateCpuTable extends Migration
             $table->integer('cores');
             $table->integer('frequency');
             $table->string('socket');
+            $table->string('producer');
             $table->timestamps();
         });
     }

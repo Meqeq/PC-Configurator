@@ -13,7 +13,7 @@ class DRIVE extends Component {
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "Western Digital", "Samsung", "Seagate", "ADATA"
+                "Western Digital", "Samsung", "Seagate", "ADATA", "Lexar", "CRUCIAL"
             ]
         ],
         [

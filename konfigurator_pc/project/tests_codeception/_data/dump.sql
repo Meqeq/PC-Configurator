@@ -28,6 +28,7 @@ CREATE TABLE `case` (
   `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -40,7 +41,7 @@ CREATE TABLE `case` (
 
 LOCK TABLES `case` WRITE;
 /*!40000 ALTER TABLE `case` DISABLE KEYS */;
-INSERT INTO `case` VALUES (1,'SilentiumPC Signum SG7V Evo TG ARGB','...',399.00,'ATX',NULL,NULL),(2,'Fractal Design Meshify C TG','...',429.00,'ATX',NULL,NULL),(3,'MSI MAG Forge 100M','...',219.00,'ATX',NULL,NULL);
+INSERT INTO `case` VALUES (1,'SilentiumPC Signum SG7V Evo TG ARGB','...',399.00,'Full','SilentiumPC',NULL,NULL),(2,'Fractal Design Meshify C TG','...',429.00,'Midi','Fractal Design',NULL,NULL),(3,'MSI MAG Forge 100M','...',219.00,'Mini','MSI',NULL,NULL);
 /*!40000 ALTER TABLE `case` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,6 +98,9 @@ CREATE TABLE `cooling` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `socket` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tpd` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -109,7 +113,7 @@ CREATE TABLE `cooling` (
 
 LOCK TABLES `cooling` WRITE;
 /*!40000 ALTER TABLE `cooling` DISABLE KEYS */;
-INSERT INTO `cooling` VALUES (1,'Nzxt Kraken X53 Liquid Cooling','...',579.00,NULL,NULL),(2,'Nzxt Kraken Z63 Liquid Cooling','...',1099.00,NULL,NULL),(3,'ALSEYE ALSEYE H120 120mm','...',260.00,NULL,NULL);
+INSERT INTO `cooling` VALUES (1,'Nzxt Kraken X53 Liquid Cooling','...',579.00,'NZXT','Intel',100,NULL,NULL),(2,'Nzxt Kraken Z63 Liquid Cooling','...',1099.00,'NZXT','AMD',30,NULL,NULL),(3,'ALSEYE ALSEYE H120 120mm','...',260.00,'ALSEYE','Intel',170,NULL,NULL);
 /*!40000 ALTER TABLE `cooling` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,6 +132,7 @@ CREATE TABLE `cpu` (
   `cores` int NOT NULL,
   `frequency` int NOT NULL,
   `socket` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -140,7 +145,7 @@ CREATE TABLE `cpu` (
 
 LOCK TABLES `cpu` WRITE;
 /*!40000 ALTER TABLE `cpu` DISABLE KEYS */;
-INSERT INTO `cpu` VALUES (1,'Intel Core i5-10400F','Częstotliwość taktowania procesora [GHz]: 2.9\nLiczba rdzeni: 6\nOdblokowany mnożnik: Nie\nTyp gniazda: Socket 1200\nZałączone chłodzenie: Tak\n',699.00,4,2900,'1200',NULL,NULL),(2,'AMD Ryzen 5 3600','...',1099.00,6,3600,'AM4',NULL,NULL),(3,'Intel Core i5-9400','...',729.00,4,2900,'1151',NULL,NULL);
+INSERT INTO `cpu` VALUES (1,'Intel Core i5-10400F','...',699.00,4,2900,'1200','Intel',NULL,NULL),(2,'AMD Ryzen 5 3600','...',1099.00,6,3600,'AM4','AMD',NULL,NULL),(3,'Intel Core i5-9400','...',729.00,4,2900,'1151','Intel',NULL,NULL);
 /*!40000 ALTER TABLE `cpu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,8 +161,10 @@ CREATE TABLE `drive` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
-  `size` int NOT NULL,
+  `capacity` int NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `interface` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -170,7 +177,7 @@ CREATE TABLE `drive` (
 
 LOCK TABLES `drive` WRITE;
 /*!40000 ALTER TABLE `drive` DISABLE KEYS */;
-INSERT INTO `drive` VALUES (1,'SSD Lexar NM610 500 GB M.2','...',249.00,500,'NVMe',NULL,NULL),(2,'SSD Western Digital Blue 500 GB 2.5\" SATA III','...',269.00,500,'SATA III',NULL,NULL),(3,'Crucial MX500 500 GB 2.5\" SATA III','...',265.00,500,'SATA III',NULL,NULL);
+INSERT INTO `drive` VALUES (1,'SSD Lexar NM610 500 GB M.2','...',249.00,500,'SSD','Lexar','SATA',NULL,NULL),(2,'SSD Western Digital Blue 500 GB 2.5\" SATA III','...',269.00,500,'SSD','Western Digital','SATA',NULL,NULL),(3,'Crucial MX500 500 GB 2.5\" SATA III','...',265.00,500,'HDD','CRUCIAL','SATA',NULL,NULL);
 /*!40000 ALTER TABLE `drive` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,6 +223,9 @@ CREATE TABLE `gpu` (
   `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `pcie_int` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chipset` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `RAM` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -228,7 +238,7 @@ CREATE TABLE `gpu` (
 
 LOCK TABLES `gpu` WRITE;
 /*!40000 ALTER TABLE `gpu` DISABLE KEYS */;
-INSERT INTO `gpu` VALUES (1,'Gigabyte GeForce RTX 2060 Windforce','...',2089.00,'PCI Express 3.0 x16',NULL,NULL),(2,'MSI GeForce RTX 2080 Sea Hawk','...',3644.00,'PCI Express 3.0 x16',NULL,NULL),(3,'Asus ROG Strix Radeon RX 5600 XT','...',2081.00,'PCI Express 3.0 x16',NULL,NULL);
+INSERT INTO `gpu` VALUES (1,'Gigabyte GeForce RTX 2060 Windforce','...',2089.00,'PCI Express 3.0 x16','Gigabyte','GeForce','4',NULL,NULL),(2,'MSI GeForce RTX 2080 Sea Hawk','...',3644.00,'PCI Express 3.0 x16','MSI','GeForce','8',NULL,NULL),(3,'Asus ROG Strix Radeon RX 5600 XT','...',2081.00,'PCI Express 3.0 x16','Asus','Radeon','4',NULL,NULL);
 /*!40000 ALTER TABLE `gpu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,6 +333,7 @@ CREATE TABLE `psu` (
   `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `power` int NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -335,7 +346,7 @@ CREATE TABLE `psu` (
 
 LOCK TABLES `psu` WRITE;
 /*!40000 ALTER TABLE `psu` DISABLE KEYS */;
-INSERT INTO `psu` VALUES (1,'SilentiumPC Vero L3 500W','...',207.00,500,NULL,NULL),(2,'be quiet! SYSTEM POWER 9 500W','...',249.00,500,NULL,NULL),(3,'SilentiumPC Vero M3 600W','...',266.00,600,NULL,NULL);
+INSERT INTO `psu` VALUES (1,'SilentiumPC Vero L3 500W','...',207.00,500,'SilentiumPC',NULL,NULL),(2,'be quiet! SYSTEM POWER 9 500W','...',249.00,500,'be quiet!',NULL,NULL),(3,'SilentiumPC Vero M3 600W','...',266.00,600,'SilentiumPC',NULL,NULL);
 /*!40000 ALTER TABLE `psu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,6 +365,7 @@ CREATE TABLE `ram` (
   `capacity` int NOT NULL,
   `speed` int NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -366,7 +378,7 @@ CREATE TABLE `ram` (
 
 LOCK TABLES `ram` WRITE;
 /*!40000 ALTER TABLE `ram` DISABLE KEYS */;
-INSERT INTO `ram` VALUES (1,'HyperX Fury RGB, DDR4, 16 GB','...',369.00,16,3200,'DDR4',NULL,NULL),(2,'Corsair Vengeance RGB PRO, DDR4, 16 GB','...',437.00,16,3200,'DDR4',NULL,NULL),(3,'Crucial Ballistix Black at DDR4 3200 DRAM Desktop Gaming Memory Kit 16GB','...',319.00,16,3200,'DDR4',NULL,NULL);
+INSERT INTO `ram` VALUES (1,'HyperX Fury RGB, DDR4, 16 GB','...',369.00,16,3200,'DDR4','Hyper X',NULL,NULL),(2,'Corsair Vengeance RGB PRO, DDR4, 16 GB','...',437.00,16,3200,'DDR4','Corsair',NULL,NULL),(3,'Crucial Ballistix Black at DDR4 3200 DRAM Desktop Gaming Memory Kit 16GB','...',319.00,16,3200,'DDR4','CRUCIAL',NULL,NULL);
 /*!40000 ALTER TABLE `ram` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -398,7 +410,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$XV38jsoDmJz6jcyY6zlK2udQ7o7grxPMPEWc0lOu0EzxiA.f6REB6',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$zi2H7aO3ZYf3BIFVANr8B.nkeVTjO6UCsEQyTn/hdwcjIkJq1dvy2',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$f6nlfWds/Cit5bqrvGwwouyTiUvhWwXG8jv9MCZZwivklL8Y3UDGO',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$Ovo6OMgpOmLCIBglY80Q3.qlwZtukx3KGINvLc8tmWh/xIlgKLx2.',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$sLqmnjjE0VSLSSEDqIHnsuzoXOu.FQx12Wb8U0sXYLQNJcDyCSqJu',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$eJBd/L8MDMuNgnDwD2rscOV/hqjbiZtG6bFbbFJuqQe/C2O/z9mEK',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -411,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-09 14:42:44
+-- Dump completed on 2021-01-09 15:25:36

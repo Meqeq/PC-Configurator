@@ -16,16 +16,12 @@ class CPUSeeder extends Seeder
     {
         DB::table('cpu')->insert([
             'name' => 'Intel Core i5-10400F',
-            'desc' => 'Częstotliwość taktowania procesora [GHz]: 2.9
-Liczba rdzeni: 6
-Odblokowany mnożnik: Nie
-Typ gniazda: Socket 1200
-Załączone chłodzenie: Tak
-',
+            'desc' => '...',
             'frequency' => 2900,
             'cores' => 4,
             'price' => 699,
             'socket' => '1200',
+            'producer' => 'Intel'
         ]);
 
         DB::table('cpu')->insert([
@@ -35,6 +31,7 @@ Załączone chłodzenie: Tak
             'cores' => 6,
             'price' => 1099,
             'socket' => 'AM4',
+            'producer' => 'AMD'
         ]);
 
         DB::table('cpu')->insert([
@@ -44,6 +41,7 @@ Załączone chłodzenie: Tak
             'cores' => 4,
             'price' => 729,
             'socket' => '1151',
+            'producer' => 'Intel'
         ]);
 
     }

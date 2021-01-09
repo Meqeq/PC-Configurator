@@ -19,6 +19,7 @@ class CreateCaseTable extends Migration
             $table->text('desc');
             $table->decimal('price', 8, 2);
             $table->string('type');
+            $table->string('producer');
             $table->timestamps();
         });
     }
