@@ -49,15 +49,15 @@ class UserController extends Controller
             case 'password':
                 $user->update(request()->validate([
                     'current_password' => 'required|password',
-                    'new_password' => 'required',
-                    'confirm_password' => 'required|same:new_password'
+                    'new_password' => 'required|email',
+                    'confirm_password' => 'required|same:new_password|email'
                 ]));
                 break;
             case 'email':
                 $user->update(request()->validate([
                     'current_password' => 'required|password',
-                    'new_email' => 'required',
-                    'confirm_email' => 'required|same:new_email'
+                    'new_email' => 'required|email',
+                    'confirm_email' => 'required|same:new_email|email'
                 ]));
                 break;
         }
