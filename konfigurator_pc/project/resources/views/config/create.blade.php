@@ -20,9 +20,9 @@
         </div>
         <div class="flex justify-center">
             @foreach([
-'cpu' => 'CPU', 'mb' => 'Motherboard', 'gpu' => 'GPU',
+'cpu' => 'CPU', 'mb' => 'Motherboard', 'gpu' => 'GPU', 'ram' => 'RAM',
 'psu' => 'Power supply', 'drive' => 'Storage',
-'case' => 'Case'
+'case' => 'Case', 'cooling' => 'Cooling'
 ] as $key => $value)
                 <a href="{{ route('componentList', [ 'comp' => $key, 'type' => 'select' ]) }}">
                     <div class="w-52 h-52 p-2 hover:shadow">
@@ -49,7 +49,7 @@
 
     <script>
         const chosenElements = document.getElementsByClassName("myChosenElement");
-        if (chosenElements.length === 6) {
+        if (chosenElements.length === 8) {
             const createBtn = document.getElementById("createBtn");
             createBtn.classList.remove("bg-gray-400");
             createBtn.classList.add("bg-indigo-600", "hover:bg-indigo-800")
