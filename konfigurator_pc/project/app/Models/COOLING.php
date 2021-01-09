@@ -13,7 +13,7 @@ class COOLING extends Component {
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "Noctua", "Cooler MAster", "Arctic", "Deepcool"
+                "Noctua", "Cooler Master", "Arctic", "Deepcool", "NZXT", "ALSEYE"
             ]
         ],
         [

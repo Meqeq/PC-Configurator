@@ -13,7 +13,7 @@ class PC_CASE extends Component {
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "SilentiumPC", "Thermaltake", "Fractal Design", "Aerocool", "LC-Power"
+                "SilentiumPC", "Thermaltake", "Fractal Design", "Aerocool", "LC-Power", "MSI"
             ]
         ],
         [

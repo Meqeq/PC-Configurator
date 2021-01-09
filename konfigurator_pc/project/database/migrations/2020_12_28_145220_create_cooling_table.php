@@ -18,6 +18,9 @@ class CreateCoolingTable extends Migration
             $table->string('name');
             $table->text('desc');
             $table->decimal('price', 8, 2);
+            $table->string('producer');
+            $table->string('socket');
+            $table->integer('tpd');
             $table->timestamps();
         });
     }

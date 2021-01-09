@@ -19,6 +19,7 @@ class CreatePsuTable extends Migration
             $table->text('desc');
             $table->decimal('price', 8, 2);
             $table->integer('power');
+            $table->string('producer');
             $table->timestamps();
         });
     }

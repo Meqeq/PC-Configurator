@@ -18,19 +18,22 @@ class CaseSeeder extends Seeder
             'name' => 'SilentiumPC Signum SG7V Evo TG ARGB',
             'desc' => '...',
             'price' => 399,
-            'type' => 'ATX'
+            'type' => 'Full',
+            'producer' => 'SilentiumPC'
         ]);
         DB::table('case')->insert([
             'name' => 'Fractal Design Meshify C TG',
             'desc' => '...',
             'price' => 429,
-            'type' => 'ATX'
+            'type' => 'Midi',
+            'producer' => 'Fractal Design'
         ]);
         DB::table('case')->insert([
             'name' => 'MSI MAG Forge 100M',
             'desc' => '...',
             'price' => 219,
-            'type' => 'ATX'
+            'type' => 'Mini',
+            'producer' => 'MSI'
         ]);
     }
 }

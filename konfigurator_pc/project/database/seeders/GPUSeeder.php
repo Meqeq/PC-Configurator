@@ -19,6 +19,9 @@ class GPUSeeder extends Seeder
             'desc' => '...',
             'price' => 2089,
             'pcie_int' => 'PCI Express 3.0 x16',
+            'producer' => 'Gigabyte',
+            'chipset' => 'GeForce',
+            'RAM' => 4
         ]);
 
 
@@ -27,6 +30,9 @@ class GPUSeeder extends Seeder
             'desc' => '...',
             'price' => 3644,
             'pcie_int' => 'PCI Express 3.0 x16',
+            'producer' => 'MSI',
+            'chipset' => 'GeForce',
+            'RAM' => 8
         ]);
 
         DB::table('gpu')->insert([
@@ -34,6 +40,9 @@ class GPUSeeder extends Seeder
             'desc' => '...',
             'price' => 2081,
             'pcie_int' => 'PCI Express 3.0 x16',
+            'producer' => 'Asus',
+            'chipset' => 'Radeon',
+            'RAM' => 4
         ]);
     }
 }

@@ -21,7 +21,7 @@ class PSU extends Component {
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "Chieftec", "be quiet!", "Thermaltake", "Cooler Master", "Inter-Tech", "Others"
+                "Chieftec", "be quiet!", "Thermaltake", "Cooler Master", "Inter-Tech", "Others", "SilentiumPC"
             ]
         ],
         [

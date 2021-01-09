@@ -20,7 +20,8 @@ class RAMSeeder extends Seeder
             'price' => 369,
             'capacity' => 16,
             'speed' => 3200,
-            'type' => 'DDR4'
+            'type' => 'DDR4',
+            'producer' => 'Hyper X'
         ]);
         DB::table('ram')->insert([
             'name' => 'Corsair Vengeance RGB PRO, DDR4, 16 GB',
@@ -28,7 +29,8 @@ class RAMSeeder extends Seeder
             'price' => 437,
             'capacity' => 16,
             'speed' => 3200,
-            'type' => 'DDR4'
+            'type' => 'DDR4',
+            'producer' => 'Corsair'
         ]);
         DB::table('ram')->insert([
             'name' => 'Crucial Ballistix Black at DDR4 3200 DRAM Desktop Gaming Memory Kit 16GB',
@@ -36,7 +38,8 @@ class RAMSeeder extends Seeder
             'price' => 319,
             'capacity' => 16,
             'speed' => 3200,
-            'type' => 'DDR4'
+            'type' => 'DDR4',
+            'producer' => 'CRUCIAL'
         ]);
     }
 }

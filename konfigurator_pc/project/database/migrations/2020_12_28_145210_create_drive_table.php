@@ -18,8 +18,10 @@ class CreateDriveTable extends Migration
             $table->string('name');
             $table->text('desc');
             $table->decimal('price', 8, 2);
-            $table->integer('size');
+            $table->integer('capacity');
             $table->string('type');
+            $table->string('producer');
+            $table->string('interface');
             $table->timestamps();
         });
     }
