@@ -68,5 +68,23 @@ class ConfigSeeder extends Seeder
             'public' => true,
             'share_url' => "",
         ]);
+        DB::table('configs')->insert([
+            'title' => "Sven is HUGE",
+            'cpu_id' => 3,
+            'gpu_id' => 3,
+            'mb_id' => 3,
+            'ram_id' => 3,
+            'drive_id' => 3,
+            'case_id' => 3,
+            'psu_id' => 3,
+            'cooling_id' => 3,
+            'desc' => "Super config 3",
+            'benchmark' => 0,
+            'price' => 1337,
+            'is_verified' => false,
+            'user_id' => 1,
+            'public' => true,
+            'share_url' => "",
+        ]);
     }
 }

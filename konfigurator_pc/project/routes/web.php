@@ -36,6 +36,13 @@ Route::resource('/user', App\Http\Controllers\UserController::class)->only([
 Route::get('/config/{config}/verify', 'App\Http\Controllers\ConfigController@verify')->middleware(['auth'])->name("configVerify");
 Route::resource('/config', App\Http\Controllers\ConfigController::class)->middleware(['auth']);
 
+Route::get('config/{config}/benchmark', 'App\Http\Controllers\ConfigBenchmarkController@index')->middleware(['auth'])->name('benchmarkIndex');
+Route::get('config/{config}/benchmark/create', 'App\Http\Controllers\ConfigBenchmarkController@create')->middleware(['auth'])->name('benchmarkCreate');
+Route::get('config/{config}/benchmark/edit', 'App\Http\Controllers\ConfigBenchmarkController@edit')->middleware(['auth'])->name("benchmarkEdit");
+Route::post('config/{config}/benchmark', 'App\Http\Controllers\ConfigBenchmarkController@store')->middleware(['auth'])->name("benchmarkStore");
+Route::put('config/{config}/benchmark', 'App\Http\Controllers\ConfigBenchmarkController@update')->middleware(['auth'])->name("benchmarkUpdate");
+Route::delete('config/{config}/benchmark', 'App\Http\Controllers\ConfigBenchmarkController@destroy')->middleware(['auth'])->name("benchmarkDestroy");
+
 Route::get('/config', 'App\Http\Controllers\ConfigController@index')->withoutMiddleware(['auth']);
 
 // Route::get('/select', [App\Http\Controllers\Test::class, 'select']);
