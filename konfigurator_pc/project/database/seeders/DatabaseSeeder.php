@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UserSeeder::class);
-
         $this->call(CPUSeeder::class);
         $this->call(GPUSeeder::class);
         $this->call(MbSeeder::class);
@@ -23,7 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PSUSeeder::class);
         $this->call(CoolingSeeder::class);
         $this->call(CaseSeeder::class);
-
         $this->call(ConfigSeeder::class);
     }
 }

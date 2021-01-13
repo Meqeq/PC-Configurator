@@ -36,7 +36,7 @@ class ConfigController extends Controller
             throw ValidationException::withMessages(['i' => "KEK"]); // TODO jakieś ładne wypisywanie tych błędów
 
         $pcconfig->calcPrice();
-        
+
         $pcconfig->save();
 
         $request->session()->forget($pcconfig->componentsNames); // clean session
@@ -54,7 +54,7 @@ class ConfigController extends Controller
     {
         $id = Auth::id();
         if ($config->user_id == $id) {
-            return view("user.edit", ['config' => $config]);
+            return view("config.edit", ['config' => $config]);
         }
         else {
             return abort('403');
