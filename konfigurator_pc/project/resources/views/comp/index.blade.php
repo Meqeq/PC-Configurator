@@ -23,7 +23,6 @@
                     </div>
                 </div>
             </a>
-            {{ Session::get($value)[0]}}
         @endforeach
     </div>
 @endsection

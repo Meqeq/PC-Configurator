@@ -49,19 +49,18 @@
                         <p class="frequency">{{$component['frequency']}}</p>
                         <p class="cores">{{$component['cores']}}</p>
                     </div>
-                    <div class="w-20">
+                    <div class="mx-4">
                         <a class="bg-indigo-300 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"
                             href="{{ route('componentDetails', [ 'comp' => $comp, 'type' => $type, 'id' => $component->id ]) }}"
                         >
                             Details
                         </a>
                         @if($type == 'select')
-                            <form method="POST" action="{{ route('componentDetails', [ 'comp' => $comp, 'type' => $type, 'id' => $component->id ]) }}">
-                                @csrf
-                                <input type="hidden" name="comp" value="{{$comp}}">
-                                <input type="hidden" name="componentID" value="{{$component->id}}">
-                                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">{{ __('Pick') }}</button>
-                            </form>
+                            <a class="bg-indigo-300 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"
+                                href="{{ route('componentPick', [ 'comp' => $comp, 'type' => 'pick', 'id' => $component->id ]) }}"
+                            >
+                                Pick
+                            </a>
                         @endif
                     </div>
                 </div>

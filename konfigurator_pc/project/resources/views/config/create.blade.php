@@ -27,7 +27,7 @@
             <textarea name="desc" placeholder="Description" :value="old('desc')"
                       class="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-1/2"></textarea>
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center flex-wrap">
             @foreach([
 'cpu' => 'CPU', 'mb' => 'Motherboard', 'gpu' => 'GPU', 'ram' => 'RAM',
 'psu' => 'Power supply', 'drive' => 'Storage',
@@ -36,9 +36,9 @@
                 <a href="{{ route('componentList', [ 'comp' => $key, 'type' => 'select' ]) }}">
                     <div class="w-52 h-52 p-2 hover:shadow">
                         <div class="bg-gray-400 w-full h-40">
-                            @if(session()->has($key))
+                            @if(isset($config->$key))
                                 <div class="myChosenElement text-center h-8 leading-10 bg-gray-100">
-                                    {{session()->get($key)->name}}
+                                    {{$config->$key->name}}
                                 </div>
                             @endif
                         </div>

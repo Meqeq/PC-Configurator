@@ -16,7 +16,14 @@ class ConfigController extends Controller
 
     public function create()
     {
-        return view('config.create');
+        $config = Config::getFromSessionOrCreate();
+        /*echo "<pre>";
+        print_r($config);
+        echo "</pre>";*/
+
+        return view('config.create', [
+            "config" => $config
+        ]);
     }
 
     public function store(Request $request)
@@ -26,28 +33,29 @@ class ConfigController extends Controller
             'desc' => 'required'
         ]);
 
-        $pcconfig = new Config($request->input());
+        $config = Config::getFromSessionOrCreate();
 
-        $pcconfig->fillComponents($request->session());
+        $config->title = $request->input("title");
+        $config->desc = $request->input("desc");
 
-        $compatibility = $pcconfig->checkCompatibility();
+        $compatibility = $config->checkCompatibility();
 
         if(count($compatibility))
             throw ValidationException::withMessages(['i' => "KEK"]); // TODO jakieś ładne wypisywanie tych błędów
 
-        $pcconfig->calcPrice();
+        $config->calcPrice();
 
-        $pcconfig->save();
+        $config->save();
 
-        $request->session()->forget($pcconfig->componentsNames); // clean session
+        $request->session()->forget("config");
 
-        return redirect("config/".$pcconfig->id);
+        return redirect("config/".$config->id);
     }
 
     public function show(Config $config)
     {
         $user = Auth::user();
-        return view("config.show", ['config' => $config, 'user' => $user]);
+        return view("config.show", ['config' => $config, 'user' => $user, 'owner' => true]);
     }
 
     public function edit(Config $config)

@@ -57,6 +57,18 @@ class Config extends Model
         return $this->belongsTo(COOLING::class);
     }
 
+    public static function getFromSessionOrCreate() {
+        if(session()->has("config")) {
+            return session()->get("config");
+        } else {
+            return new Config();
+        }
+    }
+
+    public function saveInSession() {
+        session(["config" => $this]);
+    }
+
     public function fillComponents(\Illuminate\Session\Store $session) {
         foreach($this->componentsNames as $name) {
             if(!$session->has($name)) throw ValidationException::withMessages([$name => "Select component plz"]);

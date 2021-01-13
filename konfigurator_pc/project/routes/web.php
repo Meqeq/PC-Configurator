@@ -53,8 +53,7 @@ Route::get('/config/{config}/{md5}','App\Http\Controllers\ConfigController@share
 
 Route::get('/components/', [ComponentsController::class, 'index'])->name("componentsIndex");
 Route::get('/components/{comp}/{type}', [ComponentsController::class, 'list'])->name("componentList");
+Route::get('/components/{comp}/pick/{id}', [ComponentsController::class, 'pick'])->name("componentPick");
 Route::get('/components/{comp}/{type}/{id}', [ComponentsController::class, 'details'])->name("componentDetails");
-
-Route::post('/components/{comp}/{type}/{id}', [ComponentsController::class, 'pick'])->name("componentDetails");
 
 require __DIR__.'/auth.php';

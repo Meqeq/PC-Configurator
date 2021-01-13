@@ -10,6 +10,7 @@ use App\Models\MBD;
 use App\Models\PC_CASE;
 use App\Models\PSU;
 use App\Models\RAM;
+use App\Models\Config;
 use Illuminate\Http\Request;
 
 class ComponentsController extends Controller
@@ -118,39 +119,41 @@ class ComponentsController extends Controller
 
     /**
      * Picks the component
-     * @param  string  $componentType Name of component ex. cpu/mb/gpu
-     * @param  string  $type Type of the request: list/select
+     * @param  string  $yype Name of component ex. cpu/mb/gpu
+     * @param  string  $id Type of the request: id of component
      */
-    public function pick(Request $request, string $componentType, string $type) {
-        $componentType = $request->input('comp');
-        $specificComponentId = $request->input('componentID');
-        switch ($componentType) {
+    public function pick(Request $request, string $type, string $id) {
+        $config = Config::getFromSessionOrCreate();
+
+        switch ($type) {
             case 'cpu':
-                $queriedComponent = CPU::where('id', $specificComponentId)->first();
+                $config->$type()->associate(CPU::find($id));
                 break;
             case 'gpu':
-                $queriedComponent = GPU::where('id', $specificComponentId)->first();
+                $config->$type()->associate(GPU::find($id));
                 break;
             case 'ram':
-                $queriedComponent = RAM::where('id', $specificComponentId)->first();
+                $config->$type()->associate(RAM::find($id));
                 break;
             case 'psu':
-                $queriedComponent = PSU::where('id', $specificComponentId)->first();
+                $config->$type()->associate(PSU::find($id));
                 break;
             case 'mb':
-                $queriedComponent = MBD::where('id', $specificComponentId)->first();
+                $config->$type()->associate(MBD::find($id));
                 break;
             case 'drive':
-                $queriedComponent = DRIVE::where('id', $specificComponentId)->first();
+                $config->$type()->associate(DRIVE::find($id));
                 break;
             case 'case':
-                $queriedComponent = PC_CASE::where('id', $specificComponentId)->first();
+                $config->$type()->associate(PC_CASE::find($id));
                 break;
             case 'cooling':
-                $queriedComponent = COOLING::where('id', $specificComponentId)->first();
+                $config->$type()->associate(COOLING::find($id));
                 break;
         }
-        session([$componentType => $queriedComponent]);   // save component to session
-        return redirect("/config/create");
+
+        $config->saveInSession();
+
+        return redirect(route("config.create"));
     }
 }
