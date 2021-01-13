@@ -17,7 +17,7 @@ class MbSeeder extends Seeder
         DB::table('mb')->insert([
             'name' => 'Gigabyte B450 AORUS ELITE',
             'desc' => '...',
-            'compatibility' => '{}',
+            'compatibility' => '{"cpu":{"socket":["AM4"]},"ram":{"type":["DDR4"]}}',
             'price' => 399,
         ]);
         DB::table('mb')->insert([

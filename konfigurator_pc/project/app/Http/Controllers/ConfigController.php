@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class ConfigController extends Controller
 {
@@ -28,6 +29,11 @@ class ConfigController extends Controller
         $pcconfig = new Config($request->input());
 
         $pcconfig->fillComponents($request->session());
+
+        $compatibility = $pcconfig->checkCompatibility();
+
+        if(count($compatibility))
+            throw ValidationException::withMessages(['i' => "KEK"]); // TODO jakieś ładne wypisywanie tych błędów
 
         $pcconfig->calcPrice();
         

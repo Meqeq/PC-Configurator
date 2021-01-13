@@ -8,6 +8,15 @@
 
 
 @section('body')
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
     <form method="POST" action="{{ route('config.store') }}" class="bg-white flex-col justify-center m-2 p-2 shadow">
         @csrf
         <div class="flex justify-center mb-3 pt-0">
@@ -37,6 +46,7 @@
                             {{$value}}
                         </div>
                         <?php //xdebug_break(); ?>
+                        
                     </div>
                 </a>
             @endforeach

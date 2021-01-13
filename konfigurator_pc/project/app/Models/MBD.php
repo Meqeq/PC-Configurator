@@ -19,5 +19,9 @@ class MBD extends Component {
         ]
     ];
 
+    protected $casts = [
+        "compatibility" => "array"
+    ];
+
     protected $table = 'mb';
 }
