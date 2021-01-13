@@ -134,12 +134,19 @@ class ConfigController extends Controller
 
     public function sharedConfig(Config $config, string $md5)
     {
+        $owner = false;
         if ($md5 != $config->share_url)
         {
             return abort('403');
         }
         $user = Auth::user();
-        return view("config.show", ['config' => $config, 'user' => $user]);
+        if(Auth::id() == $config->user_id)
+        {
+            $owner = true;
+        }
+        return view("config.show", ['config' => $config, 'user' => $user, 'owner' => $owner]);
+
+
 
     }
 }
