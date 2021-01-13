@@ -39,4 +39,8 @@ abstract class Component extends Model {
 
         return $component;
     }
+
+    public static function compatible(array $list) {
+        return self::select("*");
+    }
 }
