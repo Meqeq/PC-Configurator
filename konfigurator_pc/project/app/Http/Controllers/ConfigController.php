@@ -116,10 +116,30 @@ class ConfigController extends Controller
             $config->public = true;
             $config->save();
             return redirect()->route('user.show', $user);
-        }
-        else {
+        } else {
             return abort('403');
         }
+    }
+
+    public function shareUrl(Config $config, Request $request)
+    {
+        if ($config->share_url == "")
+        {
+            $value = md5(mt_rand());
+            $config->share_url = $value;
+            $config->save();
+        }
+        return view('config.share_url')->withConfig($config);
+    }
+
+    public function sharedConfig(Config $config, string $md5)
+    {
+        if ($md5 != $config->share_url)
+        {
+            return abort('403');
+        }
+        $user = Auth::user();
+        return view("config.show", ['config' => $config, 'user' => $user]);
 
     }
 }

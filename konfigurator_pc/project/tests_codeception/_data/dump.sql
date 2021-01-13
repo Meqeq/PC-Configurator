@@ -66,14 +66,14 @@ CREATE TABLE `configs` (
   `desc` text COLLATE utf8mb4_unicode_ci,
   `benchmark` double DEFAULT NULL,
   `price` decimal(8,2) NOT NULL,
-  `is_verified` tinyint(1) NOT NULL,
+  `is_verified` tinyint(1) NOT NULL DEFAULT '0',
   `user_id` int DEFAULT NULL,
   `public` tinyint(1) DEFAULT NULL,
   `share_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,7 +82,7 @@ CREATE TABLE `configs` (
 
 LOCK TABLES `configs` WRITE;
 /*!40000 ALTER TABLE `configs` DISABLE KEYS */;
-INSERT INTO `configs` VALUES (1,'PREMIUM XXX',1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,0,'',NULL,NULL),(2,'Ol\' an\' good',1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,1,'',NULL,NULL),(3,'Pretty one',3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,1,'',NULL,NULL);
+INSERT INTO `configs` VALUES (1,'PREMIUM XXX',1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,0,'',NULL,NULL),(2,'Ol\' an\' good',1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,1,'',NULL,NULL),(3,'Pretty one',3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,1,'',NULL,NULL),(4,'Sven is HUGE',3,3,3,3,3,3,3,3,'Super config 3',0,1337.00,0,1,1,'',NULL,NULL);
 /*!40000 ALTER TABLE `configs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +267,7 @@ CREATE TABLE `mb` (
 
 LOCK TABLES `mb` WRITE;
 /*!40000 ALTER TABLE `mb` DISABLE KEYS */;
-INSERT INTO `mb` VALUES (1,'Gigabyte B450 AORUS ELITE','...','{}',399.00,NULL,NULL),(2,'Gigabyte X570 GAMING X','...','{}',769.00,NULL,NULL),(3,'MSI B450 TOMAHAWK MAX','...','{}',449.00,NULL,NULL);
+INSERT INTO `mb` VALUES (1,'Gigabyte B450 AORUS ELITE','...','{\"cpu\": {\"socket\": [\"AM4\"]}, \"ram\": {\"type\": [\"DDR4\"]}}',399.00,NULL,NULL),(2,'Gigabyte X570 GAMING X','...','{}',769.00,NULL,NULL),(3,'MSI B450 TOMAHAWK MAX','...','{}',449.00,NULL,NULL);
 /*!40000 ALTER TABLE `mb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -410,7 +410,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$Ovo6OMgpOmLCIBglY80Q3.qlwZtukx3KGINvLc8tmWh/xIlgKLx2.',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$sLqmnjjE0VSLSSEDqIHnsuzoXOu.FQx12Wb8U0sXYLQNJcDyCSqJu',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$eJBd/L8MDMuNgnDwD2rscOV/hqjbiZtG6bFbbFJuqQe/C2O/z9mEK',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$deToQ2eQcmsWw11rThVTSeCpgYIb450yD0uDUK9GRPQcpyVseNQu2',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$6XXT2iKN9Y2RnvweY.RxzuQ3MNbHJZeDrE2ZXD5C6H1Xo0aOFbx9a',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$XZdzpvluDkbciaT9yCV8ku26SI0Ak11./wzw.bkAhKb0eqyrjJsTS',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -423,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-09 15:25:36
+-- Dump completed on 2021-01-13 14:43:19
