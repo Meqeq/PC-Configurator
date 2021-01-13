@@ -45,6 +45,9 @@ Route::delete('config/{config}/benchmark', 'App\Http\Controllers\ConfigBenchmark
 
 Route::get('/config', 'App\Http\Controllers\ConfigController@index')->withoutMiddleware(['auth']);
 
+Route::get('/config/{config}/share_url', 'App\Http\Controllers\ConfigController@shareUrl')->middleware(['auth'])->name('configShareUrl');
+Route::get('/config/{config}/{md5}','App\Http\Controllers\ConfigController@sharedConfig')->middleware(['auth'])->name('sharedConfig');
+
 // Route::get('/select', [App\Http\Controllers\Test::class, 'select']);
 
 Route::get('/components/', [ComponentsController::class, 'index'])->name("componentsIndex");
