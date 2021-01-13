@@ -34,6 +34,7 @@ Route::resource('/user', App\Http\Controllers\UserController::class)->only([
 ])->middleware(['auth']);
 
 Route::get('/config/{config}/verify', 'App\Http\Controllers\ConfigController@verify')->middleware(['auth'])->name("configVerify");
+Route::get('/config/{config}/publish', 'App\Http\Controllers\ConfigController@publish')->middleware(['auth'])->name("configPublish");
 Route::resource('/config', App\Http\Controllers\ConfigController::class)->middleware(['auth']);
 
 Route::get('config/{config}/benchmark', 'App\Http\Controllers\ConfigBenchmarkController@index')->middleware(['admin'])->name('benchmarkIndex');

@@ -108,4 +108,18 @@ class ConfigController extends Controller
         }
 
     }
+
+    public function publish(Config $config)
+    {
+        $user = Auth::user();
+        if ($config->user_id == $user->id) {
+            $config->public = true;
+            $config->save();
+            return redirect()->route('user.show', $user);
+        }
+        else {
+            return abort('403');
+        }
+
+    }
 }

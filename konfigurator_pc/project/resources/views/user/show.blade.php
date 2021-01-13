@@ -52,6 +52,7 @@
                                 <th class="px-6 py-3 border-b-2 border-gray-300"></th>
                                 @if($owner)
                                 <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
                                 @endif
                             </tr>
                             </thead>
@@ -77,6 +78,11 @@
                                         <td class="whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
                                         <a href="{{route('config.edit', $config->id)}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3">{{ __('Edit') }}</a>
                                         </td>
+                                        @if($config->public == false)
+                                        <td class="whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
+                                            <a href="{{route('configPublish', $config->id)}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3">{{ __('Publish') }}</a>
+                                        </td>
+                                        @endif
                                     @endif
 
                                 </tr>
