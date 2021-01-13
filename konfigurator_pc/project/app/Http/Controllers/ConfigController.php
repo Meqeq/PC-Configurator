@@ -54,7 +54,7 @@ class ConfigController extends Controller
     {
         $id = Auth::id();
         if ($config->user_id == $id) {
-            return view("user.edit", ['config' => $config]);
+            return view("config.edit", ['config' => $config]);
         }
         else {
             return abort('403');
