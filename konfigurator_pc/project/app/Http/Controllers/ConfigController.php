@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Config;
+use App\Models\COOLING;
+use App\Models\CPU;
+use App\Models\DRIVE;
+use App\Models\GPU;
+use App\Models\MBD;
+use App\Models\PC_CASE;
+use App\Models\PSU;
+use App\Models\RAM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -58,8 +66,19 @@ class ConfigController extends Controller
 
     public function show(Config $config)
     {
+        // get component names
+        $pc_components = [];
+        $pc_components['cpu'] = CPU::find($config->cpu_id);
+        $pc_components['gpu'] = GPU::find($config->gpu_id);
+        $pc_components['ram'] = RAM::find($config->ram_id);
+        $pc_components['psu'] = PSU::find($config->psu_id);
+        $pc_components['mb'] = MBD::find($config->mb_id);
+        $pc_components['drive'] = DRIVE::find($config->drive_id);
+        $pc_components['case'] = PC_CASE::find($config->case_id);
+        $pc_components['cooling'] = COOLING::find($config->cooling_id);
+
         $user = Auth::user();
-        return view("config.show", ['config' => $config, 'user' => $user, 'owner' => true]);
+        return view("config.show", ['config' => $config, 'user' => $user, 'owner' => true, 'pc_components' => $pc_components]);
     }
 
     public function edit(Config $config)

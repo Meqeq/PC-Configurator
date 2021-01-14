@@ -39,15 +39,23 @@
                         <div class='py-10'>
                             <div class="max-w-md mx-auto xl:max-w-5xl lg:max-w-5xl md:max-w-2xl bg-gray-700 max-h-screen shadow-2xl flex-row rounded relative">
                                 <div class="p-2 bg-gray-600 text-blue-900 rounded-t">
-                                    <h5 class="text-white text-2xl capitalize">{{ $config->cpu_id }}</h5>
-                                    <h3 class="text-white text-l">{{ $config->cpu_id }}</h3>
+                                    <h5 class="text-white text-2xl capitalize">{{ $config->title }}</h5>
+                                    <h3 class="text-white text-l">{{ $config->price }} $$</h3>
                                 </div>
-                                <div class="p-2 w-full h-full overflow-y-auto text-gray-100">
-                                    <p class="text-justify py-2">
+                                <div style="justify-content: space-evenly;" class="p-2 w-full h-full overflow-y-auto text-gray-100 flex flex-row">
+                                    <div class="flex-initial text-justify py-2">
                                         @markdown
-                                        {{$config->cpu_id}}
+                                        {{$config->desc}}
                                         @endmarkdown
-                                    </p>
+                                    </div>
+                                    <div class="flex-initial text-justify py-2">
+                                        <strong class="text-xl">Specification:</strong>
+                                        <ul class="list-disc">
+                                            @foreach($config->componentNames as $key => $value)
+                                                <li>{{$value}}: {{$pc_components[$key]->name}}:</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
