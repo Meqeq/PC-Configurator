@@ -4,9 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Validation\ValidationException;
-use phpDocumentor\Reflection\Types\Boolean;
-use Symfony\Component\VarDumper\VarDumper;
 
 class Config extends Model
 {
@@ -14,7 +11,12 @@ class Config extends Model
 
     protected $table = 'configs';
 
-    public $componentsNames = ['cpu', 'gpu', 'mb', 'case', 'drive', 'psu', 'ram', 'cooling'];
+    public $componentList = ['cpu', 'gpu', 'mb', 'case', 'drive', 'psu', 'ram', 'cooling'];
+    
+    public $componentNames = [
+        'cpu' => 'CPU', 'gpu' => 'Graphics card', 'mb' => 'Motherboard', 'case' => 'Case', 
+        'drive' => 'Drive', 'psu' => 'Power supply', 'ram' => 'RAM', 'cooling' => 'Cooling'
+    ];
 
     protected $fillable = [
         'title',
@@ -69,9 +71,9 @@ class Config extends Model
         session(["config" => $this]);
     }
 
-    public function compatibileSpec(string $comp) : array {
+    public function compatibleSpec(string $comp) : array {
         $params = [];
-        foreach($this->componentsNames as $name) {
+        foreach($this->componentList as $name) {
             if(isset($this->$name) && isset($this->$name->compatibility) && isset($this->$name->compatibility[$comp])) {
                 foreach($this->$name->compatibility[$comp] as $key => $needed) {
                     $params[$key] = $needed;
@@ -81,61 +83,50 @@ class Config extends Model
         return $params;
     } 
 
-    public function fillComponents(\Illuminate\Session\Store $session) {
-        foreach($this->componentsNames as $name) {
-            if(!$session->has($name)) throw ValidationException::withMessages([$name => "Select component plz"]);
+    public function compatibilityErrors() : array {
+        $errors = [];
 
-            $this->$name()->associate($session->get($name));
+        foreach($this->componentList as $name) {
+            if(isset($this->$name) && isset($this->$name->compatibility)) {
+                foreach($this->$name->compatibility as $component => $list) {
+                    if(isset($this->$component) && !$this->$component->isCompatible($list)) {
+                        array_push($errors, $this->componentNames[$component]." is incompatible with ".$this->componentNames[$name]);
+                    }
+                }
+            }
         }
+
+        return $errors;
+    }
+
+    public function isComplete() : bool {
+        foreach($this->componentList as $name) {
+            if(!isset($this->$name)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function isCompatible() : bool {
+        foreach($this->componentList as $name) {
+            if(isset($this->$name) && isset($this->$name->compatibility)) {
+                foreach($this->$name->compatibility as $component => $list) {
+                    if(isset($this->$component) && !$this->$component->isCompatible($list))
+                        return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     public function calcPrice() {
         $price = 0;
-        foreach ($this->componentsNames as $name) {
+        foreach ($this->componentList as $name) {
             $price += $this->$name->price;
         }
 
         $this->price = $price;
-    }
-
-    private function isCompatibile(array $list) : bool {
-        $isCompatible = true;
-
-        foreach($list as $component => $rules) {
-            foreach($rules as $spec => $compatibile) {
-                if(!in_array($this->$component->$spec, $compatibile)) 
-                    $isCompatible = false;
-            }
-        }
-
-        return $isCompatible;
-    }
-    
-    private function checkCompatibilityList(array $list) : array {
-        $issues = [];
-
-        foreach($list as $component => $rules) {
-            $componentIssues = [];
-            foreach($rules as $spec => $compatibile) {
-                if(!in_array($this->$component->$spec, $compatibile)) {
-                    array_push($componentIssues, [$spec, $compatibile, $this->$component->$spec]);
-                }
-            }
-            if(count($componentIssues)) $issues[$component] = $componentIssues;
-        }
-
-        return $issues;
-    }
-
-    public function checkCompatibility() {
-        $issues = [];
-        foreach ($this->componentsNames as $name) {
-            if(isset($this->$name->compatibility)) {
-                $componentIssues = $this->checkCompatibilityList($this->$name->compatibility);
-                if(count($componentIssues))
-                    $issues[$name] = $componentIssues;
-            }
-        }
-        return $issues;
     }
 }

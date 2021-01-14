@@ -43,4 +43,15 @@ abstract class Component extends Model {
     public static function compatible(array $list) {
         return self::select("*");
     }
+
+    public function isCompatible(array $list) : bool {
+        $is = true;
+
+        foreach($list as $key => $value) {
+            if(!in_array($this->$key, $value))
+                $is = false;
+        }
+
+        return $is;
+    }
 }

@@ -78,7 +78,13 @@ class ComponentsController extends Controller
         ]);
     }
 
-    public function details(Request $request, string $component, string $action, $id)
+    /**
+     * Shows details of component
+     * @param  string  $component Name of component ex. cpu/mb/gpu
+     * @param  string  $action Type of the request: list/select
+     * @param  string  $id Type of the request: id of component
+     */
+    public function details(string $component, string $action, $id)
     {
         switch ($component) {
             case 'cpu':
@@ -119,36 +125,36 @@ class ComponentsController extends Controller
 
     /**
      * Picks the component
-     * @param  string  $type Name of component ex. cpu/mb/gpu
-     * @param  string  $id Type of the request: id of component
+     * @param  string  $comp Name of component ex. cpu/mb/gpu
+     * @param  string  $id id of component
      */
-    public function pick(string $type, string $id) {
+    public function pick(string $comp, string $id) {
         $config = Config::getFromSessionOrCreate();
 
-        switch ($type) {
+        switch ($comp) {
             case 'cpu':
-                $config->$type()->associate(CPU::find($id));
+                $config->$comp()->associate(CPU::find($id));
                 break;
             case 'gpu':
-                $config->$type()->associate(GPU::find($id));
+                $config->$comp()->associate(GPU::find($id));
                 break;
             case 'ram':
-                $config->$type()->associate(RAM::find($id));
+                $config->$comp()->associate(RAM::find($id));
                 break;
             case 'psu':
-                $config->$type()->associate(PSU::find($id));
+                $config->$comp()->associate(PSU::find($id));
                 break;
             case 'mb':
-                $config->$type()->associate(MBD::find($id));
+                $config->$comp()->associate(MBD::find($id));
                 break;
             case 'drive':
-                $config->$type()->associate(DRIVE::find($id));
+                $config->$comp()->associate(DRIVE::find($id));
                 break;
             case 'case':
-                $config->$type()->associate(PC_CASE::find($id));
+                $config->$comp()->associate(PC_CASE::find($id));
                 break;
             case 'cooling':
-                $config->$type()->associate(COOLING::find($id));
+                $config->$comp()->associate(COOLING::find($id));
                 break;
         }
 

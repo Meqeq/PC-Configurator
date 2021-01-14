@@ -20,10 +20,11 @@ class ConfigController extends Controller
         /*echo "<pre>";
         print_r($config);
         echo "</pre>";*/
-        $config->compatibileSpec("cpu");
         
+
         return view('config.create', [
-            "config" => $config
+            "config" => $config,
+            "compatibilityErrors" => $config->compatibilityErrors()
         ]);
     }
 
@@ -39,11 +40,11 @@ class ConfigController extends Controller
         $config->title = $request->input("title");
         $config->desc = $request->input("desc");
 
-        $compatibility = $config->checkCompatibility();
+        if(!$config->isComplete())
+            throw ValidationException::withMessages(['Config' => "Config is incomplete"]);
 
-
-        if(count($compatibility))
-            throw ValidationException::withMessages(['i' => "KEK"]); // TODO jakieś ładne wypisywanie tych błędów
+        if(!$config->isCompatible())
+            throw ValidationException::withMessages(['Config' => "Config is incompatible"]);
 
         $config->calcPrice();
 
@@ -51,7 +52,7 @@ class ConfigController extends Controller
 
         $request->session()->forget("config");
 
-        return redirect("config/".$config->id);
+        return redirect(route("config.show", ['config' => $config]));
     }
 
     public function show(Config $config)

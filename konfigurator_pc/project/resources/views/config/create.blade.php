@@ -8,15 +8,6 @@
 
 
 @section('body')
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
     <form method="POST" action="{{ route('config.store') }}" class="bg-white flex-col justify-center m-2 p-2 shadow">
         @csrf
         <div class="flex justify-center mb-3 pt-0">
@@ -27,13 +18,18 @@
             <textarea name="desc" placeholder="Description" :value="old('desc')"
                       class="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-1/2"></textarea>
         </div>
+        @if (count($compatibilityErrors))
+            <div class="alert alert-danger text-center">
+                <ul>
+                    @foreach ($compatibilityErrors as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="flex justify-center flex-wrap">
-            @foreach([
-'cpu' => 'CPU', 'mb' => 'Motherboard', 'gpu' => 'GPU', 'ram' => 'RAM',
-'psu' => 'Power supply', 'drive' => 'Storage',
-'case' => 'Case', 'cooling' => 'Cooling'
-] as $key => $value)
-                <a href="{{ route('componentList', array_merge($config->compatibileSpec($key), ['action' => 'select', 'comp' => $key])) }}">
+            @foreach($config->componentNames as $key => $value)
+                <a href="{{ route('componentList', array_merge($config->compatibleSpec($key), ['action' => 'select', 'comp' => $key])) }}">
                     <div class="w-52 h-52 p-2 hover:shadow">
                         <div class="bg-gray-400 w-full h-40">
                             @if(isset($config->$key))
