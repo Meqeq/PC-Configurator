@@ -6,7 +6,7 @@
         <button class="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200">
             <a href="/config/create"><img class="w-4 h-4 fill-current" src="/img/back.svg" alt="Back"></a>
         </button>
-        @if($type == 'select')
+        @if($action == 'select')
             Pick component for your config
         @else
             List of components
@@ -51,13 +51,13 @@
                     </div>
                     <div class="mx-4">
                         <a class="bg-indigo-300 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"
-                            href="{{ route('componentDetails', [ 'comp' => $comp, 'type' => $type, 'id' => $component->id ]) }}"
+                            href="{{ route('componentDetails', [ 'comp' => $comp, 'action' => $action, 'id' => $component->id ]) }}"
                         >
                             Details
                         </a>
-                        @if($type == 'select')
+                        @if($action == 'select')
                             <a class="bg-indigo-300 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"
-                                href="{{ route('componentPick', [ 'comp' => $comp, 'type' => 'pick', 'id' => $component->id ]) }}"
+                                href="{{ route('componentPick', [ 'comp' => $comp, 'action' => 'pick', 'id' => $component->id ]) }}"
                             >
                                 Pick
                             </a>

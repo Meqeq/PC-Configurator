@@ -57,7 +57,7 @@ class Config extends Model
         return $this->belongsTo(COOLING::class);
     }
 
-    public static function getFromSessionOrCreate() {
+    public static function getFromSessionOrCreate() : Config {
         if(session()->has("config")) {
             return session()->get("config");
         } else {
@@ -68,6 +68,18 @@ class Config extends Model
     public function saveInSession() {
         session(["config" => $this]);
     }
+
+    public function compatibileSpec(string $comp) : array {
+        $params = [];
+        foreach($this->componentsNames as $name) {
+            if(isset($this->$name) && isset($this->$name->compatibility) && isset($this->$name->compatibility[$comp])) {
+                foreach($this->$name->compatibility[$comp] as $key => $needed) {
+                    $params[$key] = $needed;
+                }
+            }
+        }
+        return $params;
+    } 
 
     public function fillComponents(\Illuminate\Session\Store $session) {
         foreach($this->componentsNames as $name) {

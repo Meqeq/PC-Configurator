@@ -29,9 +29,9 @@ class ComponentsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $component Name of component ex. cpu/mb/gpu
-     * @param  string  $type Type of the request: list/select
+     * @param  string  $action Type of the request: list/select
      */
-    public function list(Request $request, string $component, string $type) {
+    public function list(Request $request, string $component, string $action) {
         $request->flash();  // TODO czy to na pewno jest potrzebne?
 
         switch($component) {
@@ -73,12 +73,12 @@ class ComponentsController extends Controller
         return view("comp.list", [
             "configOptions" => $configOptions,
             "data" => $elements->get(),
-            "type" => $type,
+            "action" => $action,
             "comp" => $component
         ]);
     }
 
-    public function details(Request $request, string $component, string $type, $id)
+    public function details(Request $request, string $component, string $action, $id)
     {
         switch ($component) {
             case 'cpu':
@@ -111,7 +111,7 @@ class ComponentsController extends Controller
 
         return view("comp.details", [
             "data" => $elements,
-            "type" => $type,
+            "action" => $action,
             "comp" => $component
         ]);
     }
@@ -119,10 +119,10 @@ class ComponentsController extends Controller
 
     /**
      * Picks the component
-     * @param  string  $yype Name of component ex. cpu/mb/gpu
+     * @param  string  $type Name of component ex. cpu/mb/gpu
      * @param  string  $id Type of the request: id of component
      */
-    public function pick(Request $request, string $type, string $id) {
+    public function pick(string $type, string $id) {
         $config = Config::getFromSessionOrCreate();
 
         switch ($type) {

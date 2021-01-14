@@ -20,7 +20,8 @@ class ConfigController extends Controller
         /*echo "<pre>";
         print_r($config);
         echo "</pre>";*/
-
+        $config->compatibileSpec("cpu");
+        
         return view('config.create', [
             "config" => $config
         ]);
@@ -39,6 +40,7 @@ class ConfigController extends Controller
         $config->desc = $request->input("desc");
 
         $compatibility = $config->checkCompatibility();
+
 
         if(count($compatibility))
             throw ValidationException::withMessages(['i' => "KEK"]); // TODO jakieś ładne wypisywanie tych błędów

@@ -33,7 +33,7 @@
 'psu' => 'Power supply', 'drive' => 'Storage',
 'case' => 'Case', 'cooling' => 'Cooling'
 ] as $key => $value)
-                <a href="{{ route('componentList', [ 'comp' => $key, 'type' => 'select' ]) }}">
+                <a href="{{ route('componentList', array_merge($config->compatibileSpec($key), ['action' => 'select', 'comp' => $key])) }}">
                     <div class="w-52 h-52 p-2 hover:shadow">
                         <div class="bg-gray-400 w-full h-40">
                             @if(isset($config->$key))
