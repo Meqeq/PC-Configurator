@@ -9,6 +9,11 @@ modules:
     enabled:
         - PhpBrowser:
             url: http://localhost:8888
+#        - WebDriver:
+            # Do not forget to start Selenium - execute below command in bash:
+            #   cd /opt/selenium && java -jar selenium-server-standalone-3.141.59.jar
+#            url: http://localhost:8888
+#            browser: firefox
         - \Helper\Acceptance
         - Db:
             dsn: 'mysql:host=127.0.0.1;dbname=test'

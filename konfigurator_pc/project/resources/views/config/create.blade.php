@@ -50,7 +50,7 @@
         </div>
         <div class="flex justify-center">
             <button id="createBtn" disabled
-                    class="m-6 w-1/2 h-14 px-6 text-indigo-100 transition-colors duration-150 bg-gray-400 rounded-lg focus:shadow-outline">{{ __('Create') }}</button>
+                    class="m-6 w-1/2 h-14 px-6 text-indigo-100 transition-colors duration-150 bg-gray-400 rounded-lg focus:shadow-outline">{{ __('Create new PC configuration') }}</button>
         </div>
     </form>
 
