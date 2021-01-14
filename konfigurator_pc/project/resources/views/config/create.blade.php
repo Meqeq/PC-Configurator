@@ -19,7 +19,7 @@
                       class="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-1/2"></textarea>
         </div>
         @if (count($compatibilityErrors))
-            <div class="alert alert-danger text-center">
+            <div class="alert alert-danger text-center text-red-600 font-bold">
                 <ul>
                     @foreach ($compatibilityErrors as $error)
                         <li>{{ $error }}</li>
@@ -30,19 +30,20 @@
         <div class="flex justify-center flex-wrap">
             @foreach($config->componentNames as $key => $value)
                 <a href="{{ route('componentList', array_merge($config->compatibleSpec($key), ['action' => 'select', 'comp' => $key])) }}">
-                    <div class="w-52 h-52 p-2 hover:shadow">
-                        <div class="bg-gray-400 w-full h-40">
-                            @if(isset($config->$key))
-                                <div class="myChosenElement text-center h-8 leading-10 bg-gray-100">
-                                    {{$config->$key->name}}
-                                </div>
-                            @endif
+                    <div class="w-52 p-2 hover:shadow">
+                        <div class="bg-gray-400 w-full h-40 flex justify-center">
+                            <img style="max-width: 100%;padding: 10px;max-height: 100%;" src="/img/{{$key}}.svg" alt="{{$key}} image">
                         </div>
-                        <div class="text-center h-8 leading-10 bg-gray-100">
+                        <div class="text-center leading-10 bg-gray-100">
                             {{$value}}
                         </div>
+                        @if(isset($config->$key))
+                        <div class="myChosenElement text-center leading-10 bg-gray-100">
+                            {{$config->$key->name}}
+                        </div>
+                        @endif
                         <?php //xdebug_break(); ?>
-                        
+
                     </div>
                 </a>
             @endforeach
