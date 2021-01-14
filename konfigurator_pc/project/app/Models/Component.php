@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,13 @@ abstract class Component extends Model {
 
     public static $filters = [];
 
-    public static function filter(Request $request) {
+    /**
+     * Return Eloqent query builder with filtered compatible components
+     *
+     * @param Request $request 
+     * @return Builder
+     */
+    public static function filter(Request $request) : Builder {
         
         $component = self::select("*");
 
@@ -39,11 +46,29 @@ abstract class Component extends Model {
 
         return $component;
     }
+    
+    /**
+     * Return Eloqent query builder with filtered compatible components 
+     *
+     * @param array $list list of compatible spec
+     * @return Builder
+     */
+    public static function compatible(array $list) : Builder {
+        $component = self::select("*");
 
-    public static function compatible(array $list) {
-        return self::select("*");
+        foreach($list as $field => $allowed) {
+            $component = $component->whereIn($field, $allowed);
+        }
+        
+        return $component;
     }
 
+    /**
+     * Check if component is compatibile with provided spec
+     *
+     * @param array $list list of compatible spec
+     * @return bool
+     */
     public function isCompatible(array $list) : bool {
         $is = true;
 

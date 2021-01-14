@@ -17,10 +17,11 @@ class ConfigController extends Controller
     public function create()
     {
         $config = Config::getFromSessionOrCreate();
+
         /*echo "<pre>";
-        print_r($config);
+        $compatibleComponents = \app\Models\CPU::compatible($config->compatibleSpec("cpu"));
+        print_r($compatibleComponents->get());
         echo "</pre>";*/
-        
 
         return view('config.create', [
             "config" => $config,
