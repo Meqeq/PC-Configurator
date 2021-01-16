@@ -159,7 +159,14 @@ class ComponentsController extends Controller
         }
 
         $config->saveInSession();
+        if (session()->get('edit', false))
+        {
+            return redirect(route("config.edit", ['config'=>$config]));
+        }
+        else
+        {
+            return redirect(route("config.create"));
+        }
 
-        return redirect(route("config.create"));
     }
 }

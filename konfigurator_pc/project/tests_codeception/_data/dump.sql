@@ -410,7 +410,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$deToQ2eQcmsWw11rThVTSeCpgYIb450yD0uDUK9GRPQcpyVseNQu2',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$6XXT2iKN9Y2RnvweY.RxzuQ3MNbHJZeDrE2ZXD5C6H1Xo0aOFbx9a',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$XZdzpvluDkbciaT9yCV8ku26SI0Ak11./wzw.bkAhKb0eqyrjJsTS',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$9m/do1Ky5A/YFYJl2nniTOvm/ONq6JGInx.TOScrZXpCKzDv065p.',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$CGn1Cmuat4OQQhvyqM7nIuiLtA0znhY68QvIZP5Ps2fPv1B64ecRm',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$pLaqUaJYq0oREZrePx9jQuEyA.aNP9c1BKEB.oM4o0KjuI7PO4Tay',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -423,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-13 14:43:19
+-- Dump completed on 2021-01-16 15:08:00

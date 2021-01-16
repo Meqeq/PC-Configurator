@@ -49,6 +49,8 @@ class ConfigController extends Controller
         $config->title = $request->input("title");
         $config->desc = $request->input("desc");
 
+        $config->user()->associate(Auth::user());
+
         if(!$config->isComplete())
             throw ValidationException::withMessages(['Config' => "Config is incomplete"]);
 
@@ -56,6 +58,8 @@ class ConfigController extends Controller
             throw ValidationException::withMessages(['Config' => "Config is incompatible"]);
 
         $config->calcPrice();
+
+
 
         $config->save();
 
@@ -83,9 +87,19 @@ class ConfigController extends Controller
 
     public function edit(Config $config)
     {
+        if (!session()->has("config")) {
+            $config->saveInSession();
+        }
+        else {
+            $config = Config::getFromSessionOrCreate();
+        }
         $id = Auth::id();
         if ($config->user_id == $id) {
-            return view("config.edit", ['config' => $config]);
+            session(['edit' => true]);
+            return view("config.edit", [
+                'config' => $config,
+                'compatibilityErrors' => $config->compatibilityErrors()
+            ]);
         }
         else {
             return abort('403');
@@ -93,15 +107,33 @@ class ConfigController extends Controller
 
     }
 
-    public function update(Config $config)
+    public function update(int $id, Request $request)
     {
-        //TODO: lepsza walidacja
-        $config->update(request()->validate([
-            'cpu_id' => 'required',
-            'gpu_id' => 'required',
-            'mb_id' => 'required',
-            'ram_id' => 'required'
-        ]));
+        $this->validate($request, [
+            'title' => 'required',
+            'desc' => 'required'
+        ]);
+
+        $config = Config::getFromSessionOrCreate();
+
+        if ($config->id != $id) {
+            return abort('403');
+        }
+        $config->title = $request->input("title");
+        $config->desc = $request->input("desc");
+
+        if(!$config->isComplete())
+            throw ValidationException::withMessages(['Config' => "Config is incomplete"]);
+
+        if(!$config->isCompatible())
+            throw ValidationException::withMessages(['Config' => "Config is incompatible"]);
+
+        $config->calcPrice();
+
+        $config->save();
+
+        $request->session()->forget("config");
+
 
         return redirect("config/".$config->id);
     }

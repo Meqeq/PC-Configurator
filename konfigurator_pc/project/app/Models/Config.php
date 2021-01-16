@@ -12,9 +12,9 @@ class Config extends Model
     protected $table = 'configs';
 
     public $componentList = ['cpu', 'gpu', 'mb', 'case', 'drive', 'psu', 'ram', 'cooling'];
-    
+
     public $componentNames = [
-        'cpu' => 'CPU', 'gpu' => 'Graphics card', 'mb' => 'Motherboard', 'case' => 'Case', 
+        'cpu' => 'CPU', 'gpu' => 'Graphics card', 'mb' => 'Motherboard', 'case' => 'Case',
         'drive' => 'Drive', 'psu' => 'Power supply', 'ram' => 'RAM', 'cooling' => 'Cooling'
     ];
 
@@ -59,6 +59,10 @@ class Config extends Model
         return $this->belongsTo(COOLING::class);
     }
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     public static function getFromSessionOrCreate() : Config {
         if(session()->has("config")) {
             return session()->get("config");
@@ -81,7 +85,7 @@ class Config extends Model
             }
         }
         return $params;
-    } 
+    }
 
     public function compatibilityErrors() : array {
         $errors = [];
