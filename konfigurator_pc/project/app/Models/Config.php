@@ -51,8 +51,8 @@ class Config extends Model
         return $this->belongsTo(RAM::class);
     }
 
-    public function case() {
-        return $this->belongsTo(PC_CASE::class);
+    public function pccase() {
+        return $this->belongsTo(PCCASE::class);
     }
 
     public function cooling() {
@@ -133,4 +133,6 @@ class Config extends Model
 
         $this->price = $price;
     }
+
+
 }

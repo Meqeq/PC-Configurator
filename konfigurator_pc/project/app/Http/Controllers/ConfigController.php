@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Component;
 use App\Models\Config;
 use App\Models\COOLING;
 use App\Models\CPU;
 use App\Models\DRIVE;
 use App\Models\GPU;
 use App\Models\MBD;
-use App\Models\PC_CASE;
+use App\Models\PCCASE;
 use App\Models\PSU;
 use App\Models\RAM;
 use Illuminate\Http\Request;
@@ -209,7 +210,60 @@ class ConfigController extends Controller
         }
         return view("config.show", ['config' => $config, 'user' => $user, 'owner' => $owner]);
 
-
-
     }
+
+    public function generate($price)
+    {
+         /** For now define percentages we are looking for. [Needs to be placed somewhere adequate] */
+
+        $percentages = array('cpu' => 0.17, 'gpu' => 0.445, 'ram' => 0.6, 'drive' => 0.065, 'pccase' => 0.04, 'psu' => 0.06,'cooling' => 0.02,'mb' => 0.13);
+        $priceOf = array();
+        foreach($percentages as $key => $value)
+            $priceOf[$key] = $value * $price;
+
+        /** Get all valid motheboards on which we will build the config */
+        $mb = MBD::get()->whereBetween('price', [0.8*$priceOf['mb'], 1.2*$priceOf['mb']]);
+        /** TODO: Determine how many configs will be provided
+         *  TODO: Will need another query on different compatibilities to get sets of mbs
+         *  TODO: //$configs = array();     // This stores different configs
+         */
+        $configs = new Config();
+        $additionalComponents = array();
+        $chosenMB = Component::getClosest($priceOf['mb'], $mb);
+        $configs->mb()->associate($chosenMB);
+
+        /** Need to unset the price of mb to properly iterate over the array */
+        unset($priceOf['mb']);
+
+        foreach($priceOf as $key => $value)
+        {
+            /** Generate a model for the component and look for the most fitting one */
+            $model = 'App\Models\\'. strtoupper($key);
+            $dummy = $model::compatible($configs->compatibleSpec($key))->whereBetween('price', [0.8*$priceOf[$key], 1.2*$priceOf[$key]])->get();
+
+            if(count($dummy) == 0)
+            {
+                /** Either find more components or display en error, for now: */
+                continue;
+            }
+            else
+            {
+
+                /** Choose a most fitting component based on price and remove it from the list of valid candidates */
+                $chosenDummy = Component::getClosest($priceOf[$key], $dummy);
+                $forgetKey = $dummy->search($chosenDummy);
+                $dummy->forget($forgetKey);
+
+                /** Dummy has now other candidate components */
+                $additionalComponents[$key] = $dummy;
+                /** Associate the chosen compoment with the config */
+                $configs->$key()->associate($chosenDummy);
+            }
+        }
+        var_dump($additionalComponents);
+        die($configs);
+    }
+
+
+
 }

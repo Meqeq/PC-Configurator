@@ -62,6 +62,7 @@ class ComponentsController extends Controller
             case 'case':
                 $elements = PC_CASE::filter($request);
                 $configOptions = PC_CASE::$filters;
+                //* TODO: need to fix all the PC_CASE to PCCASE refactoring */
                 break;
             case 'cooling':
                 $elements = COOLING::filter($request);

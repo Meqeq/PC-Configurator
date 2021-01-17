@@ -50,7 +50,11 @@
                             <input class="w-9/12" type="range" name="range" id="range" min="0" max="300" step="5" value="175"/>
                         </label>
                         <output id="outputRange" for="range" class="output">175,000 $</output>
-                        <div style="padding-top: 10px;"><button style="width:100%" class="bg-indigo-50 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50" type="submit" value="Submit">SHOW</button></div>
+                        <div style="padding-top: 10px;">
+                            <a href="{{ route('configGenerate', ['price' => 3453])}}" >
+                            <button style="width:100%" class="bg-indigo-50 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50" type="submit" value="Submit">SHOW</button>
+                            </a>
+                        </div>
 
                     </div>
                 </div>

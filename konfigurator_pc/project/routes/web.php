@@ -33,6 +33,7 @@ Route::resource('/user', App\Http\Controllers\UserController::class)->only([
     'show', 'edit', 'destroy'
 ])->middleware(['auth']);
 
+Route::get('/config/generated/{price}', 'App\Http\Controllers\ConfigController@generate')->name("configGenerate");
 Route::get('/config/{config}/verify', 'App\Http\Controllers\ConfigController@verify')->middleware(['auth'])->name("configVerify");
 Route::get('/config/{config}/publish', 'App\Http\Controllers\ConfigController@publish')->middleware(['auth'])->name("configPublish");
 Route::resource('/config', App\Http\Controllers\ConfigController::class)->middleware(['auth']);
