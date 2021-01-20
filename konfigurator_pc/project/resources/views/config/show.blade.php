@@ -52,7 +52,7 @@
                                         <strong class="text-xl">Specification:</strong>
                                         <ul class="list-disc">
                                             @foreach($config->componentNames as $key => $value)
-                                                <li>{{$value}}: {{$pc_components[$key]->name}}:</li>
+                                                <li>{{$value}}: {{$config->$key->name}}:</li>
                                             @endforeach
                                         </ul>
                                     </div>

@@ -2,14 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\COOLING;
-use App\Models\CPU;
-use App\Models\DRIVE;
-use App\Models\GPU;
-use App\Models\MBD;
-use App\Models\PC_CASE;
-use App\Models\PSU;
-use App\Models\RAM;
 use App\Models\Config;
 use Illuminate\Http\Request;
 
@@ -34,43 +26,15 @@ class ComponentsController extends Controller
     public function list(Request $request, string $component, string $action) {
         $request->flash();  // TODO czy to na pewno jest potrzebne?
 
-        switch($component) {
-            case 'cpu':
-                $elements = CPU::filter($request);
-                $configOptions = CPU::$filters;
-                break;
-            case 'gpu':
-                $elements = GPU::filter($request);
-                $configOptions = GPU::$filters;
-                break;
-            case 'ram':
-                $elements = RAM::filter($request);
-                $configOptions = RAM::$filters;
-                break;
-            case 'psu':
-                $elements = PSU::filter($request);
-                $configOptions = PSU::$filters;
-                break;
-            case 'mb':
-                $elements = MBD::filter($request);
-                $configOptions = MBD::$filters;
-                break;
-            case 'drive':
-                $elements = DRIVE::filter($request);
-                $configOptions = DRIVE::$filters;
-                break;
-            case 'case':
-                $elements = PC_CASE::filter($request);
-                $configOptions = PC_CASE::$filters;
-                //* TODO: need to fix all the PC_CASE to PCCASE refactoring */
-                break;
-            case 'cooling':
-                $elements = COOLING::filter($request);
-                $configOptions = COOLING::$filters;
-                break;
-            default:
-                return redirect("/");
-        }
+        $element = "\App\Models\\".strtoupper($component);
+
+        if(!class_exists($element))
+            return abort(404);
+
+        print_r($element);
+        $elements = $element::filter($request);
+        $configOptions = $element::$filters;
+        
         return view("comp.list", [
             "configOptions" => $configOptions,
             "data" => $elements->get(),
@@ -87,34 +51,12 @@ class ComponentsController extends Controller
      */
     public function details(string $component, string $action, $id)
     {
-        switch ($component) {
-            case 'cpu':
-                $elements = CPU::find($id);
-                break;
-            case 'gpu':
-                $elements = GPU::find($id);
-                break;
-            case 'ram':
-                $elements = RAM::find($id);
-                break;
-            case 'psu':
-                $elements = PSU::find($id);
-                break;
-            case 'mb':
-                $elements = MBD::find($id);
-                break;
-            case 'drive':
-                $elements = DRIVE::find($id);
-                break;
-            case 'case':
-                $elements = PC_CASE::find($id);
-                break;
-            case 'cooling':
-                $elements = COOLING::find($id);
-                break;
-            default:
-                return redirect("/");
-        }
+        $element = "\App\Models\\".strtoupper($component);
+
+        if(!class_exists($element))
+            return abort(404);
+
+        $elements = $element::find($id);
 
         return view("comp.details", [
             "data" => $elements,
@@ -132,42 +74,17 @@ class ComponentsController extends Controller
     public function pick(string $comp, string $id) {
         $config = Config::getFromSessionOrCreate();
 
-        switch ($comp) {
-            case 'cpu':
-                $config->$comp()->associate(CPU::find($id));
-                break;
-            case 'gpu':
-                $config->$comp()->associate(GPU::find($id));
-                break;
-            case 'ram':
-                $config->$comp()->associate(RAM::find($id));
-                break;
-            case 'psu':
-                $config->$comp()->associate(PSU::find($id));
-                break;
-            case 'mb':
-                $config->$comp()->associate(MBD::find($id));
-                break;
-            case 'drive':
-                $config->$comp()->associate(DRIVE::find($id));
-                break;
-            case 'case':
-                $config->$comp()->associate(PC_CASE::find($id));
-                break;
-            case 'cooling':
-                $config->$comp()->associate(COOLING::find($id));
-                break;
-        }
+        $element = "\App\Models\\".strtoupper($comp);
+
+        if(!class_exists($element))
+            return abort(404);
+
+        $config->$comp()->associate($element::find($id));
 
         $config->saveInSession();
         if (session()->get('edit', false))
-        {
             return redirect(route("config.edit", ['config'=>$config]));
-        }
-        else
-        {
-            return redirect(route("config.create"));
-        }
 
+        return redirect(route("config.create"));
     }
 }

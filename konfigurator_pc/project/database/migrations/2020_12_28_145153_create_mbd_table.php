@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMbTable extends Migration
+class CreateMbdTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMbTable extends Migration
      */
     public function up()
     {
-        Schema::create('mb', function (Blueprint $table) {
+        Schema::create('mbd', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('desc');
@@ -30,6 +30,6 @@ class CreateMbTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mb');
+        Schema::dropIfExists('mbd');
     }
 }

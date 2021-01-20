@@ -27,11 +27,6 @@ class ConfigController extends Controller
     {
         $config = Config::getFromSessionOrCreate();
 
-        /*echo "<pre>";
-        $compatibleComponents = \app\Models\CPU::compatible($config->compatibleSpec("cpu"));
-        print_r($compatibleComponents->get());
-        echo "</pre>";*/
-
         return view('config.create', [
             "config" => $config,
             "compatibilityErrors" => $config->compatibilityErrors()
@@ -60,8 +55,6 @@ class ConfigController extends Controller
 
         $config->calcPrice();
 
-
-
         $config->save();
 
         $request->session()->forget("config");
@@ -71,19 +64,8 @@ class ConfigController extends Controller
 
     public function show(Config $config)
     {
-        // get component names
-        $pc_components = [];
-        $pc_components['cpu'] = CPU::find($config->cpu_id);
-        $pc_components['gpu'] = GPU::find($config->gpu_id);
-        $pc_components['ram'] = RAM::find($config->ram_id);
-        $pc_components['psu'] = PSU::find($config->psu_id);
-        $pc_components['mb'] = MBD::find($config->mb_id);
-        $pc_components['drive'] = DRIVE::find($config->drive_id);
-        $pc_components['case'] = PC_CASE::find($config->case_id);
-        $pc_components['cooling'] = COOLING::find($config->cooling_id);
-
         $user = Auth::user();
-        return view("config.show", ['config' => $config, 'user' => $user, 'owner' => true, 'pc_components' => $pc_components]);
+        return view("config.show", ['config' => $config, 'user' => $user, 'owner' => true ]);
     }
 
     public function edit(Config $config)

@@ -18,10 +18,10 @@ class CreateConfigsTable extends Migration
             $table->string('title');
             $table->integer('cpu_id');
             $table->integer('gpu_id');
-            $table->integer('mb_id');
+            $table->integer('mbd_id');
             $table->integer('ram_id');
             $table->integer('drive_id');
-            $table->integer('case_id');
+            $table->integer('pccase_id');
             $table->integer('psu_id');
             $table->integer('cooling_id');
             $table->text('desc')->nullable();

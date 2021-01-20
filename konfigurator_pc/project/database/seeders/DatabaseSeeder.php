@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(CPUSeeder::class);
         $this->call(GPUSeeder::class);
-        $this->call(MbSeeder::class);
+        $this->call(MbdSeeder::class);
         $this->call(RAMSeeder::class);
         $this->call(DriveSeeder::class);
         $this->call(PSUSeeder::class);

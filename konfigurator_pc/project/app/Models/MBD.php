@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MBD extends Component {
     use HasFactory;
-    // TODO: tutaj jest MBD.php, ale seeder jest MB i migracja MB - zmienic?
-    // TODO: trzeba pomyslec jak zrobic kompatybilność
+
     public static $filters = [
         [
             "name" => "price",
@@ -23,5 +22,5 @@ class MBD extends Component {
         "compatibility" => "array"
     ];
 
-    protected $table = 'mb';
+    protected $table = 'mbd';
 }
