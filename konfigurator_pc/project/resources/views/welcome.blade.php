@@ -47,11 +47,11 @@
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="text-3xl">
                         <label for="range" style="padding-left: 3%">
-                            <input class="w-9/12" type="range" name="range" id="range" min="0" max="300" step="5" value="175"/>
+                            <input class="w-9/12" type="range" name="range" id="range" min="500" max="9999" step="10" value="750"/>
                         </label>
                         <output id="outputRange" for="range" class="output">175,000 $</output>
                         <div style="padding-top: 10px;">
-                            <a href="{{ route('configGenerate', ['price' => 3453])}}" >
+                            <a id="showBtn" href="{{ route('configGenerate', ['price' => 3453])}}" >
                             <button style="width:100%" class="bg-indigo-50 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50" type="submit" value="Submit">SHOW</button>
                             </a>
                         </div>
@@ -61,6 +61,63 @@
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
 {{--                    todo--}}
+                    @if (!empty($pcconfig))
+                        <h3 class="text-xxl text-gray-500">Generated components:</h3>
+                        <div class="bg-white shadow-md rounded my-6">
+                            <table class="text-left w-full border-collapse">
+                                <thead>
+                                <tr>
+                                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Category</th>
+                                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Model</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">CPU</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="#" class="text-grey-lighter rounded bg-green hover:bg-green-dark">{{$pcconfig->cpu->name ?? '-'}}</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">GPU</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="#" class="text-grey-lighter rounded bg-green hover:bg-green-dark">{{$pcconfig->gpu->name?? '-'}}</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">Motherboard</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="#" class="text-grey-lighter rounded bg-green hover:bg-green-dark">{{$pcconfig->mbd->name?? '-'}}</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">RAM</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="#" class="text-grey-lighter rounded bg-green hover:bg-green-dark">{{$pcconfig->ram->name?? '-'}}</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">Case</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="#" class="text-grey-lighter rounded bg-green hover:bg-green-dark">{{$pcconfig->pccase->name?? '-'}}</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">Power supply</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="#" class="text-grey-lighter rounded bg-green hover:bg-green-dark">{{$pcconfig->psu->name?? '-'}}</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-grey-lighter">
+                                    <td class="py-4 px-6 border-b border-grey-light">Cooling</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <a href="#" class="text-grey-lighter rounded bg-green hover:bg-green-dark">{{$pcconfig->cooling->name?? '-'}}</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        @endif
                 </div>
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
@@ -83,9 +140,12 @@
         </div>
 
         <script>
+            const outputRange = document.getElementById('outputRange');
+            const showBtn = document.getElementById('showBtn');
             document.getElementById("range").addEventListener('input', (event) => {
-                const output = document.getElementById('outputRange');
-                output.value = event.target.value + ",000  $";
+                outputRange.value = event.target.value + ",00  $";
+
+                showBtn.href="/config/generated/" + event.target.value;
             });
         </script>
     </body>

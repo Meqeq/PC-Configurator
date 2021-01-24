@@ -212,7 +212,7 @@ class ConfigController extends Controller
         $configs = new Config();
         $additionalComponents = array();
         $chosenMB = Component::getClosest($priceOf['mb'], $mb);
-        $configs->mb()->associate($chosenMB);
+        $configs->mbd()->associate($chosenMB);
 
         /** Need to unset the price of mb to properly iterate over the array */
         unset($priceOf['mb']);
@@ -242,8 +242,10 @@ class ConfigController extends Controller
                 $configs->$key()->associate($chosenDummy);
             }
         }
-        var_dump($additionalComponents);
-        die($configs);
+        //var_dump($additionalComponents);
+        //die($configs);
+
+        return view("welcome", ['pcconfig' => $configs]);
     }
 
 
