@@ -21,6 +21,7 @@ class CreatePsuTable extends Migration
             $table->integer('power');
             $table->string('producer');
             $table->timestamps();
+            $table->string('img');
         });
     }
 

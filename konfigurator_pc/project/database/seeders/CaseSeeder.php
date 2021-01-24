@@ -15,25 +15,28 @@ class CaseSeeder extends Seeder
     public function run()
     {
         DB::table('case')->insert([
-            'name' => 'SilentiumPC Signum SG7V Evo TG ARGB',
+            'name' => 'SilentiumPC Signum SG1 TG',
             'desc' => '...',
-            'price' => 399,
-            'type' => 'Full',
-            'producer' => 'SilentiumPC'
+            'price' => 189,
+            'type' => 'ATX m-ATX Mini-ITX',
+            'producer' => 'SilentiumPC',
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/2/pr_2019_2_27_13_16_21_251_00.jpg'
         ]);
         DB::table('case')->insert([
-            'name' => 'Fractal Design Meshify C TG',
+            'name' => 'be quiet! Pure Base 500DX Black',
             'desc' => '...',
-            'price' => 429,
-            'type' => 'Midi',
-            'producer' => 'Fractal Design'
+            'price' => 479,
+            'type' => 'ATX m-ATX Mini-ITX',
+            'producer' => 'be quiet!',
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/4/pr_2020_4_23_11_50_6_672_00.jpg'
         ]);
         DB::table('case')->insert([
-            'name' => 'MSI MAG Forge 100M',
+            'name' => 'Zalman Chasis T6',
             'desc' => '...',
-            'price' => 219,
-            'type' => 'Mini',
-            'producer' => 'MSI'
+            'price' => 119,
+            'type' => 'ATX m-ATX Mini-ITX',
+            'producer' => 'Zalman',
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/6/pr_2019_6_25_9_52_40_163_03.jpg'
         ]);
     }
 }

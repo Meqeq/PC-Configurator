@@ -22,6 +22,7 @@ class CreateDriveTable extends Migration
             $table->string('type');
             $table->string('producer');
             $table->string('interface');
+            $table->string('img');
             $table->timestamps();
         });
     }
