@@ -14,7 +14,13 @@ class MBD extends Component {
             "type" => "range",
             "step" => 50,
             "min" => 0,
-            "max" => 10000
+            "max" => 1500
+        ],
+        [
+            "name" => "size",
+            "display" => "Size",
+            "type" => "checkbox",
+            "values" => ["ATX", 'm-ATX', "ITX"]
         ]
     ];
 

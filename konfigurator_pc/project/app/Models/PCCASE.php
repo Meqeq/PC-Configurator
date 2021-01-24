@@ -34,5 +34,9 @@ class PCCASE extends Component {
         ]
     ];
 
+    protected $casts = [
+        "compatibility" => "array"
+    ];
+
     protected $table = 'case';
 }

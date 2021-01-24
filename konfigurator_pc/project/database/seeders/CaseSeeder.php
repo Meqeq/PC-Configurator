@@ -20,7 +20,8 @@ class CaseSeeder extends Seeder
             'price' => 189,
             'type' => 'ATX m-ATX Mini-ITX',
             'producer' => 'SilentiumPC',
-            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/2/pr_2019_2_27_13_16_21_251_00.jpg'
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/2/pr_2019_2_27_13_16_21_251_00.jpg',
+            'compatibility' => json_encode(['mbd'=>['size'=>["ATX", 'm-ATX', 'ITX']]]),
         ]);
         DB::table('case')->insert([
             'name' => 'be quiet! Pure Base 500DX Black',
@@ -28,7 +29,8 @@ class CaseSeeder extends Seeder
             'price' => 479,
             'type' => 'ATX m-ATX Mini-ITX',
             'producer' => 'be quiet!',
-            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/4/pr_2020_4_23_11_50_6_672_00.jpg'
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/4/pr_2020_4_23_11_50_6_672_00.jpg',
+            'compatibility' => json_encode(['mbd'=>['size'=>["ATX", 'm-ATX', 'ITX']]]),
         ]);
         DB::table('case')->insert([
             'name' => 'Zalman Chasis T6',
@@ -36,7 +38,8 @@ class CaseSeeder extends Seeder
             'price' => 119,
             'type' => 'ATX m-ATX Mini-ITX',
             'producer' => 'Zalman',
-            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/6/pr_2019_6_25_9_52_40_163_03.jpg'
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/6/pr_2019_6_25_9_52_40_163_03.jpg',
+            'compatibility' => json_encode(['mbd'=>['size'=>["ATX", 'm-ATX', 'ITX']]]),
         ]);
     }
 }
