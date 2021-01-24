@@ -37,7 +37,7 @@ class DRIVE extends Component {
             "display" => "Disc interface",
             "type" => "checkbox",
             "values" => [
-                "PCI-Express", "SATA", "PATA"
+                "M2", "SATA"
             ]
         ],
         [

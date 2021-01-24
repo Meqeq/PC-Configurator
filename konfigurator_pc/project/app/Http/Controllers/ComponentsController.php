@@ -31,7 +31,6 @@ class ComponentsController extends Controller
         if(!class_exists($element))
             return abort(404);
 
-        print_r($element);
         $elements = $element::filter($request);
         $configOptions = $element::$filters;
         
