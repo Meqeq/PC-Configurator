@@ -22,6 +22,7 @@ class CreateCpuTable extends Migration
             $table->integer('frequency');
             $table->string('socket');
             $table->string('producer');
+            $table->string('img');
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ class CreateGpuTable extends Migration
             $table->string('producer');
             $table->string('chipset');
             $table->string('RAM');
+            $table->string('img');
             $table->timestamps();
         });
     }

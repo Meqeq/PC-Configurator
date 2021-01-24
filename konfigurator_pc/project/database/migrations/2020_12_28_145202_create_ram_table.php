@@ -22,6 +22,7 @@ class CreateRamTable extends Migration
             $table->integer('speed');
             $table->string('type');
             $table->string('producer');
+            $table->string('img');
             $table->timestamps();
         });
     }

@@ -20,6 +20,8 @@ class CreateMbdTable extends Migration
             $table->json('compatibility');
             $table->decimal('price', 8, 2);
             $table->timestamps();
+            $table->string('img');
+            $table->string('size');
         });
     }
 

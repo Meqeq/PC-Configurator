@@ -21,6 +21,8 @@ class CreateCaseTable extends Migration
             $table->string('type');
             $table->string('producer');
             $table->timestamps();
+            $table->string('img');
+            $table->json('compatibility');
         });
     }
 

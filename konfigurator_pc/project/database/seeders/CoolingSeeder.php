@@ -15,29 +15,33 @@ class CoolingSeeder extends Seeder
     public function run()
     {
         DB::table('cooling')->insert([
-            'name' => 'Nzxt Kraken X53 Liquid Cooling',
+            'name' => 'SilentiumPC Fera 3 120mm',
             'desc' => '...',
-            'price' => 579,
-            'producer' => 'NZXT',
-            'socket' => 'Intel',
-            'tpd' => 100
-        ]);
-        DB::table('cooling')->insert([
-            'name' => 'Nzxt Kraken Z63 Liquid Cooling',
-            'desc' => '...',
-            'price' => 1099,
-            'producer' => 'NZXT',
-            'socket' => 'AMD',
-            'tpd' => 30
-        ]);
-        DB::table('cooling')->insert([
-            'name' => 'ALSEYE ALSEYE H120 120mm',
-            'desc' => '...',
-            'price' => 260,
-            'producer' => 'ALSEYE',
-            'socket' => 'Intel',
-            'tpd' => 170
+            'price' => 105,
+            'producer' => 'SilentiumPC',
+            'socket' => 'AM4 AM3 1151 1200',
+            'tpd' => 100,
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/9/pr_2018_9_27_13_38_9_216_00.jpg'
         ]);
 
+        DB::table('cooling')->insert([
+            'name' => 'be quiet! Pure Loop 360mm 3x120mm',
+            'desc' => '...',
+            'price' => 529,
+            'producer' => 'be quiet!',
+            'socket' => 'AM4 AM3 1151 1200',
+            'tpd' => 30,
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/10/pr_2020_10_2_12_3_25_33_04.jpg'
+        ]);
+
+        DB::table('cooling')->insert([
+            'name' => 'Noctua NH-D15 2x140mm',
+            'desc' => '...',
+            'price' => 469,
+            'producer' => 'Noctua',
+            'socket' => 'AM4 AM3 1151 1200',
+            'tpd' => 170,
+            'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2017/10/pr_2017_10_12_11_24_1_915_00.jpg'
+        ]);
     }
 }

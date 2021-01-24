@@ -41,7 +41,7 @@
             @forelse($data as $component)
                 <div class="hover:shadow flex p-2">
                     <div class="w-20 h-20 bg-gray-400 flex items-center justify-center">
-                        <img src="XXX.jpng" alt="Img">
+                        <img src="{{$component['img']}}" alt="Img">
                     </div>
                     <div class="mx-4">
                         <h4 class="name">{{$component['name']}}</h4>

@@ -22,6 +22,7 @@ class CreateCoolingTable extends Migration
             $table->string('socket');
             $table->integer('tpd');
             $table->timestamps();
+            $table->string('img');
         });
     }
 
