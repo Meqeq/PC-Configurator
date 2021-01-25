@@ -13,7 +13,7 @@
             'psu' => 'Power supply', 'drive' => 'Storage',
             'case' => 'Case'
         ] as $key => $value)
-            <a href="{{ route('componentList', [ 'comp' => $key, 'type' => 'list' ]) }}">
+            <a href="{{ route('componentList', [ 'comp' => $key, 'action' => 'list' ]) }}">
                 <div class="w-52 h-52 p-2 hover:shadow">
                     <div class="bg-gray-400 w-full h-40">
 
