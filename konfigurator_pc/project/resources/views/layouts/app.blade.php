@@ -86,9 +86,21 @@
                 <header class="p-4 text-center bg-gray-100">
                     @yield("header")
                 </header>
-                @yield("body")
+                <div class="p-2">
+                    @yield("body")
+                </div>
             </div>
         </main>
+        <footer class="p-8 text-white">
+            <h3 class="text-2xl">PC Configurator</h3>
+            Made by:
+            <ul>
+                <li>BC</li>
+                <li>DJ</li>
+                <li>MJ</li>
+                <li>KW</li>
+            </ul>
+        </footer>
     </div>
 </body>
 </html>
