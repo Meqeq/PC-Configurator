@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head> 
+<head>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
@@ -20,8 +20,8 @@
                 <div class="py-4 text-5xl">
                     <i class="fas fa-robot"></i>
                 </div>
-                
-        
+
+
                 <div class="py-4 text-5xl">
                     PC Configurator
                 </div>
@@ -53,7 +53,7 @@
                             Components
                         </a>
                     </li>
-                    @if(Auth::check()) 
+                    @if(Auth::check())
                         <li class="w-1/2 h-10 lg:w-1/6">
                             <a class="leading-10 p-2 lg:px-8 hover:bg-gray-100 rounded" href={{route('user.show', ['user'=>Auth::user()])}}>
                                 Profile
@@ -62,7 +62,7 @@
                         <li class="w-1/2 h-10 lg:w-1/6">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <a 
+                                <a
                                     class="leading-10 p-2 lg:px-8 hover:bg-gray-100 rounded" href="{{route('logout')}}"
                                     onclick="event.preventDefault(); this.closest('form').submit();"
                                 >Logout</a>
@@ -87,6 +87,15 @@
                     @yield("header")
                 </header>
                 <div class="p-2">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li class="text-red-600">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     @yield("body")
                 </div>
             </div>
