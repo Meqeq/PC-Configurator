@@ -83,7 +83,7 @@
                 </ul>
             </nav>
             <div class="content">
-                <header class="p-4 text-center bg-gray-100">
+                <header class="p-4 text-center bg-gray-100 relative">
                     @yield("header")
                 </header>
                 <div class="p-2">

@@ -13,7 +13,8 @@ class ComponentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view("comp.index");
+
+        return view("comp.index", ["config" => new Config()]);
     }
 
     /**

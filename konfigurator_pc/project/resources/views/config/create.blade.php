@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
 @section('header')
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        New PC Configuration
-    </h2>
+    New PC Configuration
 @endsection
 
 
 @section('body')
-    <form method="POST" action="{{ route('config.store') }}" class="bg-white flex-col justify-center m-2 p-2 shadow">
+    <form method="POST" action="{{ route('config.store') }}" class="flex-col justify-center m-2 p-2">
         @csrf
         <div class="flex justify-center mb-3 pt-0">
             <input name="title" type="text" placeholder="Title" required :value="old('title')"
@@ -31,19 +29,19 @@
             @foreach($config->componentNames as $key => $value)
                 <a href="{{ route('componentList', array_merge($config->compatibleSpec($key), ['action' => 'select', 'comp' => $key])) }}">
                     <div class="w-52 p-2 hover:shadow">
-                        <div class="bg-gray-400 w-full h-40 flex justify-center">
-                            <img style="max-width: 100%;padding: 10px;max-height: 100%;" src="/img/{{$key}}.svg" alt="{{$key}} image">
+                        <div class="w-full h-40 flex justify-center relative">
+                            @if(isset($config->$key))
+                                <div class="myChosenElement text-center bg-gray-50 absolute bottom-0 w-full opacity-75">
+                                    {{$config->$key->name}}
+                                </div>
+                                <img style="max-width: 100%;padding: 10px;max-height: 100%;" src="{{$config->$key->img}}" alt="{{$key}} image">
+                            @else
+                                <img style="max-width: 100%;padding: 10px;max-height: 100%;" src="/img/{{$key}}.svg" alt="{{$key}} image">
+                            @endif
                         </div>
                         <div class="text-center leading-10 bg-gray-100">
                             {{$value}}
                         </div>
-                        @if(isset($config->$key))
-                        <div class="myChosenElement text-center leading-10 bg-gray-100">
-                            {{$config->$key->name}}
-                        </div>
-                        @endif
-                        <?php //xdebug_break(); ?>
-
                     </div>
                 </a>
             @endforeach
