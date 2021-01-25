@@ -17,7 +17,7 @@ class MbdSeeder extends Seeder
         DB::table('mbd')->insert([
             'name' => 'Gigabyte B450 AORUS ELITE',
             'desc' => 'Wybierz sprzęt nie wymuszający żadnych kompromisów i dołącz do elitarnego grona posiadaczy sprzętu sygnowanego marką AORUS. Oferowana płyta główna, napędzana chipsetem B450, umożliwia wykorzystanie procesorów AMD Ryzen 2. generacji oraz zintegrowanych z nimi układów graficznych AMD Vega. Cztery sloty DIMM obsłużą moduły DDR4 o taktowaniu nawet 3200 MHz (O.C.), a slot M.2 umożliwi podłączenia najszybszych dysków SSD na rynku.',
-            'compatibility' => json_encode(['cpu'=>['socket'=>["AM4"]], "ram"=>['type'=>'DDR4'], 'drive'=>['interface'=>['M2', 'SATA']]]),
+            'compatibility' => json_encode(['cpu'=>['socket'=>["AM4"]], "ram"=>['type'=>['DDR4']], 'drive'=>['interface'=>['M2', 'SATA']]]),
             'price' => 419,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/9/pr_2018_9_7_7_30_44_651_02.jpg',
             'size' => "ATX"
