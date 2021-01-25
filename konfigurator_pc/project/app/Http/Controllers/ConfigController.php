@@ -225,22 +225,20 @@ class ConfigController extends Controller
 
             if(count($dummy) == 0)
             {
-                /** Either find more components or display en error, for now: */
-                continue;
+                /** Either find more components or display en error, for now: */ /** Update: Return whatever is compatible*/
+                $dummy = $model::compatible($configs->compatibleSpec($key))->get();
+                //continue;
             }
-            else
-            {
 
-                /** Choose a most fitting component based on price and remove it from the list of valid candidates */
-                $chosenDummy = Component::getClosest($priceOf[$key], $dummy);
-                $forgetKey = $dummy->search($chosenDummy);
-                $dummy->forget($forgetKey);
+            /** Choose a most fitting component based on price and remove it from the list of valid candidates */
+            $chosenDummy = Component::getClosest($priceOf[$key], $dummy);
+            $forgetKey = $dummy->search($chosenDummy);
+            $dummy->forget($forgetKey);
 
-                /** Dummy has now other candidate components */
-                $additionalComponents[$key] = $dummy;
-                /** Associate the chosen compoment with the config */
-                $configs->$key()->associate($chosenDummy);
-            }
+            /** Dummy has now other candidate components */
+            $additionalComponents[$key] = $dummy;
+            /** Associate the chosen compoment with the config */
+            $configs->$key()->associate($chosenDummy);
         }
         //var_dump($additionalComponents);
         //die($configs);

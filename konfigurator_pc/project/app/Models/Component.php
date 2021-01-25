@@ -88,7 +88,7 @@ abstract class Component extends Model
     {
 
         if (count($components) == 1)
-            return $components[0];
+            return $components->first();
         else
         {
             $diff = PHP_INT_MAX;

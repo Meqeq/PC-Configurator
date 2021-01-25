@@ -47,7 +47,7 @@
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="text-3xl">
                         <label for="range" style="padding-left: 3%">
-                            <input class="w-9/12" type="range" name="range" id="range" min="500" max="9999" step="10" value="750"/>
+                            <input id="priceRage" class="w-9/12" type="range" name="range" min="500" max="9999" step="10" value="750"/>
                         </label>
                         <output id="outputRange" for="range" class="output">175,000 $</output>
                         <div style="padding-top: 10px;">
@@ -60,7 +60,6 @@
                 </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-{{--                    todo--}}
                     @if (!empty($pcconfig))
                         <h3 class="text-xxl text-gray-500">Generated components:</h3>
                         <div class="bg-white shadow-md rounded my-6">
@@ -140,13 +139,21 @@
         </div>
 
         <script>
+            const priceRage = document.getElementById('priceRage');
             const outputRange = document.getElementById('outputRange');
             const showBtn = document.getElementById('showBtn');
-            document.getElementById("range").addEventListener('input', (event) => {
+            priceRage.addEventListener('input', (event) => {
                 outputRange.value = event.target.value + ",00  $";
 
                 showBtn.href="/config/generated/" + event.target.value;
             });
+
+            var pathname = window.location.pathname;
+            if(pathname.includes("generated/")) {
+                const oldVal = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+                priceRage.value = oldVal;
+                outputRange.value = oldVal + ",00  $";
+            }
         </script>
     </body>
 </html>
