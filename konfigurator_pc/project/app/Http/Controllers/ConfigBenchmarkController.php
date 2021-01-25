@@ -41,7 +41,7 @@ class ConfigBenchmarkController extends Controller
     public function update(Request $request, Config $config)
     {
         $validData = $request->validate([
-            "value" => "required",
+            "value" => "required|integer",
         ]);
 
         $config->benchmark = $request->value;
