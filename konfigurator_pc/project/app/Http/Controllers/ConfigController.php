@@ -243,7 +243,7 @@ class ConfigController extends Controller
         //var_dump($additionalComponents);
         //die($configs);
         $configs->saveInSession();
-        return redirect()->route('config.create');
+        return view('config.showGenerated')->withConfigs($configs);
     }
 
 
