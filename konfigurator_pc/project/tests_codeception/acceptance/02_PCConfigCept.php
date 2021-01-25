@@ -15,7 +15,7 @@ $I->click('Create new...');
 $I->seeCurrentUrlEquals('/login');
 $I->fillField('email', 'john.doe@gmail.com');
 $I->fillField('password', 'secret');
-$I->click('Login');
+$I->click('Login','button');
 
 $I->seeCurrentUrlEquals('/config/create');
 $I->fillField('title', 'My conifg');
