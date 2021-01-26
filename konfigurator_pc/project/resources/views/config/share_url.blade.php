@@ -12,7 +12,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{route("sharedConfig", [ $config, $config->share_url])}}">{{route("sharedConfig", [ $config, $config->share_url])}}</a>
+                    <a class="share_url" href="{{route("sharedConfig", [ $config, $config->share_url])}}">{{route("sharedConfig", [ $config, $config->share_url])}}</a>
                 </div>
             </div>
         </div>

@@ -61,13 +61,13 @@
                             </a>
                         </li>
                         <li class="w-1/2 h-10 lg:w-1/6">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+{{--                            <form method="POST" action="{{ route('logout') }}">--}}
+{{--                                @csrf--}}
                                 <a
                                     class="leading-10 p-2 lg:px-8 hover:bg-gray-100 rounded" href="{{route('logout')}}"
-                                    onclick="event.preventDefault(); this.closest('form').submit();"
+{{--                                    onclick="event.preventDefault(); this.closest('form').submit();"--}}
                                 >Logout</a>
-                            </form>
+{{--                            </form>--}}
                         </li>
                     @else
                         <li class="w-1/2 h-10 lg:w-1/6">
