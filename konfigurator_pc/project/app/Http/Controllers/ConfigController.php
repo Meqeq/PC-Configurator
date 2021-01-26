@@ -20,15 +20,22 @@ class ConfigController extends Controller
 {
     public function index()
     {
-        return view('config.index', ['configs' => Config::all()]);
+        return view('config.index', ['configs' => Config::where(["public" => 1])->get()]);
     }
 
     public function create()
     {
-        $config = Config::getFromSessionOrCreate();
+        if (session()->get('edit', false)) {
+            $config = new Config();
+            $config->saveInSession();
+            session()->forget("edit");
+        } else {
+            $config = Config::getFromSessionOrCreate();
+        }
 
         return view('config.create', [
             "config" => $config,
+            'action' => 'create',
             "compatibilityErrors" => $config->compatibilityErrors()
         ]);
     }
@@ -65,7 +72,7 @@ class ConfigController extends Controller
     public function show(Config $config)
     {
         $user = Auth::user();
-        return view("config.show", ['config' => $config, 'user' => $user, 'owner' => true ]);
+        return view("config.show", ['config' => $config, 'user' => $user, 'owner' => $config->user_id == $user->id ]);
     }
 
     public function edit(Config $config)
@@ -79,7 +86,8 @@ class ConfigController extends Controller
         $id = Auth::id();
         if ($config->user_id == $id) {
             session(['edit' => true]);
-            return view("config.edit", [
+            return view("config.create", [
+                'action' => 'edit',
                 'config' => $config,
                 'compatibilityErrors' => $config->compatibilityErrors()
             ]);

@@ -13,23 +13,23 @@ class DRIVE extends Component {
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "Western Digital", "Samsung", "Seagate", "ADATA", "Lexar", "CRUCIAL"
+                "ADATA", "Toshiba", "Crucial"
             ]
         ],
         [
             "name" => "capacity",
-            "display" => "Disc capacity [GB]",
-            "type" => "checkbox",
-            "values" => [
-                64,128,256,512,1024, 2048
-            ]
+            "display" => "Capacity",
+            "type" => "range",
+            "step" => 50,
+            "min" => 0,
+            "max" => 4000
         ],
         [
             "name" => "type",
             "display" => "Disc type",
             "type" => "checkbox",
             "values" => [
-                "SSD", "HDD"
+                "SSD", "HDD", "SSD M.2"
             ]
         ],
         [
@@ -46,7 +46,7 @@ class DRIVE extends Component {
             "type" => "range",
             "step" => 50,
             "min" => 0,
-            "max" => 10000
+            "max" => 1500
         ]
     ];
 

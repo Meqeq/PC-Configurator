@@ -29,7 +29,7 @@ class CPU extends Component {
             "display" => "Frequency [Mhz]",
             "type" => "range",
             "step" => 200,
-            "min" => 0,
+            "min" => 2000,
             "max" => 6000
         ],
         [
@@ -46,7 +46,7 @@ class CPU extends Component {
             "type" => "range",
             "step" => 50,
             "min" => 0,
-            "max" => 10000
+            "max" => 5000
         ]
     ];
 

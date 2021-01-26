@@ -13,15 +13,7 @@ class PCCASE extends Component {
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "SilentiumPC", "Thermaltake", "Fractal Design", "Aerocool", "LC-Power", "MSI"
-            ]
-        ],
-        [
-            "name" => "type",
-            "display" => "Case type",
-            "type" => "checkbox",
-            "values" => [
-                "Full", "Midi", "Mini", "Micro"
+                "SilentiumPC", "be Quiet!", "Zalman"
             ]
         ],
         [
@@ -30,7 +22,7 @@ class PCCASE extends Component {
             "type" => "range",
             "step" => 50,
             "min" => 0,
-            "max" => 10000
+            "max" => 900
         ]
     ];
 

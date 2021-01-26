@@ -35,7 +35,6 @@
                     @empty ($config)
                         <p>Error.</p>
                     @else
-                        {{--                        TODO--}}
                         <div class='py-10'>
                             <div class="max-w-md mx-auto xl:max-w-5xl lg:max-w-5xl md:max-w-2xl bg-gray-700 max-h-screen shadow-2xl flex-row rounded relative">
                                 <div class="p-2 bg-gray-600 text-blue-900 rounded-t">

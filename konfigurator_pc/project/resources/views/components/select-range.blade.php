@@ -1,6 +1,6 @@
 <div class="m-2">
     <div class="bg-gray-100 p-0.5">{{$display}}</div>
-    <div class="w-64">
+    <div class="w-64 mx-auto my-2">
         <input class="w-64" class="select-range" type="range" min="{{$min}}" max="{{$max}}" name="{{$name}}_min" id="{{$name}}_min" step="{{$step}}" value="{{ old($name.'_min') }}" />
         <div class="text-center">
             <span id="{{$name}}.minValue">{{$min}}</span>

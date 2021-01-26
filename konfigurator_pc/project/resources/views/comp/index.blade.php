@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Select type of component
-    </h2>
+    Select type of component
 @endsection
 
 @section('body')

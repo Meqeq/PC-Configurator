@@ -13,7 +13,7 @@ class RAM extends Component {
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "Gigabyte", "G.Skill", "Corsair", "Hyper X", "Patriot", "Kingston", "CRUCIAL"
+                "G.Skill", "Corsair", "Hyper X", "Patriot"
             ]
         ],
         [

@@ -9,6 +9,18 @@ class MBD extends Component {
 
     public static $filters = [
         [
+            "name" => "size",
+            "display" => "Size",
+            "type" => "checkbox",
+            "values" => ["ATX", 'm-ATX', "ITX"]
+        ],
+        [
+            "name" => "producer",
+            "display" => "Producer",
+            "type" => "checkbox",
+            "values" => ["Gigabyte", "MSI", "Asus", "AsRock"]
+        ],
+        [
             "name" => "price",
             "display" => "Price",
             "type" => "range",
@@ -16,12 +28,6 @@ class MBD extends Component {
             "min" => 0,
             "max" => 1500
         ],
-        [
-            "name" => "size",
-            "display" => "Size",
-            "type" => "checkbox",
-            "values" => ["ATX", 'm-ATX', "ITX"]
-        ]
     ];
 
     protected $casts = [

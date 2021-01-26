@@ -1,12 +1,22 @@
 @extends('layouts.app')
 
 @section('header')
-    New PC Configuration
+    @if($action == "create")
+        New PC Configuration
+    @else
+        Edit PC Configuration
+    @endif
+    
 @endsection
 
 
 @section('body')
-    <form method="POST" action="{{ route('config.store') }}" class="flex-col justify-center m-2 p-2">
+    @if($action == "create")
+    <form method="POST" action="{{ route('config.store') }}" class="flex-col justify-center m-2 p-8">
+    @else
+    <form method="POST" action="{{ route('config.update', ['config'=>$config] ) }}" class="flex-col justify-center m-2 p-8">
+        @method('PUT')
+    @endif
         @csrf
         <div class="flex justify-center mb-3 pt-0">
             <input name="title" type="text" placeholder="Title" required :value="old('title')"
@@ -48,7 +58,15 @@
         </div>
         <div class="flex justify-center">
             <button id="createBtn" disabled
-                    class="m-6 w-1/2 h-14 px-6 text-indigo-100 transition-colors duration-150 bg-gray-400 rounded-lg focus:shadow-outline">{{ __('Create new PC configuration') }}</button>
+                class="m-6 w-1/2 h-14 px-6 text-indigo-100 transition-colors duration-150 bg-gray-400 rounded-lg focus:shadow-outline"
+            >
+            @if($action == "create")
+                {{ __('Create new PC configuration') }}
+            @else
+                {{ __('Update PC configuration') }}
+            @endif
+                
+            </button>
         </div>
     </form>
 

@@ -13,7 +13,7 @@ class GPU extends Component {
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "Gigabyte", "Asus", "MSI", "PNY"
+                "Gigabyte", "Asus", "MSI", "PowerColor"
             ]
         ],
         [
@@ -21,7 +21,7 @@ class GPU extends Component {
             "display" => "Chipset type",
             "type" => "checkbox",
             "values" => [
-                "GeForce", "Quadro", "Radeon", "Other"
+                "Nvidia", "Radeon"
             ]
         ],
         [

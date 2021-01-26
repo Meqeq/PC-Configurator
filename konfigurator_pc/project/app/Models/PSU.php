@@ -14,14 +14,14 @@ class PSU extends Component {
             "type" => "range",
             "step" => 10,
             "min" => 100,
-            "max" => 5000
+            "max" => 1200
         ],
         [
             "name" => "producer",
             "display" => "Producer",
             "type" => "checkbox",
             "values" => [
-                "Chieftec", "be quiet!", "Thermaltake", "Cooler Master", "Inter-Tech", "Others", "SilentiumPC"
+                "be quiet!", "SilentiumPC"
             ]
         ],
         [
@@ -30,7 +30,7 @@ class PSU extends Component {
             "type" => "range",
             "step" => 50,
             "min" => 0,
-            "max" => 10000
+            "max" => 600
         ]
     ];
 

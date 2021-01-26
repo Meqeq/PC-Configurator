@@ -1,14 +1,10 @@
 @extends('layouts.app')
 
 @section('header')
-
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Profile.') }}
-        @if($owner)
-            You're logged in!
-        @endif
-    </h2>
-
+    {{ __('Profile.') }}
+    @if($owner)
+        You're logged in!
+    @endif
 @endsection
 
 @section('body')

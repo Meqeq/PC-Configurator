@@ -20,7 +20,8 @@ class MbdSeeder extends Seeder
             'compatibility' => json_encode(['cpu'=>['socket'=>["AM4"]], "ram"=>['type'=>['DDR4']], 'drive'=>['interface'=>['M2', 'SATA']]]),
             'price' => 419,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/9/pr_2018_9_7_7_30_44_651_02.jpg',
-            'size' => "ATX"
+            'size' => "ATX",
+            'producer' => 'Gigabyte'
         ]);
 
         DB::table('mbd')->insert([
@@ -29,7 +30,8 @@ class MbdSeeder extends Seeder
             'compatibility' => json_encode(['cpu'=>['socket'=>["1200"]], "ram"=>['type'=>['DDR4']], 'drive'=>['interface'=>['M2', 'SATA']]]),
             'price' => 419,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_25_9_9_8_671_04.jpg',
-            'size' => "ATX"
+            'size' => "ATX",
+            'producer' => 'AsRock'
         ]);
 
         DB::table('mbd')->insert([
@@ -38,7 +40,8 @@ class MbdSeeder extends Seeder
             'compatibility' => json_encode(['cpu'=>['socket'=>["AM4"]], "ram"=>['type'=>['DDR4']], 'drive'=>['interface'=>['M2', 'SATA']]]),
             'price' => 429,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/8/pr_2019_8_2_12_56_4_381_00.jpg',
-            'size' => "ATX"
+            'size' => "ATX",
+            'producer' => 'MSI'
         ]);
 
         DB::table('mbd')->insert([
@@ -47,7 +50,8 @@ class MbdSeeder extends Seeder
             'compatibility' => json_encode(['cpu'=>['socket'=>["1200"]], "ram"=>['type'=>['DDR4']], 'drive'=>['interface'=>['M2', 'SATA']]]),
             'price' => 769,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_5_21_41_43_403_00.jpg',
-            'size' => "ATX"
+            'size' => "ATX",
+            'producer' => 'MSI'
         ]);
 
         DB::table('mbd')->insert([
@@ -56,7 +60,8 @@ class MbdSeeder extends Seeder
             'compatibility' => json_encode(['cpu'=>['socket'=>["1200"]], "ram"=>['type'=>['DDR4']], 'drive'=>['interface'=>['M2', 'SATA']]]),
             'price' => 569,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_27_12_19_16_814_00.jpg',
-            'size' => "m-ATX"
+            'size' => "m-ATX",
+            'producer' => 'MSI'
         ]);
 
         DB::table('mbd')->insert([
@@ -65,7 +70,8 @@ class MbdSeeder extends Seeder
             'compatibility' => json_encode(['cpu'=>['socket'=>["1151"]], "ram"=>['type'=>['DDR4']], 'interface'=>['type'=>['SATA']]]),
             'price' => 259,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_27_12_19_16_814_00.jpg',
-            'size' => "m-ATX"
+            'size' => "m-ATX",
+            'producer' => 'MSI'
         ]);
 
         DB::table('mbd')->insert([
@@ -74,7 +80,8 @@ class MbdSeeder extends Seeder
             'compatibility' => json_encode(['cpu'=>['socket'=>["AM4"]], "ram"=>['type'=>['DDR4']], 'drive'=>['interface'=>['M2', 'SATA']]]),
             'price' => 859,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/7/pr_2019_7_4_12_4_46_676_04.jpg',
-            'size' => "ATX"
+            'size' => "ATX",
+            'producer' => 'Gigabyte'
         ]);
 
         DB::table('mbd')->insert([
@@ -83,7 +90,8 @@ class MbdSeeder extends Seeder
             'compatibility' => json_encode(['cpu'=>['socket'=>["1151"]], "ram"=>['type'=>['DDR4']], 'drive'=>['interface'=>['SATA']]]),
             'price' => 569,
             'img' => 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/10/pr_2018_10_5_10_11_28_406_00.jpg',
-            'size' => "ATX"
+            'size' => "ATX",
+            'producer' => 'Asus'
         ]);
     }
 }
