@@ -24,20 +24,54 @@ $I->click('Create');
 $I->seeCurrentUrlEquals('/config/create');
 
 $I->click('Motherboard');
+
+$I->seeCurrentUrlMatches('~^/components/mbd/select\w*~');
+
 $I->click('Pick');
+
 $I->click('Graphics card');
+
+$I->seeCurrentUrlMatches('~^/components/gpu/select\w*~');
+
 $I->click('Pick');
+
 $I->click('CPU');
+
+$I->seeCurrentUrlMatches('~^/components/cpu/select\w*~');
+
 $I->click('Pick');
+
 $I->click('Case');
+
+$I->seeCurrentUrlMatches('~^/components/pccase/select\w*~');
+
 $I->click('Pick');
+
+
 $I->click('Drive');
+
+$I->seeCurrentUrlMatches('~^/components/drive/select\w*~');
+
 $I->click('Pick');
+
 $I->click('Power supply');
+
+$I->seeCurrentUrlMatches('~^/components/psu/select\w*~');
+
 $I->click('Pick');
+
+
 $I->click('RAM');
+
+$I->seeCurrentUrlMatches('~^/components/ram/select\w*~');
+
 $I->click('Pick');
+
+
 $I->click('Cooling');
+
+$I->seeCurrentUrlMatches('~^/components/cooling/select\w*~');
+
 $I->click('Pick');
 
 $I->fillField('title', 'My conifg');

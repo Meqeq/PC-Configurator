@@ -84,7 +84,7 @@ CREATE TABLE `configs` (
 
 LOCK TABLES `configs` WRITE;
 /*!40000 ALTER TABLE `configs` DISABLE KEYS */;
-INSERT INTO `configs` VALUES (1,'PREMIUM XXX',1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,0,'',NULL,NULL),(2,'Ol\' an\' good',1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,1,'',NULL,NULL),(3,'Pretty one',3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,1,'',NULL,NULL),(4,'Sven is HUGE',3,3,3,3,3,3,3,3,'Super config 3',0,1337.00,0,1,1,'',NULL,NULL);
+INSERT INTO `configs` VALUES (1,'PREMIUM XXX',1,1,2,2,3,1,2,3,'Super config',0,7138.00,0,1,0,'',NULL,NULL),(2,'Ol\' an\' good',2,1,1,1,1,1,1,2,'Super config MIX',0,7648.00,1,1,1,'',NULL,NULL),(3,'Sven is HUGE',3,3,3,3,3,3,3,3,'Super config 3',0,7024.00,0,1,1,'',NULL,NULL),(4,'Sven is HUGE',3,3,3,3,3,3,3,3,'Super config 3',0,7024.00,0,1,1,'',NULL,NULL);
 /*!40000 ALTER TABLE `configs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +422,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$5wNhGiDzOL9FwdY/gYOp6e1bkU8ltZ5Do0LQdYgDLpk/OFGJn1iYS',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$mIYLR/kTHAFpmbBoQa0R/eTj8yNM4jeQvJnp88.4aKw/ssrKQEwZO',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$FcLnOdZFT53VAO2pAcGPk.0dev/bkNQFXwLEP8Ps1TCD2vliLHhym',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$cLhWf1jmDecmZRctoo7KeutqQ/DcQ5U4oL7ZotKugOnrIdf0nXYgq',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$UZJYi4T9FFoSlgiOs4GPT.GBCcq1ZzthJkHWlA7ArWfMhkDwMCoTO',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$rhVvh396bjR8cUyq6H5Wd.yDOpZJMxB2/OZ.KAEJ3enIFVYYlYzzi',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -435,4 +435,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-26 21:53:27
+-- Dump completed on 2021-01-26 23:55:08
