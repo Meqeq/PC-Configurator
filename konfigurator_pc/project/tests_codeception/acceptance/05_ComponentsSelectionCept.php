@@ -81,7 +81,7 @@ $I->fillField("#frequency_min", 1000);
 $I->fillField("#frequency_max", 4000);
 $I->click("Filter");
 
-$I->see("Intel Core i5-9400", '.name');
+$I->see("AMD Ryzen 9 5950X", '.name');
 $I->see("AMD Ryzen 5 3600", '.name');
 $I->see("Intel Core i5-10400F", ".name");
 
@@ -91,7 +91,7 @@ $I->fillField("#frequency_min", 2800);
 $I->fillField("#frequency_max", 3400);
 $I->click("Filter");
 
-$I->see("Intel Core i5-9400", '.name');
+$I->see("AMD Ryzen 9 5950X", '.name');
 $I->dontSee("AMD Ryzen 5 3600", '.name');
 $I->dontSee("Intel Core i5-10400F", ".name");
 

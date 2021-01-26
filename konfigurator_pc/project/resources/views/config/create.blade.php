@@ -19,11 +19,11 @@
     @endif
         @csrf
         <div class="flex justify-center mb-3 pt-0">
-            <input name="title" type="text" placeholder="Title" required :value="old('title')"
+            <input name="title" type="text" placeholder="Title" required :value="$config->title"
                    class="text-xl px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-1/2"/>
         </div>
         <div class="flex justify-center mb-3 pt-0">
-            <textarea name="desc" placeholder="Description" :value="old('desc')"
+            <textarea name="desc" placeholder="Description" :value="$config->desc"
                       class="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-1/2"></textarea>
         </div>
         @if (count($compatibilityErrors))

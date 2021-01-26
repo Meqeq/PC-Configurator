@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `case`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `case` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `producer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `compatibility` json NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `configs`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `configs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cpu_id` int NOT NULL,
   `gpu_id` int NOT NULL,
   `mbd_id` int NOT NULL,
@@ -65,13 +65,13 @@ CREATE TABLE `configs` (
   `pccase_id` int NOT NULL,
   `psu_id` int NOT NULL,
   `cooling_id` int NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `desc` text COLLATE utf8mb4_unicode_ci,
   `benchmark` double DEFAULT NULL,
   `price` decimal(8,2) NOT NULL,
   `is_verified` tinyint(1) NOT NULL DEFAULT '0',
   `user_id` int DEFAULT NULL,
   `public` tinyint(1) DEFAULT NULL,
-  `share_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `share_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -84,7 +84,7 @@ CREATE TABLE `configs` (
 
 LOCK TABLES `configs` WRITE;
 /*!40000 ALTER TABLE `configs` DISABLE KEYS */;
-INSERT INTO `configs` VALUES (1,'PREMIUM XXX',1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,0,'',NULL,'2021-01-25 21:10:10'),(2,'Ol\' an\' good',1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,1,'',NULL,NULL),(3,'Pretty one',3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,1,'',NULL,NULL),(4,'Sven is HUGE',3,3,3,3,3,3,3,3,'Super config 3',0,1337.00,0,1,1,'',NULL,NULL);
+INSERT INTO `configs` VALUES (1,'PREMIUM XXX',1,1,1,1,1,1,1,1,'Super config',7.8,987.00,0,1,0,'',NULL,NULL),(2,'Ol\' an\' good',1,2,1,2,1,1,1,1,'Super config MIX',3.6,600.00,0,1,1,'',NULL,NULL),(3,'Pretty one',3,3,3,3,3,3,3,3,'Super config 3',7.8,1234.00,0,1,1,'',NULL,NULL),(4,'Sven is HUGE',3,3,3,3,3,3,3,3,'Super config 3',0,1337.00,0,1,1,'',NULL,NULL);
 /*!40000 ALTER TABLE `configs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,15 +97,15 @@ DROP TABLE IF EXISTS `cooling`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cooling` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
-  `producer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `socket` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `socket` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tpd` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -129,14 +129,14 @@ DROP TABLE IF EXISTS `cpu`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cpu` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `cores` int NOT NULL,
   `frequency` int NOT NULL,
-  `socket` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `producer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `socket` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -162,14 +162,14 @@ DROP TABLE IF EXISTS `drive`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `drive` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `capacity` int NOT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `producer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `interface` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `interface` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -195,11 +195,11 @@ DROP TABLE IF EXISTS `failed_jobs`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `failed_jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
@@ -224,14 +224,14 @@ DROP TABLE IF EXISTS `gpu`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gpu` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
-  `pcie_int` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `producer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `chipset` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `RAM` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pcie_int` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chipset` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `RAM` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -257,14 +257,15 @@ DROP TABLE IF EXISTS `mbd`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mbd` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `compatibility` json NOT NULL,
   `price` decimal(8,2) NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -275,7 +276,7 @@ CREATE TABLE `mbd` (
 
 LOCK TABLES `mbd` WRITE;
 /*!40000 ALTER TABLE `mbd` DISABLE KEYS */;
-INSERT INTO `mbd` VALUES (1,'Gigabyte B450 AORUS ELITE','Wybierz sprzęt nie wymuszający żadnych kompromisów i dołącz do elitarnego grona posiadaczy sprzętu sygnowanego marką AORUS. Oferowana płyta główna, napędzana chipsetem B450, umożliwia wykorzystanie procesorów AMD Ryzen 2. generacji oraz zintegrowanych z nimi układów graficznych AMD Vega. Cztery sloty DIMM obsłużą moduły DDR4 o taktowaniu nawet 3200 MHz (O.C.), a slot M.2 umożliwi podłączenia najszybszych dysków SSD na rynku.','{\"cpu\": {\"socket\": [\"AM4\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',419.00,NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/9/pr_2018_9_7_7_30_44_651_02.jpg','ATX'),(2,'ASRock B460 Phantom Gaming 4','Wejdź do świata gamingu z nowymi procesorami Intel Core 10. generacji oraz płytą główną ASRock B460 Phantom Gaming 4. Ta dedykowana graczom platforma wspiera pamięci RAM DDR o taktowaniu nawet 2933 MHz oraz szybkie dyski SSD M.2. Dzięki wbudowanemu portowi HDMI możesz korzystać z wbudowanego w CPU układu graficznego, a także połączyć dwie karty graficzne dzięki technologii AMD CrossFireX.','{\"cpu\": {\"socket\": [\"1200\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',419.00,NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_25_9_9_8_671_04.jpg','ATX'),(3,'MSI B450 TOMAHAWK MAX','Wyposaż się w broń, która zapewni maksymalną wydajność i stabilność każdej rozgrywki. MSI B450 TOMAHAWK MAX z serii Arsenal Gaming to wytrzymała i wydajna konstrukcja, wyposażona w socket AM4 oraz chipset B450. Umożliwi Ci wykorzystanie procesorów AMD Ryzen 3. lub 2. generacji oraz modułów RAM DDR4 o taktowaniu nawet 4133 MHz (w trybie OC). Ponadto rozświetlisz wnętrz obudowy stylowym blaskiem podświetlenia RGB.','{\"cpu\": {\"socket\": [\"AM4\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',429.00,NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/8/pr_2019_8_2_12_56_4_381_00.jpg','ATX'),(4,'MSI Z490-A PRO','Seria płyt głównych PRO skierowana jest przede wszystkim do wymagających użytkowników dla których ważna jest wydajność oraz stabilność przy dużych obciążeniach systemu. Zyskaj dzięki płycie MSI Z490-A PRO profesjonalne narzędzie do najbardziej wymagających zastosowań, zbuduj swoją stację roboczą, która zapewni Ci optymalną i bezproblemową pracę.','{\"cpu\": {\"socket\": [\"1200\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',769.00,NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_5_21_41_43_403_00.jpg','ATX'),(5,'MSI MAG B460 TOMAHAWK','Seria płyt głównych MAG narodziła się z pasji do gier stworzoną ją po to, aby zapewnić graczom najbardziej efektywną i nieprzerwaną rozgrywkę. MSI MAG B460 TOMAHAWK ,dzięki rygorystycznym testom jakości została symbolem solidności i trwałości. Skoncentrowana na zapewnieniu jak najlepszych wrażeń użytkownikom zapewnia szybką instalację, która w połączeniu z przyjaznym interfejsem jest idealną propozycją zarówno dla zaawansowanych jaki i początkujących graczy.','{\"cpu\": {\"socket\": [\"1200\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',569.00,NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_27_12_19_16_814_00.jpg','m-ATX'),(6,'MSI B365M PRO-VH','Zyskaj doskonałą bazę pod komputer do profesjonalnych zastosowań Płyta główna MSI B365M PRO-VH jest dedykowana do obsługi procesorów Intel 9. i 8. generacji, kompatybilnych z socketem 1151. W połączeniu z technologią Core Boost możesz wykorzystać pełen potencjał CPU, który wspomagać będzie pamięć RAM DDR4 o taktowaniu nawet 2666 MHz. Postaw na jakość, która nie zawiedzie Cię w żadnej sytuacji.','{\"cpu\": {\"socket\": [\"1151\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"interface\": {\"type\": [\"SATA\"]}}',259.00,NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_27_12_19_16_814_00.jpg','m-ATX'),(7,'Gigabyte X570 AORUS ELITE','Wyposaż się w broń, która zapewni maksymalną wydajność i stabilność każdej rozgrywki. MSI B450 TOMAHAWK MAX z serii Arsenal Gaming to wytrzymała i wydajna konstrukcja, wyposażona w socket AM4 oraz chipset B450. Umożliwi Ci wykorzystanie procesorów AMD Ryzen 3. lub 2. generacji oraz modułów RAM DDR4 o taktowaniu nawet 4133 MHz (w trybie OC). Ponadto rozświetlisz wnętrz obudowy stylowym blaskiem podświetlenia RGB.','{\"cpu\": {\"socket\": [\"AM4\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',859.00,NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/7/pr_2019_7_4_12_4_46_676_04.jpg','ATX'),(8,'ASUS PRIME Z390-P','Skorzystaj z możliwości procesorów Intel Core 8. i 9. generacji, wybierając jako bazę do swojego komputera tą unikalną płytę główną. PRIME Z390-P umożliwi Ci przy tym skorzystanie z układów graficznych wbudowanych w CPU lub stworzenie konfiguracji AMD Crossfire. Aby Twój system pracował jeszcze sprawniej, zainstaluj go na dysku SSD umieszczonym w złączu M.2. Specjalna technologia OptiMem II usprawniająca przekazywanie sygnałów sprawia, że pamięć RAM pracuje ze zwiększoną stabilnością, a ty możesz korzystać taktowania modułów nawet 4266 MHz (O.C.).','{\"cpu\": {\"socket\": [\"1151\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"SATA\"]}}',569.00,NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/10/pr_2018_10_5_10_11_28_406_00.jpg','ATX');
+INSERT INTO `mbd` VALUES (1,'Gigabyte B450 AORUS ELITE','Wybierz sprzęt nie wymuszający żadnych kompromisów i dołącz do elitarnego grona posiadaczy sprzętu sygnowanego marką AORUS. Oferowana płyta główna, napędzana chipsetem B450, umożliwia wykorzystanie procesorów AMD Ryzen 2. generacji oraz zintegrowanych z nimi układów graficznych AMD Vega. Cztery sloty DIMM obsłużą moduły DDR4 o taktowaniu nawet 3200 MHz (O.C.), a slot M.2 umożliwi podłączenia najszybszych dysków SSD na rynku.','{\"cpu\": {\"socket\": [\"AM4\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',419.00,'Gigabyte',NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/9/pr_2018_9_7_7_30_44_651_02.jpg','ATX'),(2,'ASRock B460 Phantom Gaming 4','Wejdź do świata gamingu z nowymi procesorami Intel Core 10. generacji oraz płytą główną ASRock B460 Phantom Gaming 4. Ta dedykowana graczom platforma wspiera pamięci RAM DDR o taktowaniu nawet 2933 MHz oraz szybkie dyski SSD M.2. Dzięki wbudowanemu portowi HDMI możesz korzystać z wbudowanego w CPU układu graficznego, a także połączyć dwie karty graficzne dzięki technologii AMD CrossFireX.','{\"cpu\": {\"socket\": [\"1200\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',419.00,'AsRock',NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_25_9_9_8_671_04.jpg','ATX'),(3,'MSI B450 TOMAHAWK MAX','Wyposaż się w broń, która zapewni maksymalną wydajność i stabilność każdej rozgrywki. MSI B450 TOMAHAWK MAX z serii Arsenal Gaming to wytrzymała i wydajna konstrukcja, wyposażona w socket AM4 oraz chipset B450. Umożliwi Ci wykorzystanie procesorów AMD Ryzen 3. lub 2. generacji oraz modułów RAM DDR4 o taktowaniu nawet 4133 MHz (w trybie OC). Ponadto rozświetlisz wnętrz obudowy stylowym blaskiem podświetlenia RGB.','{\"cpu\": {\"socket\": [\"AM4\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',429.00,'MSI',NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/8/pr_2019_8_2_12_56_4_381_00.jpg','ATX'),(4,'MSI Z490-A PRO','Seria płyt głównych PRO skierowana jest przede wszystkim do wymagających użytkowników dla których ważna jest wydajność oraz stabilność przy dużych obciążeniach systemu. Zyskaj dzięki płycie MSI Z490-A PRO profesjonalne narzędzie do najbardziej wymagających zastosowań, zbuduj swoją stację roboczą, która zapewni Ci optymalną i bezproblemową pracę.','{\"cpu\": {\"socket\": [\"1200\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',769.00,'MSI',NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_5_21_41_43_403_00.jpg','ATX'),(5,'MSI MAG B460 TOMAHAWK','Seria płyt głównych MAG narodziła się z pasji do gier stworzoną ją po to, aby zapewnić graczom najbardziej efektywną i nieprzerwaną rozgrywkę. MSI MAG B460 TOMAHAWK ,dzięki rygorystycznym testom jakości została symbolem solidności i trwałości. Skoncentrowana na zapewnieniu jak najlepszych wrażeń użytkownikom zapewnia szybką instalację, która w połączeniu z przyjaznym interfejsem jest idealną propozycją zarówno dla zaawansowanych jaki i początkujących graczy.','{\"cpu\": {\"socket\": [\"1200\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',569.00,'MSI',NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_27_12_19_16_814_00.jpg','m-ATX'),(6,'MSI B365M PRO-VH','Zyskaj doskonałą bazę pod komputer do profesjonalnych zastosowań Płyta główna MSI B365M PRO-VH jest dedykowana do obsługi procesorów Intel 9. i 8. generacji, kompatybilnych z socketem 1151. W połączeniu z technologią Core Boost możesz wykorzystać pełen potencjał CPU, który wspomagać będzie pamięć RAM DDR4 o taktowaniu nawet 2666 MHz. Postaw na jakość, która nie zawiedzie Cię w żadnej sytuacji.','{\"cpu\": {\"socket\": [\"1151\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"interface\": {\"type\": [\"SATA\"]}}',259.00,'MSI',NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/5/pr_2020_5_27_12_19_16_814_00.jpg','m-ATX'),(7,'Gigabyte X570 AORUS ELITE','Wyposaż się w broń, która zapewni maksymalną wydajność i stabilność każdej rozgrywki. MSI B450 TOMAHAWK MAX z serii Arsenal Gaming to wytrzymała i wydajna konstrukcja, wyposażona w socket AM4 oraz chipset B450. Umożliwi Ci wykorzystanie procesorów AMD Ryzen 3. lub 2. generacji oraz modułów RAM DDR4 o taktowaniu nawet 4133 MHz (w trybie OC). Ponadto rozświetlisz wnętrz obudowy stylowym blaskiem podświetlenia RGB.','{\"cpu\": {\"socket\": [\"AM4\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"M2\", \"SATA\"]}}',859.00,'Gigabyte',NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2019/7/pr_2019_7_4_12_4_46_676_04.jpg','ATX'),(8,'ASUS PRIME Z390-P','Skorzystaj z możliwości procesorów Intel Core 8. i 9. generacji, wybierając jako bazę do swojego komputera tą unikalną płytę główną. PRIME Z390-P umożliwi Ci przy tym skorzystanie z układów graficznych wbudowanych w CPU lub stworzenie konfiguracji AMD Crossfire. Aby Twój system pracował jeszcze sprawniej, zainstaluj go na dysku SSD umieszczonym w złączu M.2. Specjalna technologia OptiMem II usprawniająca przekazywanie sygnałów sprawia, że pamięć RAM pracuje ze zwiększoną stabilnością, a ty możesz korzystać taktowania modułów nawet 4266 MHz (O.C.).','{\"cpu\": {\"socket\": [\"1151\"]}, \"ram\": {\"type\": [\"DDR4\"]}, \"drive\": {\"interface\": [\"SATA\"]}}',569.00,'Asus',NULL,NULL,'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/10/pr_2018_10_5_10_11_28_406_00.jpg','ATX');
 /*!40000 ALTER TABLE `mbd` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +289,7 @@ DROP TABLE IF EXISTS `migrations`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migrations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -312,8 +313,8 @@ DROP TABLE IF EXISTS `password_resets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_resets` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -337,14 +338,14 @@ DROP TABLE IF EXISTS `psu`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `psu` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `power` int NOT NULL,
-  `producer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -368,14 +369,14 @@ DROP TABLE IF EXISTS `ram`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ram` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `capacity` int NOT NULL,
   `speed` int NOT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `producer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -401,12 +402,12 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'normal',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'normal',
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -420,7 +421,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$vzkJz922vZZf/aY7e2PUeeTwYy8paSNQR2.t.1c6svDVb/QYmrtS.',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$b9S0Xisv3rYamOu8WvmJwO8G2T9mjb/xZZQtJQUklGlCJZteHusfu',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$eDiaXKDK873CBVI/.kB5T.mYw84hKEC0gstd8jH1.Mfezqr9LRuwS',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com','normal',NULL,'$2y$10$qGRRExxwxweSLG6lAM.haOG2.KuD5SNf/MXoHQKzi95bOS8ekcqbC',NULL,NULL,NULL),(2,'Bartosz Chwala','chwala69@gmail.com','normal',NULL,'$2y$10$5kbnN39314uIYDEntF/nC.fbR6cl4xJ4x0yRVMA9x7dwAw.N7jEmS',NULL,NULL,NULL),(3,'admin','admin31337@gmail.com','admin',NULL,'$2y$10$A7vtQoMIn6eEzJ8bZ48LVuzqe.JUL8CUzoDVN.HPHemt3Kw3t/vuq',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -433,4 +434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-25 21:10:32
+-- Dump completed on 2021-01-26 15:13:46

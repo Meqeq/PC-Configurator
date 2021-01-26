@@ -47,5 +47,11 @@ $I->click('Create new PC configuration');
 $I->seeCurrentUrlMatches('~^/config/\d+~');
 $I->see('My conifg');
 
-$I->click('Browse');
-$I->see('This is a very interesting config with lots of potential.');
+$I->see("Edit");
+$I->see("DELETE");
+$I->see("Share");
+$I->see("Publish");
+
+$I->see("This config is private");
+
+
