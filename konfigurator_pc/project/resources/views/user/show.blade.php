@@ -87,7 +87,9 @@
                         </table>
                     @endif
                 </div>
+                @if($owner)
                 <a href="/config/create" style="margin:8px" name="Create" class="bg-purple-600 float-right focus:outline-none focus:ring-2 focus:ring-opacity-75 focus:ring-purple-400 font-semibold hover:bg-purple-800 px-4 py-2 rounded-lg shadow-md text-white">Create new...</a>
+                @endif
             </div>
         </div>
     </div>

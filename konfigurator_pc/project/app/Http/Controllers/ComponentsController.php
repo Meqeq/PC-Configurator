@@ -82,6 +82,7 @@ class ComponentsController extends Controller
         $config->$comp()->associate($element::find($id));
 
         $config->saveInSession();
+
         if (session()->get('edit', false))
             return redirect(route("config.edit", ['config'=>$config]));
 

@@ -79,15 +79,17 @@ class ConfigController extends Controller
 
     public function edit(Config $config)
     {
-        if (!session()->has("config")) {
-            $config->saveInSession();
-        }
-
-        $config->calcPrice();
-
         $id = Auth::id();
         if ($config->user_id == $id) {
+            if (!session()->get('edit', false))
+                $config->saveInSession();
+            else
+                $config = Config::getFromSessionOrCreate();
+
+            $config->calcPrice();
+
             session(['edit' => true]);
+
             return view("config.create", [
                 'action' => 'edit',
                 'config' => $config,
@@ -126,7 +128,7 @@ class ConfigController extends Controller
         $config->save();
 
         $request->session()->forget("config");
-
+        $request->session()->forget("edit");
 
         return redirect("config/".$config->id);
     }
