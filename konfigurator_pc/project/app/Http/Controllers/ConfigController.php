@@ -80,9 +80,7 @@ class ConfigController extends Controller
         if (!session()->has("config")) {
             $config->saveInSession();
         }
-        else {
-            $config = Config::getFromSessionOrCreate();
-        }
+
         $id = Auth::id();
         if ($config->user_id == $id) {
             session(['edit' => true]);

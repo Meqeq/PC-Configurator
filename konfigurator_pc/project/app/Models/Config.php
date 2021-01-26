@@ -23,7 +23,6 @@ class Config extends Model
         'desc',
         'benchmark',
         'price',
-        'user_id',
         'public'
     ];
 
