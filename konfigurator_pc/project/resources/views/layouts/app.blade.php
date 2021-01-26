@@ -12,6 +12,7 @@
             background: linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
         }
     </style>
+    <title>PC Configurator</title>
 </head>
 <body>
     <div class="container mx-auto px-4">

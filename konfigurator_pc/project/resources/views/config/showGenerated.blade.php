@@ -1,11 +1,11 @@
 @extends("layouts.app")
 
 @section("header")
-    Home
+    Generated config
 @endsection
 
 @section("body")
-    <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+    <div class="mt-8 bg-white dark:bg-gray-800">
         @if (!empty($configs))
             <h3 class="text-xxl text-gray-500">Generated components:</h3>
             <div class="bg-white shadow-md rounded my-6">

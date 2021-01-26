@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('header')
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Viewing a PC configuration
-        </h2>
+    <a href="{{url()->previous()}}" class="bg-gray-500 h-8 w-8 text-center inline-block rounded-full p-2 mx-8 absolute bottom-3 left-0"><img class="w-4 h-4 fill-current" src="/img/back.svg" alt="Back"></a>
+    Viewing a PC configuration
 @endsection
 
 
@@ -13,25 +12,36 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    @if(!$config->public)
-                        <p>This config is private</p>
-                    @endif
-
-                    <p class="text-l font-normal text-gray-800">Detailed information.</p>
-                    @if($config->is_verified == true)
-                        <p class="text-justify py-2">
+                    <div class="m-4">
+                        <h2 class="text-2xl m-2">
+                            {{$config->title}}
+                        </h2>
+                        <p>
                             @markdown
-                            ***Verified***
+                            {{$config->desc}}
                             @endmarkdown
                         </p>
+                    </div>
+
+                    @if(!$config->public)
+                        <div class="text-white bg-gray-600 rounded py-2 px-4 inline-block">
+                            <i class="fas fa-user-secret"></i>
+                            Private
+                        </div>
+                    @endif
+
+                    @if($config->is_verified == true)
+                        <div class="text-white bg-gray-600 rounded py-2 px-4 inline-block">
+                            <i class="fas fa-check"></i>
+                            Verified
+                        </div>
                     @endif
 
                     @if($config->benchmark != 0)
-                        <p class="text-justify py-2">
-                            @markdown
-                            ***The benchmark is: {{$config->benchmark}}***
-                            @endmarkdown
-                        </p>
+                        <div class="text-white bg-gray-600 rounded py-2 px-4 inline-block">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Benchmark: {{$config->benchmark}}
+                        </div>
                     @endif
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -39,26 +49,10 @@
                         <p>Error.</p>
                     @else
                         <div class='py-10'>
-                            <div class="max-w-md mx-auto xl:max-w-5xl lg:max-w-5xl md:max-w-2xl bg-gray-700 max-h-screen shadow-2xl flex-row rounded relative">
-                                <div class="p-2 bg-gray-600 text-blue-900 rounded-t">
-                                    <h5 class="text-white text-2xl capitalize">{{ $config->title }}</h5>
-                                    <h3 class="text-white text-l">{{ $config->price }} $$</h3>
-                                </div>
-                                <div style="justify-content: space-evenly;" class="p-2 w-full h-full overflow-y-auto text-gray-100 flex flex-row">
-                                    <div class="flex-initial text-justify py-2">
-                                        @markdown
-                                        {{$config->desc}}
-                                        @endmarkdown
-                                    </div>
-                                    <div class="flex-initial text-justify py-2">
-                                        <strong class="text-xl">Specification:</strong>
-                                        <ul class="list-disc">
-                                            @foreach($config->componentNames as $key => $value)
-                                                <li>{{$value}}: {{$config->$key->name}}:</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div>
+                                @foreach($config->componentNames as $key => $value)
+                                    <x-component-details :component="$config->$key" action="list" :comp="$key" />
+                                @endforeach
                             </div>
                         </div>
                         <div class="flex items-center justify-end mt-4">

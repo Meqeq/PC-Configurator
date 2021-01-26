@@ -17,7 +17,7 @@
                 </p>
             </div>
         </div>
-            <a href="{{route('componentList', ['action' => $action, 'comp' => $comp])}}" class="block p-4 mx-auto w-3/5 rounded bg-blue-100 text-center">
+            <a href="{{url()->previous()}}" class="block p-4 mx-auto w-3/5 rounded bg-blue-100 text-center">
                 {{ __('Back') }}
             </a>
         </div>

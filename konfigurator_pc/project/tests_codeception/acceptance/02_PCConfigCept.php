@@ -52,6 +52,6 @@ $I->see("DELETE");
 $I->see("Share");
 $I->see("Publish");
 
-$I->see("This config is private");
+$I->see("Private");
 
 
