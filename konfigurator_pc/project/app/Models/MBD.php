@@ -21,6 +21,12 @@ class MBD extends Component {
             "values" => ["Gigabyte", "MSI", "Asus", "AsRock"]
         ],
         [
+            "name" => "socket",
+            "display" => "Socket",
+            "type" => "checkbox",
+            "values" => ["AM4", "1200", "1151"]
+        ],
+        [
             "name" => "price",
             "display" => "Price",
             "type" => "range",
