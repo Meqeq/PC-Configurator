@@ -56,6 +56,9 @@
                 </a>
             @endforeach
         </div>
+        <div class="w-60 mx-auto text-center bg-gray-200 text-2xl p-2 rounded m-4">
+            Total: {{$config->price}} zł
+        </div>
         <div class="flex justify-center">
             <button id="createBtn" disabled
                 class="m-6 w-1/2 h-14 px-6 text-indigo-100 transition-colors duration-150 bg-gray-400 rounded-lg focus:shadow-outline"

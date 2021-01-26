@@ -38,6 +38,7 @@
         </div>
     </div>
     <div class="w-2/12 flex flex-col justify-center">
+        <p>{{$component->price}}</p>
         <a class="bg-indigo-300 hover:bg-indigo-600 text-white font-bold w-20 py-2 rounded m-2 text-center"
             href="{{ route('componentDetails', [ 'comp' => $comp, 'action' => $action, 'id' => $component->id ]) }}"
         >

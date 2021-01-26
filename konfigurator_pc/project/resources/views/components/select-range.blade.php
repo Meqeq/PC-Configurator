@@ -20,7 +20,7 @@
     minV{{$name}}.innerText = min{{$name}}.value = '{{old($name.'_min')}}' || '{{$min}}';
     maxV{{$name}}.innerText = max{{$name}}.value = '{{old($name.'_max')}}' || '{{$max}}';
 
-    min{{$name}}.addEventListener("change", event => {
+    min{{$name}}.addEventListener("input", event => {
         let newValue = parseFloat(event.target.value);
         let maxValue = parseFloat(max{{$name}}.value);
 
@@ -31,7 +31,7 @@
         minV{{$name}}.innerText = event.target.value;
     }); 
 
-    max{{$name}}.addEventListener("change", event => {
+    max{{$name}}.addEventListener("input", event => {
         let newValue = parseFloat(event.target.value);
         let minValue = parseFloat(min{{$name}}.value);
 

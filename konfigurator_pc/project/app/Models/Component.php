@@ -94,7 +94,7 @@ abstract class Component extends Model
             $diff = PHP_INT_MAX;
             $returned = 0;
             foreach ($components as $component) {
-                if (abs($estimatedPrice - $component['price'] <= $diff)) {
+                if (abs($estimatedPrice - $component['price']) < $diff) {
                     $diff = abs($estimatedPrice - $component['price']);
                     $returned = $component;
                 }

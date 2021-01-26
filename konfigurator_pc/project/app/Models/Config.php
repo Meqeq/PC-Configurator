@@ -127,7 +127,8 @@ class Config extends Model
     public function calcPrice() {
         $price = 0;
         foreach ($this->componentList as $name) {
-            $price += $this->$name->price;
+            if($this->$name)
+                $price += $this->$name->price;
         }
 
         $this->price = $price;

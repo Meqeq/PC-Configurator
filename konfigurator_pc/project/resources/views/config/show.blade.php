@@ -55,6 +55,9 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="w-60 mx-auto text-center bg-gray-200 text-2xl p-2 rounded">
+                            Total: {{$config->price}} zł
+                        </div>
                         <div class="flex items-center justify-end mt-4">
                             @if($owner)
                                 <a href="{{route('config.edit', $config->id)}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3">{{ __('Edit') }}</a>
